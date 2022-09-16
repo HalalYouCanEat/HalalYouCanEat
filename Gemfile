@@ -11,10 +11,11 @@ gem "turbo-rails",     "1.1.1"
 gem "stimulus-rails",  "1.0.4"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.4"
+gem "pg",              "1.3.5"
 gem "bootsnap",        "1.12.0", require: false
 
 group :development, :test do
-  gem "pg", "1.3.5"
+  
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -35,7 +36,7 @@ group :test do
 end
 
 group :production do
-  gem "pg", "1.3.5"
+#   gem "pg", "1.3.5" 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem.
