@@ -14,7 +14,7 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 ## Teammate Interest
 
-Anjola:
+Anjola: Would like to participate in full-stack if possible. Willing to contribute more toward front-end. 
 
 Elizabeth:
 
