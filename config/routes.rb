@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :posts
+	root "about#app"
   get "about/app"
   get "about/devs"
   get "about/halal"
