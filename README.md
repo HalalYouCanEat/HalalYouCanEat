@@ -16,7 +16,7 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 Anjola: Would like to participate in full-stack if possible. Willing to contribute more toward front-end. 
 
-Elizabeth:
+Elizabeth: Would like to get experience in both the front- and back-end (full-stack), and I have some experience with both. I'd also like to do some testing.
 
 Fritz: Would like to get experience in front and back-end (full-stack). Has internship experience with back-end, but personal experience with front-end.
 
