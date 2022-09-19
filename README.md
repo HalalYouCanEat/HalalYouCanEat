@@ -20,7 +20,7 @@ Elizabeth: Would like to get experience in both the front- and back-end (full-st
 
 Fritz: Would like to get experience in front and back-end (full-stack). Has internship experience with back-end, but personal experience with front-end.
 
-Syed:
+Syed: Would like to get experience in front and back-end (full-stack). Has internship experience with front-end mostly but would like to learn more about back-end
 
 Zuhaeer: Would like to get experience in front and back-end (full-stack). Has an internship experience but with front-end a little bit, but still have a lot to learn for both.
 
