@@ -12,6 +12,9 @@ their menu.
 ## Link to Trello
 https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
+## Link to Heroku
+https://still-ocean-98360.herokuapp.com/
+
 ## Teammate Interest
 
 Anjola: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
@@ -24,4 +27,12 @@ Syed: Would like to get experience in front and back-end (full-stack). Has inter
 
 Zuhaeer: Would like to get experience in front and back-end (full-stack). Has an internship experience but with front-end a little bit, but still have a lot to learn for both.
 
-## Schema Explanation
+## Schema Explanation (so far)
+
+Post (Review): id: integer, name: string, title: string, body: text
+
+User: id: integer, name: string, email: string, password: string
+
+Location: id: integer, address: string, zipcode: integer, state: string, longitude: integer, latitude: integer, region_id: integer, country_id: integer
+
+Restaurant: id: integer, name: string, location_id: integer (referring to the Location table)
