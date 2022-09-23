@@ -1,6 +1,7 @@
 # HalalYouCanEat
 
 ## Product Summary
+
 Halal is a dietary restriction for Muslims (like the Muslim equivalent of Kosher).
 Not all restaurants have all halal/zabiha options. However, there are many restaurants that may have part
 of their menu be halal (their chicken is halal but not their beef), but as a result, not be considered halal
@@ -10,9 +11,11 @@ this app would also allow users to add restaurants that they have found to use h
 their menu.
 
 ## Link to Trello
+
 https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 ## Link to Heroku
+
 https://still-ocean-98360.herokuapp.com/
 
 ## Teammate Interest
@@ -37,11 +40,8 @@ Location: id: integer, address: string, zipcode: integer, state: string, longitu
 
 Restaurant: id: integer, name: string, location_id: integer (referring to the Location table)
 
-
-
-
 ## Test Typing
-
 
 This is me, Fritz. I am typing things in to push it back into Github! Woot woot!
 
+currently grinding on securing the bag, brb ...
