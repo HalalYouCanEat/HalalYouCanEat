@@ -45,3 +45,5 @@ Restaurant: id: integer, name: string, location_id: integer (referring to the Lo
 This is me, Fritz. I am typing things in to push it back into Github! Woot woot!
 
 currently grinding on securing the bag, brb ...
+
+I just added something on git -Anjola
