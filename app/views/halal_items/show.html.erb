@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @halal_item %>
+
+<div>
+  <%= link_to "Edit this halal item", edit_halal_item_path(@halal_item) %> |
+  <%= link_to "Back to halal items", halal_items_path %>
+
+  <%= button_to "Destroy this halal item", @halal_item, method: :delete %>
+</div>

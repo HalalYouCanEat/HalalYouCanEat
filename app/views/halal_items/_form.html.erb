@@ -1,0 +1,57 @@
+<%= form_with(model: halal_item) do |form| %>
+  <% if halal_item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(halal_item.errors.count, "error") %> prohibited this halal_item from being saved:</h2>
+
+      <ul>
+        <% halal_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :id, style: "display: block" %>
+    <%= form.number_field :id %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :restaurant_id, style: "display: block" %>
+    <%= form.number_field :restaurant_id %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :verification, style: "display: block" %>
+    <%= form.text_field :verification %>
+  </div>
+
+  <div>
+    <%= form.label :vegan, style: "display: block" %>
+    <%= form.check_box :vegan %>
+  </div>
+
+  <div>
+    <%= form.label :gluten_free, style: "display: block" %>
+    <%= form.check_box :gluten_free %>
+  </div>
+
+  <div>
+    <%= form.label :vegetarian, style: "display: block" %>
+    <%= form.check_box :vegetarian %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

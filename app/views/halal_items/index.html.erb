@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Halal items</h1>
+
+<div id="halal_items">
+  <% @halal_items.each do |halal_item| %>
+    <%= render halal_item %>
+    <p>
+      <%= link_to "Show this halal item", halal_item %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New halal item", new_halal_item_path %>

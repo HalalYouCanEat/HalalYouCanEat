@@ -1,0 +1,2 @@
+class HalalItem < ApplicationRecord
+end
