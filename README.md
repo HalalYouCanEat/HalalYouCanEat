@@ -36,3 +36,12 @@ User: id: integer, name: string, email: string, password: string
 Location: id: integer, address: string, zipcode: integer, state: string, longitude: integer, latitude: integer, region_id: integer, country_id: integer
 
 Restaurant: id: integer, name: string, location_id: integer (referring to the Location table)
+
+
+
+
+## Test Typing
+
+
+This is me, Fritz. I am typing things in to push it back into Github! Woot woot!
+
