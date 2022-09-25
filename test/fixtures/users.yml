@@ -1,31 +1,24 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: 1
-  name: Tang Sanzang
-  email: buddhaofsandlewoodmerit@thunderclapmonastery.org
-  password: DemonSnacc
 
-two:
-  id: 2
-  name: Sun Wukong
-  email: greatsageequaltoheaven@flowerfruitmountain.gov
-  password: MonkeyWuzHere
+#  name: Zeus       email: xenios@olympus.gov       password: GodOfOneNightStands
+#  name: Hera       email: boopis@olympus.gov       password: AmITheBaddie
+#  name: Poseidon   email: kyanochaites@olympus.gov password: DemotedEarthshaker
+#  name: Demeter    email: potnia@olympus.gov       password: MistressOfWhetherYouStarve
+#  name: Athena     email: pallas@olympus.gov       password: WillBreakYourSkull
+#  name: Apollo     email: phoebus@olympus.gov      password: HottestThingSinceHotness
+#  name: Artemis    email: agrotera@olympus.gov     password: NeverBeenInLove
+#  name: Ares       email: enyalius@olympus.gov     password: JarJarStuck
+#  name: Hephaestus email: amphigyeeis@olympus.gov  password: ChainsForDayz
+#  name: Aphrodite  email: pandemos@olympus.gov     password: INeedToShower
+#  name: Hermes     email: argeiphontes@olympus.gov password: EveryoneLovesATrickster
+#  name: Dionysus   email: eleutherios@olympus.gov  password: WelcomeToTheMadness
+#  name: Hades      email: agesilaos@underworld.gov password: LawfulNeutral
+#  name: Persephone email: despoina@underworld.gov  password: PastelGothLove
+#  name: Hestia     email: aidios@olympus.gov       password: TheLastOlympian
 
-three:
-  id: 3
-  name: Zhu Bajie
-  email: marhsalcanopy@heaven.gov
-  password: BestRakeEver
-
-four:
-  id: 4
-  name: Sha Wujing
-  email: curtainliftinggeneral@heaven.gov
-  password: VoiceOfReason
-
-five:
-  id: 5
-  name: Bai Long Ma
-  email: aolie@dragonkingofthewestsea.org
-  password: NeighNeighFillies
+#  name: Tang Sanzang email: buddhaofsandlewoodmerit@thunderclapmonastery.org password: DemonSnacc
+#  name: Sun Wukong   email: greatsageequaltoheaven@flowerfruitmountain.gov   password: MonkeyWuzHere
+#  name: Zhu Bajie    email: marhsalcanopy@heaven.gov                         password: BestRakeEver
+#  name: Sha Wujing   email: curtainliftinggeneral@heaven.gov                 password: VoiceOfReason
+#  name: Bai Long Ma  email: aolie@dragonkingofthewestsea.org                 password: NeighNeighFillies
