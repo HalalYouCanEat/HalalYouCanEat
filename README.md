@@ -16,7 +16,7 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 ## Link to Heroku
 
-https://still-ocean-98360.herokuapp.com/
+https://halal-you-can-eat.herokuapp.com/
 
 ## Teammate Interest
 
