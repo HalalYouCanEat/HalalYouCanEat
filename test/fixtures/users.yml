@@ -2,12 +2,30 @@
 
 one:
   id: 1
-  name: MyString
-  email: MyString
-  password: MyString
+  name: Tang Sanzang
+  email: buddhaofsandlewoodmerit@thunderclapmonastery.org
+  password: Tripitaka
 
 two:
   id: 2
-  name: MyString
-  email: MyString
-  password: MyString
+  name: Sun Wukong
+  email: greatsageequaltoheaven@flowerfruitmountain.gov
+  password: MonkeyWuzHere
+
+three:
+  id: 3
+  name: Zhu Bajie
+  email: marhsalcanopy@heaven.gov
+  password: BestRakeEver
+
+four:
+  id: 4
+  name: Sha Wujing
+  email: curtainliftinggeneral@heaven.gov
+  password: VoiceOfReason
+
+five:
+  id: 5
+  name: Bai Long Ma
+  email: aolie@dragonkingofthewestsea.org
+  password: NeighNeighFillies
