@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resources :posts
-	root "about#app"
-  get "about/app"
-  get "about/devs"
-  get "about/halal"
+	root "static_pages#home"
+  get  "/about/app",    to: "static_pages#about_app"
+  get  "/about/devs",   to: "static_pages#about_devs"
+  get  "/about/halal",  to: "static_pages#about_halal"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

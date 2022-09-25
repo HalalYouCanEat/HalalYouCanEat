@@ -10,9 +10,9 @@ class HalalItemsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Halal items"
   end
 
-  test "should create halal item" do
+  test "should create about_halal item" do
     visit halal_items_url
-    click_on "New halal item"
+    click_on "New about_halal item"
 
     fill_in "Description", with: @halal_item.description
     check "Gluten free" if @halal_item.gluten_free
@@ -30,7 +30,7 @@ class HalalItemsTest < ApplicationSystemTestCase
 
   test "should update Halal item" do
     visit halal_item_url(@halal_item)
-    click_on "Edit this halal item", match: :first
+    click_on "Edit this about_halal item", match: :first
 
     fill_in "Description", with: @halal_item.description
     check "Gluten free" if @halal_item.gluten_free
@@ -48,7 +48,7 @@ class HalalItemsTest < ApplicationSystemTestCase
 
   test "should destroy Halal item" do
     visit halal_item_url(@halal_item)
-    click_on "Destroy this halal item", match: :first
+    click_on "Destroy this about_halal item", match: :first
 
     assert_text "Halal item was successfully destroyed"
   end

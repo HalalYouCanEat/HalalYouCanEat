@@ -11,7 +11,7 @@ one:
   vegetarian: false
 
 two:
-  id: 1
+  id: 2
   name: MyString
   restaurant_id: 1
   description: MyString

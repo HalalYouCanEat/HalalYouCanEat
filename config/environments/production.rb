@@ -45,7 +45,7 @@ Rails.application.configure do
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # Force all access to the about_app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
@@ -80,7 +80,7 @@ Rails.application.configure do
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
+  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "about_app-name")
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
