@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+User.destroy_all
+Restaurant.destroy_all
+HalalItem.destroy_all
+Review.destroy_all
+Location.destroy_all
+
+100.times do |index|
+  User.create!(id: index + 1, name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password)
+	Restaurant.create!(id: index + 1, name: Faker::Restaurant.name, location_id: Faker::Number.between(from: 1, to: 100))
+	HalalItem.create!(id: index + 1, name: Faker::Food.dish, restaurant_id: Faker::Number.between(from: 1, to: 100), description: Faker::Food.description, verification: Faker::Food.ingredient, vegan: Faker::Boolean.boolean, gluten_free: Faker::Boolean.boolean, vegetarian: Faker::Boolean.boolean)
+	Review.create!(id: index + 1, restaurant_id: Faker::Number.between(from: 1, to: 100), halal_item_id: Faker::Number.between(from: 1, to: 100), user_id: Faker::Number.between(from: 1, to: 100), date_of_review: Faker::Date.between(from: '2014-09-23', to: '2021-09-25'), content: Faker::Restaurant.review, rating: Faker::Number.between(from: 1, to: 5))
+	Location.create!(id: index + 1, state: Faker::Address.state, zipcode: Faker::Address.zip_code, address: Faker::Address.full_address, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
+end
+
+p "Created #{User.count} users"
