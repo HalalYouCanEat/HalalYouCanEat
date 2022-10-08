@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 /****************************************************************************************************
  *                                       Palette color codes                                        *
@@ -32,7 +33,7 @@ $color-complement-4: #034C64;
 @font-face {
   font-family: 'Tangerine-Regular';
   font-style: normal;
-  src: url("../fonts/Tangerine-Regular.ttf") format('truetype');
+  src: url("Tangerine_Regular.ttf") format('truetype');
 }
 
 /****************************************************************************************************
@@ -66,14 +67,26 @@ textarea {
   border-bottom: 1px solid $color-primary-4;
 }
 
+.navbar-brand {
+  float: left;
+  margin-right: 10px;
+  font-size: 3em;
+  color: white;
+  padding-top: 10px;
+  font-weight: bold;
+  font-family: Tangerine-Regular;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 3em;
   color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 4px;
   font-weight: bold;
   font-family: Tangerine-Regular;
   &:hover {

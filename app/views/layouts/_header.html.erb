@@ -1,11 +1,21 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-expand-lg" role="navigation">
   <div class="container-fluid">
-    <%= link_to "Halal You Can Eat", root_path, id: "logo" %>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About the App", about_app_path %></li>
-        <li><%= link_to "About the Devs", about_devs_path %></li>
-        <li><%= link_to "About Halal", about_halal_path %></li>
+    <a class="navbar-brand" href="<%= root_path %>">Halal You Can Eat</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= about_app_path %>">About the App</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= about_devs_path %>">About the Devs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= about_halal_path %>">About Halal</a>
+        </li>
       </ul>
+    </div>
   </div>
 </nav>
