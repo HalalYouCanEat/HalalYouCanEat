@@ -1,11 +1,22 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
     <%= link_to "Halal You Can Eat", root_path, id: "logo" %>
-      <ul class="nav navbar-nav navbar-right">
+    <nav>
+      <div class="navbar-header">
+        <button id="hamburger" type="button" class="navbar-toggle collapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <ul id="navbar-menu"
+          class="nav navbar-nav navbar-right collapse navbar-collapse">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About the App", about_app_path %></li>
         <li><%= link_to "About the Devs", about_devs_path %></li>
         <li><%= link_to "About Halal", about_halal_path %></li>
       </ul>
+    </nav>
   </div>
-</nav>
+</header>
