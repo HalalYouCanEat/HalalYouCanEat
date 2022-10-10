@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+		@user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -33,6 +34,14 @@ class UsersController < ApplicationController
       end
     end
   end
+	# def create
+  #   @user = User.new(user_params)
+  #   if @user.save
+  #     # Handle a successful save.
+  #   else
+  #     render 'new', status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
