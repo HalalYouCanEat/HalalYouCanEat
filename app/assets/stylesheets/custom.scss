@@ -32,7 +32,7 @@ $color-complement-4: #034C64;
 @font-face {
   font-family: 'Tangerine-Regular';
   font-style: normal;
-  src: url("../fonts/Tangerine-Regular.ttf") format('truetype');
+  src: url("Tangerine_Regular.ttf") format('truetype');
 }
 
 $gray-medium-light: #eaeaea;
@@ -79,7 +79,6 @@ textarea {
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
