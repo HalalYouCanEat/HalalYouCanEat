@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get  "/about/app",    to: "static_pages#about_app"
   get  "/about/devs",   to: "static_pages#about_devs"
   get  "/about/halal",  to: "static_pages#about_halal"
+	get '/signup', to: 'users#new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
