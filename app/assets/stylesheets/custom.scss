@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 /****************************************************************************************************
  *                                       Palette color codes                                        *
@@ -74,13 +75,28 @@ textarea {
   border-bottom: 1px solid $color-primary-4;
 }
 
+.navbar-brand {
+  float: left;
+  margin-right: 10px;
+  font-size: 3em;
+  color: white;
+  padding-top: 10px;
+  font-weight: bold;
+  font-family: Tangerine-Regular;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 3em;
   color: white;
   letter-spacing: -1px;
   padding-top: 9px;
+//   padding-top: 4px;
   font-weight: bold;
   font-family: Tangerine-Regular;
   &:hover {
