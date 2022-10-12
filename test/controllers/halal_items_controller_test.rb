@@ -17,7 +17,7 @@ class HalalItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create halal_item" do
     assert_difference("HalalItem.count") do
-      post halal_items_url, params: { halal_item: { description: @halal_item.description, gluten_free: @halal_item.gluten_free, id: @halal_item.id, name: @halal_item.name, restaurant_id: @halal_item.restaurant_id, vegan: @halal_item.vegan, vegetarian: @halal_item.vegetarian, verification: @halal_item.verification } }
+      post halal_items_url, params: { halal_item: { description: @halal_item.description, gluten_free: @halal_item.gluten_free, id: 3, name: @halal_item.name, restaurant_id: @halal_item.restaurant_id, vegan: @halal_item.vegan, vegetarian: @halal_item.vegetarian, verification: @halal_item.verification } }
     end
 
     assert_redirected_to halal_item_url(HalalItem.last)

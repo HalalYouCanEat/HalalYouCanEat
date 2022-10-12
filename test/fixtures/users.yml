@@ -1,9 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  id: 1
+  name: Zeus 
+  email: xenios@olympus.gov     
+  password_digest: GodOfOneNightStands
 
-#  name: Zeus       email: xenios@olympus.gov       password: GodOfOneNightStands
-#  name: Hera       email: boopis@olympus.gov       password: AmITheBaddie
-#  name: Poseidon   email: kyanochaites@olympus.gov password: DemotedEarthshaker
+two: 
+  id: 2
+  name: Hera
+  email: boopis@olympus.gov 
+  password_digest: AmITheBaddie
+
+three:
+  id: 3
+  name: Poseidon
+  email: kyanochaites@olympus.gov 
+  password_digest: DemotedEarthshaker 
+
 #  name: Demeter    email: potnia@olympus.gov       password: MistressOfWhetherYouStarve
 #  name: Athena     email: pallas@olympus.gov       password: WillBreakYourSkull
 #  name: Apollo     email: phoebus@olympus.gov      password: HottestThingSinceHotness

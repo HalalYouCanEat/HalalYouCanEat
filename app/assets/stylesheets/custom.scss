@@ -1,6 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "font-awesome";
+// @import "font-awesome";
 
 /****************************************************************************************************
  *                                       Palette color codes                                        *
@@ -94,7 +94,9 @@ textarea {
   margin-right: 10px;
   font-size: 3em;
   color: white;
-  padding-top: 4px;
+  letter-spacing: -1px;
+  padding-top: 9px;
+//   padding-top: 4px;
   font-weight: bold;
   font-family: Tangerine-Regular;
   &:hover {
@@ -126,6 +128,23 @@ textarea {
       color:white;
       transition: color .2s;
       &:hover{color:$color-complement-1}
+    }
+  }
+}
+@media (max-width: 800px) {
+  footer {
+    small {
+      display: block;
+      float: none;
+      margin-bottom: 1em;
+    }
+    ul {
+      float: none;
+      padding: 0;
+      li {
+        float: none;
+        margin-left: 0;
+      }
     }
   }
 }
@@ -163,3 +182,9 @@ input, textarea, select, .uneditable-input {
 	width: 100%;
 	margin-top: 45px;
   }
+
+/* Dropdown menu */
+
+.dropdown-menu.active {
+  display: block;
+}
