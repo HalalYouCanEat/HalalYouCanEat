@@ -1,24 +1,15 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="center jumbotron">
 	<h2>Halal You Can Eat</h2>
 	<h4>Find the best Halal food near you</h4>
 	<%# list and map of halal food icons %>
 	<div>
-		<%= 
-		button_to image_tag("list_icon.png", :alt => "List", :size => "50x50"), 
-		"#", :method => :get,
-		onclick:"showDiv('#list')"
-		%>
-		<%=
-		button_to image_tag("map_icon.png", :alt => "Map", :size => "50x50"),
-		"#", :method => :get,
-		onclick:"showDiv('#map')"
-		%>
+		<a onclick="showDiv('#list')"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
+		<a onclick="showDiv('#map')"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
 	</div>
-	<div id = "map">
+	<div id = "map" class="visible">
 		<%= render "map"%>
 	</div>
-	<div id = "list">
+	<div id = "list" class="hidden">
 		<%= render "list" %>
 	</div>
 	<p> Want to review places you've been to? 
@@ -27,21 +18,21 @@
 	</p>
 </div>
 
-<%# script for making div appear and disappear on click %>
 <script>
-	function showDiv(divName) {
-		console.log("showDiv called");
-		if(divName == "#map"){
-			console.log("map");
-			document.getElementById("map").style.display = "block";
-			document.getElementById("list").style.display = "none";
-		}
-		else{
-			console.log("list");
-			document.getElementById("map").style.display = "none";
-			document.getElementById("list").style.display = "block";
-		}
-		// 
-		// $(divName).show();
+function showDiv(divName) {
+	if(divName == "#map"){
+		var map = document.getElementById("map");
+    	map.classList.remove("hidden");
+		var list = document.getElementById("list");
+		list.classList.add("hidden");
 	}
+	else{
+		var list = document.getElementById("list");
+		list.classList.remove("hidden");
+		var map = document.getElementById("map");
+		map.classList.add("hidden");
+	}
+}
 </script>
+
+
