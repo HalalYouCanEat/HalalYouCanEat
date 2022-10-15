@@ -1,6 +1,6 @@
 let map;
 let markers = [];
-let locations = [];
+let locations = new Set();
 function initMap() {
 	// The location of Waltham
 	const waltham = { lat: 42.3765, lng: -71.2356 };
@@ -11,7 +11,8 @@ function initMap() {
 	getLatLng("603 Main St, Waltham, MA 02452", collecter, "Peshawri Kebabs");
 	getLatLng("10 Crescent St, Waltham, MA 02453", collecter, "Karibu Restaurant");
 	getLatLng("146 Lexington St, Waltham, MA 02452", collecter, "Boston Kebab - Waltham");
-	console.log(locations);
+	console.log("Markers: " + markers);
+	console.log("Locations: " + locations);
 	// figure out how to remove marker, and add marker back
 	// also need to remove duplicates from location array
   }
@@ -52,7 +53,7 @@ function getLatLng(address, myCallback, title){
 	});
 }
 function collecter(location, title){
-	locations.push([location[0], location[1], title]);
+	locations.add([location[0], location[1], title]);
 	addMarker(location, title);
 }
   window.initMap = initMap;
