@@ -5,7 +5,7 @@ function initMap() {
 	// The location of Waltham
 	const waltham = { lat: 42.3765, lng: -71.2356 };
 	map = new google.maps.Map(document.getElementById("map"), {
-	  zoom: 13,
+	  zoom: 15,
 	  center: waltham,
 	});
 	getLatLng("603 Main St, Waltham, MA 02452", collecter, "Peshawri Kebabs");
