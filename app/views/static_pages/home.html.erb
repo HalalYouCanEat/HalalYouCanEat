@@ -2,20 +2,22 @@
 	<h2>Halal You Can Eat</h2>
 	<h4>Find the best Halal food near you</h4>
 	<%# list and map of halal food icons %>
-	<div>
-		<a onclick="showDiv('#list')"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
-		<a onclick="showDiv('#map')"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
+	<div class="map-section">
+		<div>
+			<a onclick="showDiv('#list')" class="hover"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
+			<a onclick="showDiv('#map')" class="hover"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
+		</div>
+		<div id = "map" class="visible">
+			<%# loads the map and displays it %>
+			<%= render "map" %>
+
+		</div>
+		<div id = "list" class="hidden">
+			<%= render "list" %>
+		</div>
+		<p> Want to review places you've been to? <%= link_to "Sign up now!", signup_path%> </p>
+		<p> Already have an account? <%= link_to "Sign in", login_path%> </p>
 	</div>
-	<div id = "map" class="visible">
-		<%= render "map"%>
-	</div>
-	<div id = "list" class="hidden">
-		<%= render "list" %>
-	</div>
-	<p> Want to review places you've been to? 
-	<%# <a href="/signup">Sign up now!</a> %>
-	<%= link_to "Sign up now!", signup_path%>
-	</p>
 </div>
 
 <script>

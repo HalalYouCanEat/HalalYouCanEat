@@ -1,6 +1,16 @@
 .hidden{
 	display: none;
 }
-// .visible{
-// 	display: block;
-// }
+.map-section{
+	background-color: grey;
+	height: 100%;
+	width: 100%;
+}
+
+#map{
+	height: 600px;
+	width: 600px;
+}
+.hover{
+	cursor: pointer;
+}
