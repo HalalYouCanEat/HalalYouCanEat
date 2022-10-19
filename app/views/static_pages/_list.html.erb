@@ -18,8 +18,8 @@
 	<% @restaurants = Restaurant.all %>
 	<% @restaurants.each do |restaurant| %>
 		<div class="restaurant">
-			<%= restaurant.name %>
-			<%= restaurant.location_id%>
+			<%= restaurant.name %><br>
+			<%= restaurant.address%><br>
 			<%= link_to "View", restaurant_path(restaurant) %>
 		</div>
 	<% end %>

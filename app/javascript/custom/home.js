@@ -13,9 +13,20 @@ function initMap() {
 	getLatLng("603 Main St, Waltham, MA 02452", collecter, "Peshawri Kebabs");
 	getLatLng("10 Crescent St, Waltham, MA 02453", collecter, "Karibu Restaurant");
 	getLatLng("146 Lexington St, Waltham, MA 02452", collecter, "Boston Kebab - Waltham");
+
+	// google.maps.event.addListener(map, 'bounds_changed', function() {
+	// 	bounds = map.getBounds();
+	// 	ne = bounds.getNorthEast();
+	// 	sw = bounds.getSouthWest();
+	// 	document.getElementById('map').innerHTML = bounds.toUrlValue(6);
+	// 	// TestMarker();
+
+	// });
 	// figure out how to remove marker, and add marker back to map
+	// may need to try marker clusterer
+	// https://developers.google.com/maps/documentation/javascript/marker-clustering
 }
-// add marker to map
+// add marker to map without lat and long
 function addMarker(location, title){
 	const marker = new google.maps.Marker({
 	  position: {lat: location[0], lng: location[1]},
@@ -26,6 +37,14 @@ function addMarker(location, title){
 	removeDuplicates(markers, "title");
 	marker.setMap(map);
 }
+
+// add marker to map with lat and long
+// function addMarker(marker){
+// 	markers.push(marker);
+// 	// remove duplicates from markers array based on title
+// 	removeDuplicates(markers, "title");
+// 	marker.setMap(map);
+// }
 // remove all markers from markers array
 function removeAllMarkers(){
 	markers.forEach((marker) => {
