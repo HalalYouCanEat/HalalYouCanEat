@@ -1,0 +1,28 @@
+<%# section for filters %>
+<div class="filters">
+	<%# creates a dropdown that holds different filters %>
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter by
+		<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="#">Distance</a></li>
+			<li><a href="#">Price</a></li>
+			<li><a href="#">Rating</a></li>
+		</ul>
+	</div>
+</div>
+<div class="restaurants">
+	<%# loops through list of restaurants and creates divs from it%>
+	<%# each div contains the restaurant's name, address, and overall rating (eventually) %>
+	<%# each div also contains a button to view the restaurant's page %>
+	<% @restaurants = Restaurant.all %>
+	<% @restaurants.each do |restaurant| %>
+		<div class="restaurant">
+			<%= restaurant.name %><br>
+			<%= restaurant.address%><br>
+			<%= link_to "View", restaurant_path(restaurant) %>
+		</div>
+	<% end %>
+	
+	
+</div>

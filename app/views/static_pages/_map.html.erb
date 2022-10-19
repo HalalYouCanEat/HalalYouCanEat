@@ -1,0 +1,21 @@
+<%# <iframe
+	width="600"
+	height="450"
+	style="border:0"
+	loading="lazy"
+	allowfullscreen
+	referrerpolicy="no-referrer-when-downgrade"
+	src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA8rpf9NSj_ISAQqsdILkUYxXeXzl_pbxY
+		&q=The+Halal+Guys,Boston+MA">
+</iframe> %>
+
+<% provide :head_tags do %>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(){
+			initMap()
+		});
+	</script>
+<% end %>
+<p>
+	<div id="map-overlay"></div>
+</p>

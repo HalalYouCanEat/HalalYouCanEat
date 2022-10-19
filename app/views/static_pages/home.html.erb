@@ -1,7 +1,40 @@
 <div class="center jumbotron">
-  <h1>Halal You Can Eat</h1>
+	<h2>Halal You Can Eat</h2>
+	<h4>Find the best Halal food near you</h4>
+	<%# list and map of halal food icons %>
+	<div class="map-section">
+		<div class="icon-section">
+			<a onclick="showDiv('#list')" class="hover"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
+			<a onclick="showDiv('#map')" class="hover"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
+		</div>
+		<div id = "map" class="visible">
+			<%# loads the map and displays it %>
+			<%= render "map" %>
 
-  <h2>
-    This is the home page for the Halal You Can Eat app
-  </h2>
+		</div>
+		<div id = "list" class="hidden">
+			<%= render "list" %>
+		</div>
+		<p> Want to review places you've been to? <%= link_to "Sign up now!", signup_path%> </p>
+		<p> Already have an account? <%= link_to "Sign in", login_path%> </p>
+	</div>
 </div>
+
+<script>
+function showDiv(divName) {
+	if(divName == "#map"){
+		var map = document.getElementById("map");
+    	map.classList.remove("hidden");
+		var list = document.getElementById("list");
+		list.classList.add("hidden");
+	}
+	else{
+		var list = document.getElementById("list");
+		list.classList.remove("hidden");
+		var map = document.getElementById("map");
+		map.classList.add("hidden");
+	}
+}
+</script>
+
+
