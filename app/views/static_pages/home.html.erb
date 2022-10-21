@@ -15,8 +15,10 @@
 		<div id = "list" class="hidden">
 			<%= render "list" %>
 		</div>
-		<p> Want to review places you've been to? <%= link_to "Sign up now!", signup_path%> </p>
-		<p> Already have an account? <%= link_to "Sign in", login_path%> </p>
+		<% if not logged_in? %>
+			<p> Want to review places you've been to? <%= link_to "Sign up now!", signup_path%> </p>
+			<p> Already have an account? <%= link_to "Sign in", login_path%> </p>
+		<% end %>
 	</div>
 </div>
 

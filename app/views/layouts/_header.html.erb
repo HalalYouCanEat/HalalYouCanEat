@@ -13,10 +13,12 @@
       <ul id="navbar-menu"
           class="nav navbar-nav navbar-right collapse navbar-collapse">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "About the App", about_app_path %></li>
-        <li><%= link_to "About the Devs", about_devs_path %></li>
-        <li><%= link_to "About Halal", about_halal_path %></li>
-        <li><%= link_to "Signup", signup_path %></li>
+		<% if not logged_in? %>
+			<li><%= link_to "About the App", about_app_path %></li>
+			<li><%= link_to "About the Devs", about_devs_path %></li>
+			<li><%= link_to "About Halal", about_halal_path %></li>
+			<li><%= link_to "Signup", signup_path %></li>
+		<% end %>
         <% if logged_in? %>
 		   <%# not sure what the user link is supposed to do %>
           <li><%= link_to "Users", '#' %></li>

@@ -1,15 +1,15 @@
 <%# section for filters %>
 <div class="filters">
-	<%# creates a dropdown that holds different filters %>
-	<div class="dropdown">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter by
-		<span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			<li><a href="#">Distance</a></li>
-			<li><a href="#">Price</a></li>
-			<li><a href="#">Rating</a></li>
-		</ul>
-	</div>
+	<%# creates a dropdown that holds different filters%>
+	<div>
+		<select id="filter" onchange="filter()">
+			<option value="all">All</option>
+			<option value="halal">Halal</option>
+			<option value="vegan">Vegan</option>
+			<option value="vegetarian">Vegetarian</option>
+			<option value="kosher">Kosher</option>
+			<option value="gluten-free">Gluten-Free</option>
+		</select>
 </div>
 <div class="restaurants">
 	<%# loops through list of restaurants and creates divs from it%>
@@ -26,3 +26,25 @@
 	
 	
 </div>
+
+<script>
+	//function that filters the restaurants based on the filter selected
+	function filter(){
+		var filter = document.getElementById("filter").value;
+		var restaurants = document.getElementsByClassName("restaurant");
+		for(var i = 0; i < restaurants.length; i++){
+			var restaurant = restaurants[i];
+			if(filter == "all"){
+				restaurant.style.display = "block";
+			}
+			else{
+				if(restaurant.innerHTML.includes(filter)){
+					restaurant.style.display = "block";
+				}
+				else{
+					restaurant.style.display = "none";
+				}
+			}
+		}
+	}
+</script>
