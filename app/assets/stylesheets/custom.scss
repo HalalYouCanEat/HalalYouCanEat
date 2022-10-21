@@ -70,23 +70,18 @@ textarea {
 /****************************************************************************************************
  *                                             Header                                               *
  ****************************************************************************************************/
-.navbar {
+#navbar-top {
   background-color: $color-primary-0;
   border-bottom: 1px solid $color-primary-4;
 }
 
-.navbar-brand {
-  float: left;
-  margin-right: 10px;
-  font-size: 3em;
-  color: white;
-  padding-top: 10px;
-  font-weight: bold;
-  font-family: Tangerine-Regular;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+#navbar-bottom {
+  background-color: $color-secondary-1-0;
+  border-bottom: 1px solid $color-secondary-1-4;
+}
+
+#navbar-item {
+  color: white
 }
 
 #logo {
@@ -96,7 +91,6 @@ textarea {
   color: white;
   letter-spacing: -1px;
   padding-top: 9px;
-//   padding-top: 4px;
   font-weight: bold;
   font-family: Tangerine-Regular;
   &:hover {
