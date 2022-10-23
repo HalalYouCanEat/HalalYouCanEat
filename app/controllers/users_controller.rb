@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
       reset_session
       log_in @user

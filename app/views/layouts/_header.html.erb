@@ -1,6 +1,11 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" id="navbar-top">
   <div class="container-fluid">
     <%= link_to "Halal You Can Eat", root_path, id: "logo" %>
+  </div>
+</header>
+
+<header class="navbar navbar-inverse" id="navbar-bottom">
+  <div class="container-fluid">
     <nav>
       <div class="navbar-header">
         <button id="hamburger" type="button" class="navbar-toggle collapsed">
@@ -13,10 +18,10 @@
       <ul id="navbar-menu"
           class="nav navbar-nav navbar-right collapse navbar-collapse">
         <li><%= link_to "Home", root_path %></li>
+		<li><%= link_to "About the App", about_app_path %></li>
+		<li><%= link_to "About the Devs", about_devs_path %></li>
+		<li><%= link_to "About Halal", about_halal_path %></li>
 		<% if not logged_in? %>
-			<li><%= link_to "About the App", about_app_path %></li>
-			<li><%= link_to "About the Devs", about_devs_path %></li>
-			<li><%= link_to "About Halal", about_halal_path %></li>
 			<li><%= link_to "Signup", signup_path %></li>
 		<% end %>
         <% if logged_in? %>
@@ -38,7 +43,7 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Log in", login_path, id: "navbar-item" %></li>
         <% end %>
       </ul>
     </nav>
