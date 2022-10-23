@@ -19,6 +19,6 @@ Review.destroy_all
 end
 
 # Main user for testing
-User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password")
+User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password", admin: true)
 
 p "Created #{User.count} users"

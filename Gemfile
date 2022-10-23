@@ -16,6 +16,8 @@ gem "puma",            "5.6.4"
 gem "bootsnap",        "1.12.0", require: false
 gem "pg"
 gem "faker"
+gem "will_paginate",           "3.3.1"
+gem "bootstrap-will_paginate", "1.0.0"
 group :development, :test do
   
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]

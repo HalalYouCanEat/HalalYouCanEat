@@ -3,14 +3,16 @@
 one:
   id: 1
   name: Zeus 
-  email: xenios@olympus.gov     
-  password_digest: GodOfOneNightStands
+  email: xenios@olympus.gov 
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  admin: true
+  # password_digest: $2a$10$g/A4D6KtaLtxvm2lZ8C.vuPvl8Zu2TrbnPYpM6r59Wu397hlY42GO
 
 two: 
   id: 2
   name: Hera
   email: boopis@olympus.gov 
-  password_digest: AmITheBaddie
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
 
 three:
   id: 3
