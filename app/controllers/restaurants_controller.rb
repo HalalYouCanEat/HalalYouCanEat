@@ -1,9 +1,10 @@
 class RestaurantsController < ApplicationController
+	include Filterable
   before_action :set_restaurant, only: %i[ show edit update destroy ]
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = filter!(Restaurant)
   end
 
   # GET /restaurants/1 or /restaurants/1.json
@@ -57,6 +58,21 @@ class RestaurantsController < ApplicationController
     end
   end
 
+	def list
+		# filtering by name and ordering it by param column and direction
+		restaurants = filter!(Restaurant)
+		# restaurants = Restaurant.includes(:name)
+  	# restaurants = restaurants.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
+  	# restaurants = restaurants.order("#{params[:column]} #{params[:direction]}")
+		render :_restaurant, locals: { restaurants: restaurants }
+	end
+		# restaurants = restaurants.where('restaurants.name ilike ?', "%#{session['filters']['name']}%") if session['filters']['name'].present?
+		# restaurants = restaurants.order("#{session['filters']['column']} #{session['filters']['direction']}")
+		
+		# rendering the index for restaurants
+		# render :_index, locals: { restaurants: restaurants }
+	
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -67,4 +83,8 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       params.require(:restaurant).permit(:id, :location_id, :name)
     end
+
+		def filter_params
+			params.permit(:name, :column, :direction)
+		end
 end

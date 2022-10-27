@@ -15,7 +15,9 @@
 	<%# loops through list of restaurants and creates divs from it%>
 	<%# each div contains the restaurant's name, address, and overall rating (eventually) %>
 	<%# each div also contains a button to view the restaurant's page %>
+
 	<% @restaurants = Restaurant.all %>
+  <!-- Snip the table -->
 	<% @restaurants.each do |restaurant| %>
 		<div class="restaurant">
 			<%= restaurant.name %><br>

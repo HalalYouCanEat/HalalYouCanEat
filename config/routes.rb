@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :restaurants
+  resources :restaurants do
+		collection do
+      get 'list'
+    end
+	end
   resources :halal_items
   resources :locations
   resources :reviews

@@ -45,4 +45,9 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to restaurants_url
   end
+
+	test "should get list" do
+		get list_restaurants_url
+		assert_response :success
+	end
 end
