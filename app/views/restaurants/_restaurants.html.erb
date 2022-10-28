@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+
+<h2>Restaurants</h2>
+
+<div class="flex justify-end mb-1">
+	<%# search bar commented out for now %>
+	<% if false %>
+		<%= form_with url: list_restaurants_path, method: :get do |form| %>
+			<%= form.text_field :name, placeholder: "Search by name", value: params[:name], class: "border border-blue-500 rounded p-2" %>
+			<%= form.button "Search", class: "bg-blue-500 text-white p-2 rounded-sm" %>
+		<% end %>
+	<% end %>	
+</div>
+<%# turbo frame causing issues with post requests %>
+<%# turbo_frame_tag "restaurants", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
+	
+  <table class="min-w-full bg-white center">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th id="restaurants-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+		  <%= sort_indicator if session.dig('restaurant_filters', 'column') == "name" %>
+          <%= build_order_link(column: "name", label: "Name") %>
+        </th>
+        <th id="restaurants-cuisine" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if session.dig('restaurant_filters', 'column') == "cuisine" %>
+          <%= build_order_link(column: "cuisine", label: "Cuisine") %>
+        </th>
+        <th id="restaurants-address" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if session.dig('restaurant_filters', 'column') == "address" %>
+          <%= build_order_link(column: "address", label: "Address") %>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="text-gray-700">
+      <% Restaurant.all.each do |restaurant| %>
+        <tr>
+          <td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_url + "/#{restaurant.id}" %></td>
+          <td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
+          <td class="text-left py-3 px-6"><%= restaurant.address %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%# end %>

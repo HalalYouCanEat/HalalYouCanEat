@@ -7,7 +7,7 @@
   <%= render 'layouts/head_default' %>
   <%= render 'layouts/shim' %>
   <%= javascript_importmap_tags %>
-   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2I7co9Yxh28lJ0WZtqkmeMhUXti77hA&libraries=places', async: true, defer: true %>
+   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2I7co9Yxh28lJ0WZtqkmeMhUXti77hA&libraries=places', async: true, defer: false %>
     
 	<%= yield(:head_tags) %>
 </head>
