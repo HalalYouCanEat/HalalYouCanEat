@@ -9,11 +9,13 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
-		# print params
+		# puts "***********"
+		# puts params[:id]
 		@restaurant = Restaurant.find(params[:id])
-		puts @restaurant.name
-		puts "***********"
-		# render :show
+		# puts @restaurant
+		# puts @restaurant.name
+		# puts "***********"
+		# render partial: "restaurant", object: @restaurant
   end
 
   # GET /restaurants/new

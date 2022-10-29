@@ -35,7 +35,7 @@
     <tbody class="text-gray-700">
       <% Restaurant.all.each do |restaurant| %>
         <tr>
-          <td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_url + "/#{restaurant.id}" %></td>
+          <td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
           <td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
           <td class="text-left py-3 px-6"><%= restaurant.address %></td>
         </tr>

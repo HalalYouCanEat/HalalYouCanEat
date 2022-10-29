@@ -1,4 +1,5 @@
-<h2> This is restaurant </h2>
+<h2> This is <%= @restaurant&.name %>!</h2>
 
-<%# @restaurant is nil and i don't know why %>
-<%# @restaurant.name %>
+<h4> We are located at <%= @restaurant&.address %> </h4>
+
+

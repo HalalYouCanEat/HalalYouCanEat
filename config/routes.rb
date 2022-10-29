@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :restaurants do
 		collection do
       get 'list'
+			get 'favorites'
     end
 	end
   resources :halal_items
