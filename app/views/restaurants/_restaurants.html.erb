@@ -14,7 +14,7 @@
 <%# turbo frame causing issues with post requests %>
 <%# turbo_frame_tag "restaurants", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
 	
-  <table class="min-w-full bg-white center">
+  <table class="center" id="rest">
     <thead class="bg-gray-800 text-white">
       <tr>
         <th id="restaurants-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
@@ -32,6 +32,11 @@
           <%# sort_indicator if session.dig('restaurant_filters', 'column') == "address" %>
           <%# build_order_link(column: "address", label: "Address") %>
         </th>
+		<th id="restaurants-rating" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+			Rating
+          <%# sort_indicator if session.dig('restaurant_filters', 'column') == "address" %>
+          <%# build_order_link(column: "address", label: "Address") %>
+        </th>
       </tr>
     </thead>
 
@@ -41,6 +46,7 @@
           <td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
           <td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
           <td class="text-left py-3 px-6"><%= restaurant.address %></td>
+		  <td class="text-left py-3 px-6"><%= restaurant.rating %></td>
         </tr>
       <% end %>
     </tbody>
