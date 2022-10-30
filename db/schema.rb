@@ -45,7 +45,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_171718) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.integer "location_id"
     t.string "name"
     t.string "cuisine"
     t.string "state"
@@ -53,6 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_171718) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.string "url"
+    t.string "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

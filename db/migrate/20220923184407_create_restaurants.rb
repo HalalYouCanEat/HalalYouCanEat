@@ -1,7 +1,7 @@
 class CreateRestaurants < ActiveRecord::Migration[7.0]
   def change
     create_table :restaurants do |t|
-      t.integer :location_id
+      # t.integer :location_id
       t.string :name
 			t.string :cuisine
 			t.string :state
@@ -9,6 +9,8 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
       t.string :address
       t.float :latitude
       t.float :longitude
+			t.string :url
+			t.string :rating
 
       t.timestamps
     end
