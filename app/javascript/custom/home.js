@@ -2,6 +2,8 @@ let map;
 let markers = [];
 let locations = [];
 let geocoder = new google.maps.Geocoder();
+let counter = 0;
+let even = true;
 // initialize map
 function initMap() {
 	// The location of Waltham
@@ -13,21 +15,13 @@ function initMap() {
 	getLatLng("603 Main St, Waltham, MA 02452", collecter, "Peshawri Kebabs");
 	getLatLng("10 Crescent St, Waltham, MA 02453", collecter, "Karibu Restaurant");
 	getLatLng("146 Lexington St, Waltham, MA 02452", collecter, "Boston Kebab - Waltham");
-
-	// google.maps.event.addListener(map, 'bounds_changed', function() {
-	// 	bounds = map.getBounds();
-	// 	ne = bounds.getNorthEast();
-	// 	sw = bounds.getSouthWest();
-	// 	document.getElementById('map').innerHTML = bounds.toUrlValue(6);
-	// 	// TestMarker();
-
-	// });
 	// figure out how to remove marker, and add marker back to map
 	// may need to try marker clusterer
 	// https://developers.google.com/maps/documentation/javascript/marker-clustering
 }
 // add marker to map without lat and long
 function addMarker(location, title){
+	
 	const marker = new google.maps.Marker({
 	  position: {lat: location[0], lng: location[1]},
 	  title: title,
@@ -35,7 +29,36 @@ function addMarker(location, title){
 	markers.push(marker);
 	// remove duplicates from markers array based on title
 	removeDuplicates(markers, "title");
+	console.log("index for marker: " + counter);
+	const contentString = '<div>'+
+		'<div>'+
+		'</div>'+
+		'<h4>'+ title +'</h4>'+
+		'<div>'+
+		'<p>Click<a href="/restaurants/'+ counter +'"> here </a>to view the restaurant!</p>'+
+		'</div>'+
+		'</div>';
+
+	const infowindow = new google.maps.InfoWindow({
+		content: contentString,
+		ariaLabel: title,
+	  });
+	marker.addListener("click", () => {
+		infowindow.open({
+		  anchor: marker,
+		  map,
+		});
+	  });
 	marker.setMap(map);
+	// to fix the double marker issue
+	if(even){
+		counter++;
+		even = false;
+	}
+	else{
+		even = true;
+	}
+	
 }
 
 // add marker to map with lat and long
