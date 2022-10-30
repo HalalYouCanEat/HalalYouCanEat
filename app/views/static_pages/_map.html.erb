@@ -11,9 +11,76 @@
 
 <% provide :head_tags do %>
 	<script>
+		console.log("Where am i?");
 		document.addEventListener("DOMContentLoaded", function(){
 			initMap()
 		});
+		let map;
+		let markers = [];
+		let locations = [];
+		let geocoder = new google.maps.Geocoder();
+		let counter = 0;
+		let even = true;
+		// initialize map
+		function initMap() {
+			map = new google.maps.Map(document.getElementById("map"), {
+				zoom: 11,
+				center: { lat: 40.6242122, lng: -74.0310179 },
+			});
+			let marker;
+			
+			<% Restaurant.all.each do |restaurant| %>
+				marker = new google.maps.Marker({
+					position: { lat: <%= restaurant.latitude %>, lng: <%= restaurant.longitude %> },
+					title: "<%= restaurant.name %>",
+				});
+				addMarker(marker, "<%= restaurant.name %>", <%= restaurant.id %>);
+			<% end %>
+		}
+
+		// add marker to map with lat and long
+		function addMarker(marker, title, id) {
+			markers.push(marker);
+			// remove duplicates from markers array based on title
+			removeDuplicates(markers, "title");
+			const contentString = '<div>'+
+				'<div>'+
+				'</div>'+
+				'<h4>'+ title +'</h4>'+
+				'<div>'+
+				'<p>Click<a href="/restaurants/'+ id +'"> here </a>to view the restaurant!</p>'+
+				'</div>'+
+				'</div>';
+
+			const infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				ariaLabel: title,
+			});
+			marker.addListener("click", () => {
+				infowindow.open({
+				anchor: marker,
+				map,
+				});
+			});
+			marker.setMap(map);
+		}
+		// remove duplicates from array based on attribute
+		function removeDuplicates(arr, index){
+			let i = 0;
+			let j = 0;
+			let len = arr.length;
+			for(i = 0; i < len; i++){
+				for(j = i + 1; j < len; j++){
+					if(arr[i][index] === arr[j][index]){
+						arr.splice(j, 1);
+						len--;
+						j--;
+					}
+				}
+			}
+			return arr;
+		}
+		window.initMap = initMap;
 	</script>
 <% end %>
 <p>
