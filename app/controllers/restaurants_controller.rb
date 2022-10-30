@@ -1,21 +1,31 @@
 class RestaurantsController < ApplicationController
 	include Filterable
   before_action :set_restaurant, only: %i[ show edit update destroy ]
+	# before_action :set_search
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = filter!(Restaurant)
+		puts "*********"
+		puts params[:q]
+		@q = Restaurant.ransack(params[:q])
+		puts "*********"
+		puts @q.inspect
+		@restaurants = @q.result(distinct: true)
+		puts "*********"
+		puts @restaurants.inspect
+		@restaurants = @restaurants.paginate(page: params[:page], per_page: 10)
+		# @restaurants = Restaurant.all
+    # @restaurants = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
+  end
+
+	def search
+    index
+    render :index
   end
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
-		# puts "***********"
-		# puts params[:id]
 		@restaurant = Restaurant.find(params[:id])
-		# puts @restaurant
-		# puts @restaurant.name
-		# puts "***********"
-		# render partial: "restaurant", object: @restaurant
   end
 
   # GET /restaurants/new
