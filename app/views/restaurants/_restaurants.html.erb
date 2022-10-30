@@ -18,16 +18,19 @@
     <thead class="bg-gray-800 text-white">
       <tr>
         <th id="restaurants-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-		  <%= sort_indicator if session.dig('restaurant_filters', 'column') == "name" %>
-          <%= build_order_link(column: "name", label: "Name") %>
+			Name
+		  <%# sort_indicator if session.dig('restaurant_filters', 'column') == "name" %>
+          <%# build_order_link(column: "name", label: "Name") %>
         </th>
         <th id="restaurants-cuisine" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-          <%= sort_indicator if session.dig('restaurant_filters', 'column') == "cuisine" %>
-          <%= build_order_link(column: "cuisine", label: "Cuisine") %>
+			Cuisine
+          <%# sort_indicator if session.dig('restaurant_filters', 'column') == "cuisine" %>
+          <%# build_order_link(column: "cuisine", label: "Cuisine") %>
         </th>
         <th id="restaurants-address" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-          <%= sort_indicator if session.dig('restaurant_filters', 'column') == "address" %>
-          <%= build_order_link(column: "address", label: "Address") %>
+			Address
+          <%# sort_indicator if session.dig('restaurant_filters', 'column') == "address" %>
+          <%# build_order_link(column: "address", label: "Address") %>
         </th>
       </tr>
     </thead>
