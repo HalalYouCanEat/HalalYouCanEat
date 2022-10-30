@@ -11,7 +11,6 @@
 
 <% provide :head_tags do %>
 	<script>
-		console.log("Where am i?");
 		document.addEventListener("DOMContentLoaded", function(){
 			initMap()
 		});
@@ -24,7 +23,7 @@
 		// initialize map
 		function initMap() {
 			map = new google.maps.Map(document.getElementById("map"), {
-				zoom: 11,
+				zoom: 10,
 				center: { lat: 40.6242122, lng: -74.0310179 },
 			});
 			let marker;
