@@ -18,6 +18,10 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 https://halal-you-can-eat.herokuapp.com/
 
+## Link to Figma
+
+https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=70%3A285
+
 ## Teammate Interest
 
 Anjola: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
