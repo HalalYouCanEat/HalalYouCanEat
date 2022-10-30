@@ -32,7 +32,7 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 ## Schema Explanation (so far)
 
-### User
+### users
 <table>
     <thead>
         <tr>
@@ -50,16 +50,227 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
             <td>string</td>
         </tr>
         <tr>
-            <td>name</td>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>password_digest</td>
             <td>string</td>
+        </tr>
+        <tr>
+            <td>remember_digest</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>admin</td>
+            <td>boolean</td>
         </tr>
     </tbody>
 </table>
 
-User: id: integer, name: string, email: string, password: string
+### restaurants
 
-Restaurant: id: integer, name: string, location_id: integer (referring to the Location table)
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>cuisine</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>url</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>address</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>state</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>zipcode</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>latitude</td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td>longitude</td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
 
-FoodItem: id: integer, name: 
+### halal_items
 
-Review: id: integer, name: string, title: string, body: text
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+            <th>Foreign Key</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>integer</td>
+            <td>restaurants(id)</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>verification</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>vegan</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>gluten_free</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>vegetarian</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
+
+### reviews
+
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+            <th>Foreign Key</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>integer</td>
+            <td>restaurants(id)</td>
+        </tr>
+        <tr>
+            <td>halal_item_id</td>
+            <td>integer</td>
+            <td>halal_items(id)</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>integer</td>
+            <td>users(id)</td>
+        </tr>
+        <tr>
+            <td>date_of_review</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>content</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>rating</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
+
+## URL Pattern Plans
+
+### About URLs
+
+/about/app<br>
+/about/devs<br>
+/about/halal<br>
+/about/assets
+
+### Filter URLs
+
+/restaurants?cuisine=Italian
+
+### Viewing Restaurants
+
+/restaurant/1
+
+## Views
+
+We plan to have an about section, which has already been partially implemented, which will included pages about the app, about the devs, about halal, and about what assets we used.
+
+
+
+## Gem Dependencies
+
+* bcrypt
+* bootsnap
+* bootstrap-sass
+* bootstrap-will_paginate
+* faker
+* importmap-rails
+* jbuilder
+* pg
+* puma
+* rails
+* ransack
+* rqrcode
+* sassc-rails
+* sprockets-rails
+* stimulus-rails
+* turbo-rails
+* will_paginate
+
+## Testing
+The command `rails test` will run the tests for our app.
