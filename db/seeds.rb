@@ -22,7 +22,7 @@ end
 User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password", admin: true)
 
 # Creating 55 halal restaurants from new york in the database
-Restaurant.create!(id: 1, name: "Ayat", cuisine: "Palestinian", state: "New York", zipcode: 11209, address: "8504 3rd Ave. Brooklyn, NY 11209", latitude: 40.6242122, longitude: -74.0310179, url: "ayatnyc.com", rating: 4.7)
+Restaurant.create!(id: 1, name: "Ayat", cuisine: "Palestinian", state: "New York", zipcode: 11209, address: "8504 3rd Ave. Brooklyn, NY 11209", latitude: 40.6242122, longitude: -74.0310179, url: "http://ayatnyc.com", rating: 4.7)
 Restaurant.create!(id: 2, name: "Birdies", cuisine: "Fast Food", state: "New York", zipcode: 11206, address: "810 Grand St. Brooklyn, NY 11206", latitude: 40.7117898, longitude: -73.9410835, url: "http://www.bitebirdies.com/", rating: 4.7)
 Restaurant.create!(id: 3, name: "Birria Mania NYC", cuisine: "Mexican", state: "New York", zipcode: 11209, address: "7508 3rd Ave. Brooklyn, NY 11209", latitude: 40.6312544, longitude: -74.0281736, url: "http://birriamanianyc.com/", rating: 4.4)
 Restaurant.create!(id: 4, name: "Chote Miya", cuisine: "Indian", state: "New York", zipcode: 11201, address: "55 Water St. Brooklyn, NY 11201", latitude: 40.7036259, longitude: -73.9916942, url: "https://chotemiya.com/", rating: 4.1)

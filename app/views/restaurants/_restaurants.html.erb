@@ -1,59 +1,52 @@
 <p style="color: green"><%= notice %></p>
 
-<h2 class="text-center" >Restaurants</h2>
-
-<div class="search-bar">
-	<%# search bar commented out for now %>
-	<% if false %>
-		<%= form_with url: list_restaurants_path, method: :get do |form| %>
-			<%= form.text_field :name, placeholder: "Search by name", value: params[:name], class: "border border-blue-500 rounded p-2" %>
-			<%= form.button "Search", class: "bg-blue-500 text-white p-2 rounded-sm" %>
+<h2 class="text-center">Restaurants</h2>
+<div>
+	<div class="search-bar">
+		<% if @restaurants == nil %>
+			<% restaurants = Restaurant.all %>
 		<% end %>
-	<% end %>
-	<%# puts @q %>	
-	<% if @restaurants == nil %>
-		<% restaurants = Restaurant.all %>
-	<% end %>
-	<% if @restaurants != nil %>	
-		<% restaurants = @restaurants %>
-	<% end %>
-	<%= search_form_for(@q, method: :get) do |f| %>
-      <%# f.label :name_cont %>
-      <%= f.search_field :name_cont, placeholder: "Search for restaurant by name"%>
-	  <%# f.select(:cuisine_eq, options_for_select(restaurants.name.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
-      <%= f.submit "Search"%>
-    <% end %>
-</div>
-<div class="gray-background">
-  <table class="center" id="rest">
-    <thead class="bg-gray-800 text-white">
-      <tr>
-		<th>
-			<%# Name %>
-			<%= sort_link(@q, :name) %>
-		</th>
-        <th>
-			Cuisine
-        </th>
-        <th>
-			Address
-        </th>
-		<th>
-			<%# Rating %>
-			<%= sort_link(@q, :rating) %>
-        </th>
-      </tr>
-    </thead>
+		<% if @restaurants != nil %>	
+			<% restaurants = @restaurants %>
+		<% end %>
+		<%= search_form_for(@q, method: :get) do |f| %>
+		<%# f.label :name_cont %>
+		<%= f.search_field :name_cont, placeholder: "Search for restaurant by name"%>
+		<%# f.select(:cuisine_eq, options_for_select(restaurants.cuisine.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
+		<%= f.submit "Search"%>
+		<% end %>
+	</div>
+	<div class="gray-background">
+	<table class="center" id="rest">
+		<thead class="bg-gray-800 text-white">
+		<tr>
+			<th>
+				<%# Name %>
+				<%= sort_link(@q, :name) %>
+			</th>
+			<th>
+				Cuisine
+			</th>
+			<th>
+				Address
+			</th>
+			<th>
+				<%# Rating %>
+				<%= sort_link(@q, :rating) %>
+			</th>
+		</tr>
+		</thead>
 
-    <tbody class="text-gray-700">
-      <% restaurants.each do |restaurant| %>
-        <tr>
-          <td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-          <td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-          <td class="text-left py-3 px-6"><%= restaurant.address %></td>
-		  <td class="text-left py-3 px-6"><%= restaurant.rating %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+		<tbody class="text-gray-700">
+		<% restaurants.each do |restaurant| %>
+			<tr>
+			<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
+			<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
+			<td class="text-left py-3 px-6"><%= restaurant.address %></td>
+			<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	</div>
 </div>
