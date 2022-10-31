@@ -5,17 +5,10 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-		puts "*********"
-		puts params[:q]
 		@q = Restaurant.ransack(params[:q])
-		puts "*********"
-		puts @q.inspect
 		@restaurants = @q.result(distinct: true)
-		puts "*********"
-		puts @restaurants.inspect
-		@restaurants = @restaurants.paginate(page: params[:page], per_page: 10)
-		# @restaurants = Restaurant.all
-    # @restaurants = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
+		# will do paginate later
+		# @restaurants = @restaurants.paginate(page: params[:page], per_page: 10)
   end
 
 	def search
