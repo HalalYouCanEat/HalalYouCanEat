@@ -20,26 +20,28 @@
 	<%= search_form_for(@q, method: :get) do |f| %>
       <%# f.label :name_cont %>
       <%= f.search_field :name_cont, placeholder: "Search for restaurant by name"%>
-	  <%= f.select(:cuisine_eq, options_for_select(restaurants.name.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
+	  <%# f.select(:cuisine_eq, options_for_select(restaurants.name.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
       <%= f.submit "Search"%>
     <% end %>
 </div>
-
+	<%# small issue with table, when you search, it only shows the top 10 results, not all results %>
 <div class="gray-background">
   <table class="center" id="rest">
     <thead class="bg-gray-800 text-white">
       <tr>
-        <th id="restaurants-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-			Name
-        </th>
-        <th id="restaurants-cuisine" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+		<th>
+			<%# Name %>
+			<%= sort_link(@q, :name) %>
+		</th>
+        <th>
 			Cuisine
         </th>
-        <th id="restaurants-address" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+        <th>
 			Address
         </th>
-		<th id="restaurants-rating" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
-			Rating
+		<th>
+			<%# Rating %>
+			<%= sort_link(@q, :rating) %>
         </th>
       </tr>
     </thead>

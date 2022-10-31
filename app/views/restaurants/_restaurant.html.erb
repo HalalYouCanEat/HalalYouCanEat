@@ -2,4 +2,13 @@
 
 <h4> We are located at <%= @restaurant&.address %> </h4>
 
+<h4> Our cuisine is <%= @restaurant&.cuisine %> </h4>
+
+<h4> Our rating is <%= @restaurant&.rating %> </h4>
+
+<%# show website url, doesn't work yet %>
+<% if @restaurant&.url != nil %>
+	<h4> Our website is <%= link_to @restaurant&.url, @restaurant&.url %> </h4>
+<% end %>
+
 
