@@ -10,42 +10,267 @@ halal/zabiha supplier. The app would help people find halal restaurants based on
 this app would also allow users to add restaurants that they have found to use halal/zabiha in part or all
 their menu.
 
-## Link to Trello
-
-https://trello.com/b/ivSyFqHj/halal-you-can-eat
-
 ## Link to Heroku
 
 https://halal-you-can-eat.herokuapp.com/
 
-## Teammate Interest
+## Link to Trello
 
-Anjola: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
+https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
-Elizabeth: Would like to get experience in both the front- and back-end (full-stack), and I have some experience with both. I'd also like to do some testing.
+## Meet Team #1
 
-Fritz: Would like to get experience in front and back-end (full-stack). Has internship experience with back-end, but personal experience with front-end.
+<b>Anjola Uprety</b>: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
 
-Syed: Would like to get experience in front and back-end (full-stack). Has internship experience with front-end mostly but would like to learn more about back-end
+<b>Elizabeth Diener</b>: Would like to get experience in both the front- and back-end (full-stack), and I have some experience with both. I'd also like to do some testing.
 
-Zuhaeer: Would like to get experience in front and back-end (full-stack). Has an internship experience but with front-end a little bit, but still have a lot to learn for both.
+<b>Fritz Duverglas</b>: Would like to get experience in front and back-end (full-stack). Has internship experience with back-end, but personal experience with front-end.
+
+<b>Syed Hassan</b>: Would like to get experience in front and back-end (full-stack). Has internship experience with front-end mostly but would like to learn more about back-end
+
+<b>Zuhaeer Islam</b>: Would like to get experience in front and back-end (full-stack). Has an internship experience but with front-end a little bit, but still have a lot to learn for both.
 
 ## Schema Explanation (so far)
 
-Post (Review): id: integer, name: string, title: string, body: text
+### users
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>password_digest</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>remember_digest</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>admin</td>
+            <td>boolean</td>
+        </tr>
+    </tbody>
+</table>
 
-User: id: integer, name: string, email: string, password: string
+### restaurants
 
-Location: id: integer, address: string, zipcode: integer, state: string, longitude: integer, latitude: integer, region_id: integer, country_id: integer
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>cuisine</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>url</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>address</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>state</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>zipcode</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>latitude</td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td>longitude</td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
 
-Restaurant: id: integer, name: string, location_id: integer (referring to the Location table)
+### halal_items
 
-## Test Typing
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+            <th>Foreign Key</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>integer</td>
+            <td>restaurants(id)</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>verification</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>vegan</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>gluten_free</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>vegetarian</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
 
-This is me, Fritz. I am typing things in to push it back into Github! Woot woot!
+### reviews
 
-currently grinding on securing the bag, brb ...
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+            <th>Foreign Key</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>integer</td>
+            <td>restaurants(id)</td>
+        </tr>
+        <tr>
+            <td>halal_item_id</td>
+            <td>integer</td>
+            <td>halal_items(id)</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>integer</td>
+            <td>users(id)</td>
+        </tr>
+        <tr>
+            <td>date_of_review</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>content</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>rating</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
 
-I just added something on git -Anjola
+## URL Pattern Plans
 
-eLiZaBeTh WuZ hErE
+### About URLs
+
+/about/app<br>
+/about/devs<br>
+/about/halal<br>
+/about/assets
+
+### Filter URLs
+
+/restaurants?cuisine=Italian
+
+### Viewing Restaurants
+
+/restaurant/1
+
+## Views
+
+We plan to have an about section, which has already been partially implemented, which will included pages about the app, about the devs, about halal, and about what assets we used.
+
+
+
+## Gem Dependencies
+
+* bcrypt
+* bootsnap
+* bootstrap-sass
+* bootstrap-will_paginate
+* faker
+* importmap-rails
+* jbuilder
+* pg
+* puma
+* rails
+* ransack
+* rqrcode
+* sassc-rails
+* sprockets-rails
+* stimulus-rails
+* turbo-rails
+* will_paginate
+
+## Testing
+The command `rails test` will run the tests for our app.
