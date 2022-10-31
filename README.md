@@ -18,6 +18,10 @@ https://halal-you-can-eat.herokuapp.com/
 
 https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
+## Link to Figma
+
+https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=12%3A16
+
 ## Meet Team #1
 
 <b>Anjola Uprety</b>: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
