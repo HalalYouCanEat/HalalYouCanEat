@@ -250,6 +250,14 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 We plan to have an about section, which has already been partially implemented, which will included pages about the app, about the devs, about halal, and about what assets we used.
 
+Most of the other views (some are implemented and some are not) are enumerated and shown in our figma: https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=0%3A1
+
+Some of the views that we plan on implementing but haven't visualized yet are these:
+
+1. View to see reviews that the user has left
+2. View to see saved restaurants that the user has saved
+3. Improved view to show more restaurant details (halal items, reviews left for restaurant, etc.)
+
 
 
 ## Gem Dependencies
