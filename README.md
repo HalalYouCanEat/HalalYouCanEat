@@ -103,6 +103,10 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
             <td>string</td>
         </tr>
         <tr>
+            <td>rating</td>
+            <td>integer</td>
+        </tr>
+        <tr>
             <td>address</td>
             <td>string</td>
         </tr>
@@ -275,6 +279,10 @@ We plan to have an about section, which has already been partially implemented, 
 * stimulus-rails
 * turbo-rails
 * will_paginate
+
+## APIs Implementation
+
+Google Maps Javascript API
 
 ## Testing
 The command `rails test` will run the tests for our app.
