@@ -18,6 +18,10 @@ https://halal-you-can-eat.herokuapp.com/
 
 https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
+## Link to Figma
+
+https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=12%3A16
+
 ## Meet Team #1
 
 <b>Anjola Uprety</b>: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
@@ -97,6 +101,10 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
         <tr>
             <td>url</td>
             <td>string</td>
+        </tr>
+        <tr>
+            <td>rating</td>
+            <td>integer</td>
         </tr>
         <tr>
             <td>address</td>
@@ -279,6 +287,10 @@ Some of the views that we plan on implementing but haven't visualized yet are th
 * stimulus-rails
 * turbo-rails
 * will_paginate
+
+## APIs Implementation
+
+Google Maps Javascript API
 
 ## Testing
 The command `rails test` will run the tests for our app.
