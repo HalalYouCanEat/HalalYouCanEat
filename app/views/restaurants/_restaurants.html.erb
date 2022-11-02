@@ -11,42 +11,51 @@
 		<% end %>
 		<%= search_form_for(@q, method: :get) do |f| %>
 		<%# f.label :name_cont %>
-		<%= f.search_field :name_cont, placeholder: "Search for restaurant by name"%>
-		<%# f.select(:cuisine_eq, options_for_select(restaurants.cuisine.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
-		<%= f.submit "Search"%>
+			<%= f.search_field :name_cont, placeholder: "Search for restaurant by name"%>
+			<%# f.select(:cuisine_eq, options_for_select(restaurants.cuisine.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
+			<%= f.submit "Search" %>
 		<% end %>
 	</div>
+	<% if params[:action] != "index" %>
+		<p class="text-center"> To sort restaurants by name or rating, <%= link_to "click here", restaurants_path %> </p>	
+	<% end %>
 	<div class="gray-background">
-	<table class="center" id="rest">
-		<thead class="bg-gray-800 text-white">
-		<tr>
-			<th>
-				<%# Name %>
-				<%= sort_link(@q, :name) %>
-			</th>
-			<th>
-				Cuisine
-			</th>
-			<th>
-				Address
-			</th>
-			<th>
-				<%# Rating %>
-				<%= sort_link(@q, :rating) %>
-			</th>
-		</tr>
-		</thead>
-
-		<tbody class="text-gray-700">
-		<% restaurants.each do |restaurant| %>
+		<table class="center" id="rest">
+			<thead class="bg-gray-800 text-white">
 			<tr>
-			<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-			<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-			<td class="text-left py-3 px-6"><%= restaurant.address %></td>
-			<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+				<th>
+					<% if params[:action] == "index" %>
+						<%= sort_link(@q, :name) %>
+					<% else %>
+						Name
+					<% end %>
+				</th>
+				<th>
+					Cuisine
+				</th>
+				<th>
+					Address
+				</th>
+				<th>
+					<% if params[:action] == "index" %>
+						<%= sort_link(@q, :rating) %>
+					<% else %>
+						Rating
+					<% end %>
+				</th>
 			</tr>
-		<% end %>
-		</tbody>
-	</table>
+			</thead>
+
+			<tbody class="text-gray-700">
+			<% restaurants.each do |restaurant| %>
+				<tr>
+				<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
+				<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
+				<td class="text-left py-3 px-6"><%= restaurant.address %></td>
+				<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
 	</div>
 </div>

@@ -34,7 +34,11 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 
 <b>Zuhaeer Islam</b>: Would like to get experience in front and back-end (full-stack). Has an internship experience but with front-end a little bit, but still have a lot to learn for both.
 
-## Schema Explanation (so far)
+## Functionality Summary
+
+As of now, we have functionality for the map and list views to find restaurants and view information about the restaurant. You can also search for a restaurant and sort the table based on name and rating. The main features to see are the map and list view for the restaurants at the moment. A small issue at the moment with the sorting and searching is that you can search and then sort your results, but you can't sort and then search. Will be fixed in the future.
+
+## Schema Explanation
 
 ### users
 <table>
@@ -246,13 +250,22 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 /about/halal<br>
 /about/assets
 
-### Filter URLs
+### Filter/Search URLs
 
-/restaurants?cuisine=Italian
+/restaurants?cuisine=Italian (not implemented yet)<br>
+
+/restaurants?q%5Bs%5D=name+asc (sorts the restaurant list by name in ascending order)<br>
+/restaurants?q%5Bs%5D=name+desc (sorts the restaurant list by name in descending order)<br>
+/restaurants?q%5Bs%5D=rating+asc (sorts the restaurant list by rating in ascending order)<br>
+/restaurants?q%5Bs%5D=rating+desc (sorts the restaurant list by rating in descending order)<br>
+
+/restaurants?q%5Bname_cont%5D=Ayat&commit=Search (searches for a restaurant name that contains "Ayat" in it)
+
 
 ### Viewing Restaurants
 
-/restaurant/1
+/restaurant/1 (view one restaurant)<br>
+/restaurants (view all restaurants in table view)
 
 ## Views
 
