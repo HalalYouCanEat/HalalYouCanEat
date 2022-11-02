@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
 	include Filterable
   before_action :set_restaurant, only: %i[ show edit update destroy ]
-	# before_action :set_search
 
   # GET /restaurants or /restaurants.json
   def index
@@ -69,18 +68,10 @@ class RestaurantsController < ApplicationController
   end
 
 	def list
-		# filtering by name and ordering it by param column and direction
+		# filtering by name and ordering it by param column and direction (not used at the moment)
 		restaurants = filter!(Restaurant)
-		# restaurants = Restaurant.includes(:name)
-  	# restaurants = restaurants.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
-  	# restaurants = restaurants.order("#{params[:column]} #{params[:direction]}")
 		render :_restaurant, locals: { restaurants: restaurants }
 	end
-		# restaurants = restaurants.where('restaurants.name ilike ?', "%#{session['filters']['name']}%") if session['filters']['name'].present?
-		# restaurants = restaurants.order("#{session['filters']['column']} #{session['filters']['direction']}")
-		
-		# rendering the index for restaurants
-		# render :_index, locals: { restaurants: restaurants }
 	
 
   private
@@ -93,7 +84,7 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       params.require(:restaurant).permit(:id, :location_id, :name)
     end
-
+		# Not used at the moment
 		def filter_params
 			params.permit(:name, :column, :direction)
 		end
