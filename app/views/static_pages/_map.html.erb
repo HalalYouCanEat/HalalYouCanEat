@@ -13,10 +13,12 @@
 		function initMap() {
 			map = new google.maps.Map(document.getElementById("map"), {
 				zoom: 10,
+				// set to new york
 				center: { lat: 40.6242122, lng: -74.0310179 },
 			});
+			// create a new marker
 			let marker;
-			
+			// loops through all the restaurants and adds a marker for each one
 			<% Restaurant.all.each do |restaurant| %>
 				marker = new google.maps.Marker({
 					position: { lat: <%= restaurant.latitude %>, lng: <%= restaurant.longitude %> },
@@ -31,25 +33,26 @@
 			markers.push(marker);
 			// remove duplicates from markers array based on title
 			removeDuplicates(markers, "title");
+			// content string for info window
 			const contentString = '<div>'+
-				'<div>'+
-				'</div>'+
 				'<h4>'+ title +'</h4>'+
 				'<div>'+
 				'<p>Click<a href="/restaurants/'+ id +'"> here </a>to view the restaurant!</p>'+
 				'</div>'+
 				'</div>';
-
+			// create info window
 			const infowindow = new google.maps.InfoWindow({
 				content: contentString,
 				ariaLabel: title,
 			});
+			// add event listener to marker to open info window
 			marker.addListener("click", () => {
 				infowindow.open({
 				anchor: marker,
 				map,
 				});
 			});
+			// add marker to map
 			marker.setMap(map);
 		}
 		// remove duplicates from array based on attribute

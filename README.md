@@ -293,7 +293,7 @@ Some of the views that we plan on implementing but haven't visualized yet are th
 * pg
 * puma
 * rails
-* ransack
+* ransack (added as one interesting gem)
 * rqrcode
 * sassc-rails
 * sprockets-rails
@@ -301,7 +301,7 @@ Some of the views that we plan on implementing but haven't visualized yet are th
 * turbo-rails
 * will_paginate
 
-## APIs Implementation
+## API Dependencies
 
 Google Maps Javascript API
 
