@@ -288,12 +288,13 @@ Some of the views that we plan on implementing but haven't visualized yet are th
 * bootstrap-sass
 * bootstrap-will_paginate
 * faker
+* geocoder (added as an interesting gem)
 * importmap-rails
 * jbuilder
 * pg
 * puma
 * rails
-* ransack (added as one interesting gem)
+* ransack (added as an interesting gem)
 * rqrcode
 * sassc-rails
 * sprockets-rails
