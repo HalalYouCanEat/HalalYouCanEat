@@ -8,6 +8,7 @@ class CreateHalalItems < ActiveRecord::Migration[7.0]
       t.boolean :vegan
       t.boolean :gluten_free
       t.boolean :vegetarian
+			
 
       t.timestamps
     end

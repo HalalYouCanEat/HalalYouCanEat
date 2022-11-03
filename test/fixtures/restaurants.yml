@@ -3,7 +3,11 @@
 one:
   id: 1
   name: Blackbeard's Bar & Grill & Other Delicacies & Delights & Fishing Equipment
+  reviews_id: 1
+  halal_items_id: 1
 
 two:
   id: 2
   name: MyString
+  reviews_id: 2
+  halal_items_id: 1
