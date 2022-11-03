@@ -18,6 +18,7 @@
 			});
 			// create a new marker
 			let marker;
+			let results;
 			// loops through all the restaurants and adds a marker for each one
 			<% Restaurant.all.each do |restaurant| %>
 				marker = new google.maps.Marker({

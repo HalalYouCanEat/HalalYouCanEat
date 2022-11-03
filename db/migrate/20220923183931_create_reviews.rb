@@ -7,6 +7,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.date :date_of_review
       t.string :content
       t.integer :rating
+			t.references :users, null: true, foreign_key: true # changed null from false to truet
 
       t.timestamps
     end
