@@ -36,8 +36,14 @@
 
 .search-bar {
 	float: right;
-	// height: 100px;
 	width: 30%;
-	// border: 1px solid black;
 }
 
+// single restaurant page css
+
+.reviews {
+	margin-top: 20px;
+	padding-left: 10px;
+	border: 1px solid black;
+	// display: flex;
+}
