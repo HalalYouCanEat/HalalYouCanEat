@@ -1,8 +1,10 @@
 <div id="<%= dom_id review %>" class="reviews">
   <p>
     <strong>User:</strong>
-	<% u = User.find(review.user_id) %>
-    <%= u.name %>
+	<% if review.user_id != nil %>
+		<% u = User.find(review.user_id) %>
+		<%= u.name %>
+	<% end %>
   </p>
 
   <p>
