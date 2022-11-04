@@ -12,14 +12,14 @@ HalalItem.destroy_all
 Review.destroy_all
 
 100.times do |index|
-  User.create!(id: index + 1, name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password)
+  User.create!(id: index + 1, name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password, activated: true, activated_at: Time.zone.now)
 	# Restaurant.create!(id: index + 1, name: Faker::Restaurant.name, cuisine: Faker::Restaurant.type, location_id: Faker::Number.between(from: 1, to: 100), state: Faker::Address.state, zipcode: Faker::Address.zip_code, address: Faker::Address.full_address, latitude: Faker::Address.latitude, longitude: Faker::Address.longitude)
 	HalalItem.create!(id: index + 1, name: Faker::Food.dish, restaurant_id: Faker::Number.between(from: 1, to: 100), description: Faker::Food.description, verification: Faker::Food.ingredient, vegan: Faker::Boolean.boolean, gluten_free: Faker::Boolean.boolean, vegetarian: Faker::Boolean.boolean)
 	Review.create!(id: index + 1, restaurant_id: Faker::Number.between(from: 1, to: 100), halal_item_id: Faker::Number.between(from: 1, to: 100), user_id: Faker::Number.between(from: 1, to: 100), date_of_review: Faker::Date.between(from: '2014-09-23', to: '2021-09-25'), content: Faker::Restaurant.review, rating: Faker::Number.between(from: 1, to: 5))
 end
 
 # Main user for testing
-User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password", admin: true)
+User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password", admin: true, activated: true, activated_at: Time.zone.now)
 
 # Creating 55 halal restaurants from new york in the database
 Restaurant.create!(id: 1, name: "Ayat", cuisine: "Palestinian", state: "New York", zipcode: 11209, address: "8504 3rd Ave. Brooklyn, NY 11209", latitude: 40.6242122, longitude: -74.0310179, url: "http://ayatnyc.com", rating: 4.7)

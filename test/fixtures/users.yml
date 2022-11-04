@@ -1,24 +1,32 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+<% p1 = BCrypt::Password.create("password", cost: 4) %>
 one:
   id: 1
   name: Zeus 
   email: xenios@olympus.gov 
-  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  password_digest: <%= p1 %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
   # password_digest: $2a$10$g/A4D6KtaLtxvm2lZ8C.vuPvl8Zu2TrbnPYpM6r59Wu397hlY42GO
 
-two: 
+<% p2 = BCrypt::Password.create("password", cost: 4) %>
+two:
   id: 2
   name: Hera
-  email: boopis@olympus.gov 
-  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  email: boopis@olympus.gov
+  password_digest: <%= p2 %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 three:
   id: 3
   name: Poseidon
   email: kyanochaites@olympus.gov 
-  password_digest: DemotedEarthshaker 
+  password_digest: DemotedEarthshaker
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 #  name: Demeter    email: potnia@olympus.gov       password: MistressOfWhetherYouStarve
 #  name: Athena     email: pallas@olympus.gov       password: WillBreakYourSkull

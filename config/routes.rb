@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resources :posts
+  # TODO (↓ uncomment upon implementing chapter 11 ↓)
+  resources :account_activations, only: [:edit]
 	root "static_pages#home"
   get  "/about/app",    to: "about#about_app"
   get  "/about/devs",   to: "about#about_devs"
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
