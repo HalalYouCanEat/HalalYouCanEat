@@ -29,9 +29,11 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      reset_session
-      log_in @user
-      flash[:success] = "Welcome to the HalalYouCanEat App!"
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      # reset_session
+      # log_in @user
+      # flash[:success] = "Welcome to the HalalYouCanEat App!"
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity
