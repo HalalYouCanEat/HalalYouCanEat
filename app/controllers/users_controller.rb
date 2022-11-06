@@ -7,12 +7,13 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   # GET /users/1 or /users/1.json
   def show
 		@user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
   end
 
   # GET /users/new
@@ -31,23 +32,17 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account."
-      # reset_session
-      # log_in @user
-      # flash[:success] = "Welcome to the HalalYouCanEat App!"
+
+      # TODO: delete these three line below when we want to enable email activation
+      @user.activate
+      log_in @user
+      flash[:success] = "Welcome to the HalalYouCanEat App!"
+
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity
     end
   end
-
-	# def create
-  #   @user = User.new(user_params)
-  #   if @user.save
-  #     # Handle a successful save.
-  #   else
-  #     render 'new', status: :unprocessable_entity
-  #   end
-  # end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
@@ -93,11 +88,13 @@ class UsersController < ApplicationController
         redirect_to login_url, status: :see_other
       end
     end
+
 		# Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
 			redirect_to(root_url, status: :see_other) unless current_user?(@user)
     end
+
 		# Confirms an admin user.
     def admin_user
       redirect_to(root_url, status: :see_other) unless current_user.admin?
