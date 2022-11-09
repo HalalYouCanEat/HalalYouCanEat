@@ -15,8 +15,9 @@ jobs:
         ports: ['5432:5432']
         env:
           POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: password
           POSTGRES_USER: myapp
+          POSTGRES_PASSWORD: password
+          
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
