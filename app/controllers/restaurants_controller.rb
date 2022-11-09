@@ -4,16 +4,20 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-		@q = Restaurant.ransack(params[:q])
-		@restaurants = @q.result(distinct: true)
+		@restaurants = Restaurant.all
+		# @q = Restaurant.ransack(params[:q])
+		# @restaurants = @q.result(distinct: true)
 		# will do paginate later
 		# @restaurants = @restaurants.paginate(page: params[:page], per_page: 10)
   end
 
 	def search
-    index
-    render :index
   end
+	
+	def do_search
+		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
+		render :index
+	end
 
   # GET /restaurants/1 or /restaurants/1.json
   def show

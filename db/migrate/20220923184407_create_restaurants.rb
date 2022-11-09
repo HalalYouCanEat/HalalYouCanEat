@@ -11,6 +11,8 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
       t.float :longitude
 			t.string :url
 			t.string :rating
+			t.references :reviews, null: true, foreign_key: true # changed null from false to true
+			t.references :halal_items, null: true, foreign_key: true # changed null from false to true
 
       t.timestamps
     end

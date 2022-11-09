@@ -1,27 +1,15 @@
-<div id="<%= dom_id review %>">
-  <p>
-    <strong>Id:</strong>
-    <%= review.id %>
-  </p>
-
-  <p>
-    <strong>Restaurant:</strong>
-    <%= review.restaurant_id %>
-  </p>
-
-  <p>
-    <strong>Halal item:</strong>
-    <%= review.halal_item_id %>
-  </p>
-
+<div id="<%= dom_id review %>" class="reviews">
   <p>
     <strong>User:</strong>
-    <%= review.user_id %>
+	<% if review.user_id != nil %>
+		<% u = User.find(review.user_id) %>
+		<%= u.name %>
+	<% end %>
   </p>
 
   <p>
-    <strong>Date of review:</strong>
-    <%= review.date_of_review %>
+    <strong>Rating:</strong>
+    <%= review.rating %>
   </p>
 
   <p>
@@ -30,8 +18,8 @@
   </p>
 
   <p>
-    <strong>Rating:</strong>
-    <%= review.rating %>
+    <strong>Date of review:</strong>
+    <%= review.date_of_review %>
   </p>
 
 </div>
