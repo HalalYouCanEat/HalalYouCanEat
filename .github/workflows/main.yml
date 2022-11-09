@@ -14,9 +14,9 @@ jobs:
         image: postgres:14.5
         ports: ['5432:5432']
         env:
-          POSTGRES_DB: myapp_test
-          POSTGRES_USER: myapp
-          POSTGRES_PASSWORD: password
+          database: myapp_test
+          username: myapp
+          password: password
           
     steps:
       - name: Checkout repo
