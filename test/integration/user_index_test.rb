@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class UsersIndex < ActionDispatch::IntegrationTest
 
   def setup
-    @admin     = users(:one)
+    @admin = users(:one)
     @non_admin = users(:two)
   end
 end
@@ -31,9 +31,7 @@ class UsersIndexAdminTest < UsersIndexAdmin
     first_page_of_users = User.where(activated: true).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
-      unless user == @admin
-        assert_select 'a[href=?]', user_path(user), text: 'delete'
-      end
+      assert_select 'a[href=?]', user_path(user), text: 'delete' unless user == @admin
     end
   end
 
