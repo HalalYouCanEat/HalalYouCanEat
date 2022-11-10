@@ -14,10 +14,13 @@
 				<%# label_tag :name, "Name of Restaurant" %>
 				<div class="search-bar">
 					<%= text_field_tag :name, nil, placeholder: 'Name of Restaurant' %>
+					<%# dropdown for all cuisines %>
+					<%= select_tag :cuisine, options_for_select(cuisine_collector), prompt: 'Select Cuisine' %>
+
 				</div>
 			</div>
 			<div class="search-button">
-				<%= submit_tag "Search" %>
+				<%= submit_tag "Filter" %>
 			</div>
 		<% end %>
 		<% if false %>

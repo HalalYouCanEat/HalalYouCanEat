@@ -16,6 +16,7 @@ class RestaurantsController < ApplicationController
 	
 	def do_search
 		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
+		@restaurants = Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%") if params[:cuisine].present?
 		render :index
 	end
 
