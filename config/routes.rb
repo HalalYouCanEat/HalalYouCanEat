@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 		collection do
       get 'list'
 			get 'search'
-			get 'do_search'
-			# favorites should probably be moved to users
-			# get 'favorites'
-			# match 'search' => 'restaurants#search', via: [:get, :post], as: :search
     end
 	end
   resources :halal_items
