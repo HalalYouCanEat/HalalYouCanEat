@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,12 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.float "longitude"
     t.string "url"
     t.string "rating"
-    t.bigint "reviews_id"
-    t.bigint "halal_items_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["halal_items_id"], name: "index_restaurants_on_halal_items_id"
-    t.index ["reviews_id"], name: "index_restaurants_on_reviews_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -69,10 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.date "date_of_review"
     t.string "content"
     t.integer "rating"
-    t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_reviews_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,9 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
-  add_foreign_key "restaurants", "halal_items", column: "halal_items_id", on_delete: :cascade
-  add_foreign_key "restaurants", "reviews", column: "reviews_id", on_delete: :cascade
-  add_foreign_key "reviews", "users", column: "users_id", on_delete: :cascade
 end
