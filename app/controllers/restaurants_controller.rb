@@ -5,21 +5,13 @@ class RestaurantsController < ApplicationController
   # GET /restaurants or /restaurants.json
   def index
 		@restaurants = Restaurant.all
-		# if(params[:order].present? && params[:order] == "ASC") then
-			
-		# 	sessions[:order] = "DESC"
-		# else
-		# 	@restaurants = @restaurants.order("#{params[:sort]} DESC") if params[:sort].present?
-		# 	sessions[:order] = "ASC"
-		# end
+		# need to apply sorting here
   end
 
 	def search
 		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
 										.and(Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%"))
 		# having the ability to sort after the search took place
-		
-		
 		render :index
   end
 
@@ -92,8 +84,4 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       params.require(:restaurant).permit(:id, :location_id, :name)
     end
-		# Not used at the moment
-		def filter_params
-			params.permit(:name, :column, :direction)
-		end
 end

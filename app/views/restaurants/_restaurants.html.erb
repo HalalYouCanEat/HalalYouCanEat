@@ -1,27 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
 <h2 class="text-center">Restaurants</h2>
+<%# setting restaurants properly depending on filtering %>
+<% if @restaurants == nil %>
+	<% restaurants = Restaurant.all %>
+<% else %>	
+	<% restaurants = @restaurants %>
+<% end %>
 <div>
 	<div class="search-bar-section">
-		<% if @restaurants == nil %>
-			<% restaurants = Restaurant.all %>
-		<% else %>	
-			<% restaurants = @restaurants %>
-		<% end %>
-		<%# displaying the search bar here %>
-		<%= form_tag search_restaurants_path, method: :get do %>
-			<div class="text-center">
-				<div class="search-bar">
-					<%= text_field_tag :name, nil, placeholder: 'Name of Restaurant' %>
-					<%= select_tag :cuisine, options_for_select(cuisine_collector), prompt: 'Select Cuisine' %>
-
-				</div>
-			</div>
-			<div class="search-button">
-				<%= submit_tag "Filter" %>
-			</div>
-		<% end %>
+		<%= render "restaurants/filter_form" %>
 	</div>
+	<%# shouldn't show this text if it's in the main view of restaurant %>
 	<% if params[:action] != "index" && params[:action] != "search" %>
 		<p class="text-center"> To sort restaurants by name or rating, <%= link_to "click here", restaurants_path %> </p>	
 	<% end %>
@@ -30,9 +20,9 @@
 			<thead class="bg-gray-800 text-white">
 			<tr>
 				<th>
+					<%# shouldn't be able to sort if in the home page list view %>
 					<% if params[:action] == "index" || params[:action] == "search" %>
-						<%= link_to "Name", restaurants_path(:sort => "name", :order => "ASC") %>
-						<%# sort_link(@q, :name) %>
+						<%= link_to "Name", restaurants_path(:sort => "name") %>
 					<% else %>
 						Name
 					<% end %>
@@ -44,23 +34,22 @@
 					Address
 				</th>
 				<th>
+					<%# same as above %>
 					<% if params[:action] == "index" || params[:action] == "search" %>
-						<%= link_to "Rating", restaurants_path(:sort => "rating", :order => "ASC") %>
-						<%# sort_link(@q, :rating) %>
+						<%= link_to "Rating", restaurants_path(:sort => "rating") %>
 					<% else %>
 						Rating
 					<% end %>
 				</th>
 			</tr>
 			</thead>
-
 			<tbody class="text-gray-700">
 			<% restaurants.each do |restaurant| %>
 				<tr>
-				<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-				<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-				<td class="text-left py-3 px-6"><%= restaurant.address %></td>
-				<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+					<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
+					<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
+					<td class="text-left py-3 px-6"><%= restaurant.address %></td>
+					<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
 				</tr>
 			<% end %>
 			</tbody>
