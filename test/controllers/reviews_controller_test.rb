@@ -1,4 +1,4 @@
-require "test_helper"
+require_relative "../test_helper"
 
 class ReviewsControllerTest < ActionDispatch::IntegrationTest
   setup do
