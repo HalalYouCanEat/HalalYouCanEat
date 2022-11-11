@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-  get 'password_resets/edit'
   resources :restaurants do
-		collection do
+    collection do
       get 'list'
-			get 'search'
-			get 'do_search'
-			# favorites should probably be moved to users
-			# get 'favorites'
-			# match 'search' => 'restaurants#search', via: [:get, :post], as: :search
+      get 'search'
+      get 'do_search'
+         # favorites should probably be moved to users
+         # get 'favorites'
+         # match 'search' => 'restaurants#search', via: [:get, :post], as: :search
     end
-	end
+  end
   resources :halal_items
   resources :locations
   resources :reviews
@@ -18,12 +16,13 @@ Rails.application.routes.draw do
   resources :posts
   # TODO (↓ uncomment upon implementing chapter 11 ↓)
   resources :account_activations, only: [:edit]
-	root "static_pages#home"
-  get  "/about/app",    to: "about#about_app"
-  get  "/about/devs",   to: "about#about_devs"
-  get  "/about/halal",  to: "about#about_halal"
-  get  "/about/assets",  to: "about#about_assets"
-	get '/signup', to: 'users#new'
+  resources :password_resets, only: [:new, :edit]
+  root 'static_pages#home'
+  get  '/about/app',    to: 'about#about_app'
+  get  '/about/devs',   to: 'about#about_devs'
+  get  '/about/halal',  to: 'about#about_halal'
+  get  '/about/assets',  to: 'about#about_assets'
+  get '/signup', to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
