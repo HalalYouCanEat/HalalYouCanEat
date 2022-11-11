@@ -32,12 +32,14 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = 'Please check your email to activate your account.'
-      redirect_to root_url
+      # TODO: uncomment this line below when we want to enable email activation
+      # redirect_to root_url
 
-      # TODO: delete these three line below when we want to enable email activation
-      # @user.activate
-      # log_in @user
-      # flash[:success] = 'Welcome to the HalalYouCanEat App!'
+      # TODO: delete these four line below when we want to enable email activation
+      @user.activate
+      log_in @user
+      flash[:success] = 'Welcome to the HalalYouCanEat App!'
+      redirect_to @user
     else
       render 'new', status: :unprocessable_entity
     end
