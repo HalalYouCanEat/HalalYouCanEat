@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :restaurants, only: [:index, :show, :create]
+    end
+  end
   resources :restaurants do
     collection do
       get 'list'
-      get 'search'
-      get 'do_search'
-         # favorites should probably be moved to users
-         # get 'favorites'
-         # match 'search' => 'restaurants#search', via: [:get, :post], as: :search
+			get 'search'
     end
   end
   resources :halal_items

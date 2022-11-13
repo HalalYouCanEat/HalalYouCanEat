@@ -5,17 +5,22 @@ class RestaurantsController < ApplicationController
   # GET /restaurants or /restaurants.json
   def index
     @restaurants = Restaurant.all
-    # @q = Restaurant.ransack(params[:q])
-    # @restaurants = @q.result(distinct: true)
-    # will do paginate later
-    # @restaurants = @restaurants.paginate(page: params[:page], per_page: 10)
   end
 
-  def search; end
+  # def search; end
   
-  def do_search
-    @restaurants = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
-    render :index
+  # def do_search
+  #   @restaurants = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
+  #   render :index
+	# 	@restaurants = Restaurant.all
+	# 	# need to apply sorting here
+  # end
+
+	def search
+		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
+										.and(Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%"))
+		# having the ability to sort after the search took place
+		render :index
   end
 
   # GET /restaurants/1 or /restaurants/1.json
@@ -88,7 +93,7 @@ class RestaurantsController < ApplicationController
   end
 
   # Not used at the moment
-  def filter_params
-    params.permit(:name, :column, :direction)
-  end
+  # def filter_params
+  #   params.permit(:name, :column, :direction)
+  # end
 end

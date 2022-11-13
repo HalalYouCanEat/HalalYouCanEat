@@ -1,36 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
 <h2 class="text-center">Restaurants</h2>
+<%# setting restaurants properly depending on filtering %>
+<% if @restaurants == nil %>
+	<% restaurants = Restaurant.all %>
+<% else %>	
+	<% restaurants = @restaurants %>
+<% end %>
 <div>
 	<div class="search-bar-section">
-		<% if @restaurants == nil %>
-			<% restaurants = Restaurant.all %>
-		<% else %>	
-			<% restaurants = @restaurants %>
-		<% end %>
-		<%# displaying the search bar here %>
-		<%= form_tag do_search_restaurants_path, method: :get do %>
-			<div class="text-center">
-				<%# label_tag :name, "Name of Restaurant" %>
-				<div class="search-bar">
-					<%= text_field_tag :name, nil, placeholder: 'Name of Restaurant' %>
-				</div>
-			</div>
-			<div class="search-button">
-				<%= submit_tag "Search" %>
-			</div>
-		<% end %>
-		<% if false %>
-			
-			<%= search_form_for(@q, method: :get) do |f| %>
-			<%# f.label :name_cont %>
-				<%= f.search_field :name_cont, placeholder: "Search for restaurant by name"%>
-				<%# f.select(:cuisine_eq, options_for_select(restaurants.cuisine.map {|k, v| [k.humanize.capitalize, v]}, f.object.cuisine_eq), { include_blank: true }, {class: "form-control" }) %></div>
-				<%= f.submit "Search" %>
-			<% end %>
-		<% end %>
+		<%= render "restaurants/filter_form" %>
 	</div>
-	<% if params[:action] != "index" && params[:action] != "do_search" %>
+	<%# shouldn't show this text if it's in the main view of restaurant %>
+	<% if params[:action] != "index" && params[:action] != "search" %>
 		<p class="text-center"> To sort restaurants by name or rating, <%= link_to "click here", restaurants_path %> </p>	
 	<% end %>
 	<div class="gray-background">
@@ -38,9 +20,9 @@
 			<thead class="bg-gray-800 text-white">
 			<tr>
 				<th>
-					<% if params[:action] == "index" || params[:action] == "do_search" %>
+					<%# shouldn't be able to sort if in the home page list view %>
+					<% if params[:action] == "index" || params[:action] == "search" %>
 						<%= link_to "Name", restaurants_path(:sort => "name") %>
-						<%# sort_link(@q, :name) %>
 					<% else %>
 						Name
 					<% end %>
@@ -52,23 +34,22 @@
 					Address
 				</th>
 				<th>
-					<% if params[:action] == "index" || params[:action] == "do_search" %>
+					<%# same as above %>
+					<% if params[:action] == "index" || params[:action] == "search" %>
 						<%= link_to "Rating", restaurants_path(:sort => "rating") %>
-						<%# sort_link(@q, :rating) %>
 					<% else %>
 						Rating
 					<% end %>
 				</th>
 			</tr>
 			</thead>
-
 			<tbody class="text-gray-700">
 			<% restaurants.each do |restaurant| %>
 				<tr>
-				<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-				<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-				<td class="text-left py-3 px-6"><%= restaurant.address %></td>
-				<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+					<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
+					<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
+					<td class="text-left py-3 px-6"><%= restaurant.address %></td>
+					<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
 				</tr>
 			<% end %>
 			</tbody>

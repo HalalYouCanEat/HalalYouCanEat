@@ -1,0 +1,11 @@
+<%= form_tag search_restaurants_path, method: :get do %>
+	<div class="text-center">
+		<div class="search-bar">
+			<%= text_field_tag :name, nil, placeholder: 'Name of Restaurant' %>
+			<%= select_tag :cuisine, options_for_select(cuisine_collector), prompt: 'Select Cuisine' %>
+		</div>
+	</div>
+	<div class="search-button">
+		<%= submit_tag "Filter" %>
+	</div>
+<% end %>

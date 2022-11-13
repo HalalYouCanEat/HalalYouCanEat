@@ -14,4 +14,8 @@ module RestaurantsHelper
   def sort_indicator
     tag.span(class: "sort sort-#{session['restaurant_filters']['direction']}")
   end
+
+	def cuisine_collector
+		Restaurant.all.pluck(:cuisine).uniq.sort.map { |cuisine| [cuisine, cuisine] }
+	end
 end
