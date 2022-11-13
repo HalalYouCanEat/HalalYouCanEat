@@ -7,8 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1 or /reviews/1.json
-  def show
-  end
+  def show; end
 
   # GET /reviews/new
   def new
@@ -16,8 +15,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /reviews or /reviews.json
   def create
@@ -58,13 +56,14 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:id, :restaurant_id, :halal_item_id, :user_id, :date_of_review, :content, :rating)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(:id, :restaurant_id, :halal_item_id, :user_id, :date_of_review, :content, :rating)
+  end
 end

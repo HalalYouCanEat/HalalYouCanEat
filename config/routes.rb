@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resources :posts
-  # TODO (↓ uncomment upon implementing chapter 11 ↓)
+  # TODO : (↓ uncomment upon implementing chapter 11 ↓)
   resources :account_activations, only: [:edit]
-  resources :password_resets, only: [:new, :edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   root 'static_pages#home'
   get  '/about/app',    to: 'about#about_app'
   get  '/about/devs',   to: 'about#about_devs'
