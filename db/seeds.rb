@@ -85,11 +85,11 @@ end
 p "Created #{Restaurant.count} restaurants"
 
 100.times do |index|
-  User.create!(id: index + 1, name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password)
+  User.create!(id: index + 1, name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password, activated: true)
 	HalalItem.create!(id: index + 1, name: Faker::Food.dish, restaurant_id: Restaurant.all.sample(1)[0].id, description: Faker::Food.description, verification: Faker::Food.ingredient, vegan: Faker::Boolean.boolean, gluten_free: Faker::Boolean.boolean, vegetarian: Faker::Boolean.boolean)
 	Review.create!(id: index + 1, restaurant_id: Restaurant.all.sample(1)[0].id, halal_item_id: HalalItem.all.sample(1)[0].id, user_id: User.all.sample(1)[0].id, date_of_review: Faker::Date.between(from: '2014-09-23', to: '2021-09-25'), content: Faker::Restaurant.review, rating: Faker::Number.between(from: 1, to: 5))
 end
 
 # Main user for testing
-User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password", admin: true)
+User.create!(id: 101, name: "Test User", email: "testing@gmail.com", password: "password", admin: true, activated: true)
 p "Created #{User.count} users"
