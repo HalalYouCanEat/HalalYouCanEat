@@ -8,6 +8,7 @@
 #rest td, #rest th {
 	border: 1px solid #ddd;
 	padding: 8px;
+	text-align: center;
 }
 
 #rest tr:nth-child(even){background-color: #ECA75F;}
@@ -19,7 +20,7 @@
 #rest th {
 	padding-top: 12px;
 	padding-bottom: 12px;
-	text-align: left;
+	text-align: center;
 	background-color: #ECA75F;
 	color: white;
 }
@@ -37,7 +38,7 @@
 .search-bar-section{
 	margin-top: 20px;
 	width: 25%;
-	float: right;
+	float: left;
 
 	// justify-content: center;
 	// border: 1px solid black;
@@ -49,7 +50,7 @@
 }
 
 .search-button{
-	// float: right;
+	//float: left;
 	width: 30%;
 	margin: 0 auto;
 }
