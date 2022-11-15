@@ -48,7 +48,7 @@ Restaurant.create!(id: 33, name: "Clay Oven", cuisine: "Pakistani", state:"New Y
 Restaurant.create!(id: 34, name: "Kabab Platter & Burger", cuisine: "BBQ", state:"New York", zipcode: 11729, address: "297 Bay Shore Rd, Site C, Deer Park, NY 11729", latitude: 40.7441294, longitude: -73.3134084, url: "https://kababburgerplatter.mknxonline.com/menus", rating: 4.4)
 Restaurant.create!(id: 35, name: "Jalapeno Shack", cuisine: "Mexican", state:"New York", zipcode: 11743, address: "340 W Jericho Turnpike, Huntington, NY 11743", latitude: 40.8283011, longitude: -73.4273461, url: "http://www.jalapenoshack.com/", rating: 4.6)
 Restaurant.create!(id: 36, name: "La Estacion", cuisine: "Hispanic", state:"New York", zipcode: 11717, address: "22 1st Ave, Brentwood, NY 11717", latitude: 40.7794908, longitude: -73.2516487, url: "https://www.laestaciondeli.com/", rating: 4.5)
-Restaurant.create!(id: 37, name: "Mariam's Cafe", cuisine: "Mixed Fusion", state:"New York", zipcode: 11735, address: "1005 Fulton St, Ste, A, Farmingdale, NY 11735", latitude: 40.7250595, longitude: -73.4351263, url: "https://www.facebook.com/396955624492286/posts/511091156412065/", rating: 4.8)
+Restaurant.create!(id: 37, name: "Mariam's Cafe", cuisine: "Mixed Fusion", state:"New York", zipcode: 11735, address: "1005 Fulton St, Ste A, Farmingdale, NY 11735", latitude: 40.7250595, longitude: -73.4351263, url: "https://www.facebook.com/396955624492286/posts/511091156412065/", rating: 4.8)
 Restaurant.create!(id: 38, name: "Red Chilli", cuisine: "Pakistani", state:"New York", zipcode: 11784, address: "1228 Middle County Rd, Selden, NY 11784", latitude: 40.861555, longitude: -73.0581247, url: "https://halalredchilliny.com/menu", rating: 3.9)
 Restaurant.create!(id: 39, name: "Salah's Halal Food", cuisine: "Fast Food", state:"New York", zipcode: 11725, address: "95 Commack Rd, Commack, NY 11725", latitude: 40.8405513, longitude: -73.2960765, url: "http://www.salahshalalfood.com/", rating: 4.5)
 Restaurant.create!(id: 40, name: "Taheni", cuisine: "Mediterranean", state:"New York", zipcode: 11215, address: "224 4th Ave, Brooklyn, NY 11215", latitude: 40.6774022, longitude: -73.9855732, url: "https://www.taheni.com/order-online", rating: 4.3)
@@ -72,6 +72,13 @@ Restaurant.all.each do |restaurant|
 
 	# get the address of the restaurant
 	address = restaurant.address
+	addy = address.split(",")
+	if(addy.length() == 3) then 
+		restaurant.update(city: addy[1])
+	end
+	if(addy.length() == 4) then 
+		restaurant.update(city: addy[2])
+	end
 	if(restaurant&.latitude.nil? || restaurant&.longitude.nil?) then
 		# get the latitude and longitude of the restaurant
 		coordinates = Geocoder.coordinates(address)
