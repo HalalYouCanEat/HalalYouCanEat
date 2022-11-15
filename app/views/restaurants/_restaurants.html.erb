@@ -7,52 +7,24 @@
 <% else %>	
 	<% restaurants = @restaurants %>
 <% end %>
-<div>
-	<div class="search-bar-section">
-		<%= render "restaurants/filter_form" %>
-	</div>
-	<%# shouldn't show this text if it's in the main view of restaurant %>
-	<% if params[:action] != "index" && params[:action] != "search" %>
-		<p class="text-center"> To sort restaurants by name or rating, <%= link_to "click here", restaurants_path %> </p>	
-	<% end %>
-	<div class="gray-background">
-		<table class="center" id="rest">
-			<thead class="bg-gray-800 text-white">
-			<tr>
-				<th>
-					<%# shouldn't be able to sort if in the home page list view %>
-					<% if params[:action] == "index" || params[:action] == "search" %>
-						<%= link_to "Name", restaurants_path(:sort => "name") %>
-					<% else %>
-						Name
-					<% end %>
-				</th>
-				<th>
-					Cuisine
-				</th>
-				<th>
-					Address
-				</th>
-				<th>
-					<%# same as above %>
-					<% if params[:action] == "index" || params[:action] == "search" %>
-						<%= link_to "Rating", restaurants_path(:sort => "rating") %>
-					<% else %>
-						Rating
-					<% end %>
-				</th>
-			</tr>
-			</thead>
-			<tbody class="text-gray-700">
-			<% restaurants.each do |restaurant| %>
-				<tr>
-					<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-					<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-					<td class="text-left py-3 px-6"><%= restaurant.address %></td>
-					<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
-				</tr>
-			<% end %>
-			</tbody>
-		</table>
+<div class="container">
+	<div class="row">
+		<% if !on_home_page %>
+			<div class="col-3 search-bar-section">
+				<%= render "restaurants/filter_form" %>
+			</div>
+		<% end %>
+		<%# shouldn't show this text if it's in the main view of restaurant %>
+		<% if on_home_page %>
+			<p class="text-center"> To search and sort restaurants by name or rating, <%= link_to "click here", restaurants_path %> </p>	
+			<div class="gray-background">
+				<%= render "restaurants/table", restaurants: restaurants %>
+			</div>
+		<% else %>
+			<div class="col-9 gray-background">
+				<%= render "restaurants/table", restaurants: restaurants %>
+			</div>
+		<% end %>
+		
 	</div>
 </div>
