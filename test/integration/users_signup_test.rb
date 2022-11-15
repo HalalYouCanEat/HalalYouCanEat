@@ -29,7 +29,8 @@ class UsersSignupTest < UsersSignup
                                          password: 'password',
                                          password_confirmation: 'password' } }
     end
-    assert_equal 1, ActionMailer::Base.deliveries.size
+		# TODO: uncomment this when we want to enable email activation
+    # assert_equal 1, ActionMailer::Base.deliveries.size
   end
 end
 

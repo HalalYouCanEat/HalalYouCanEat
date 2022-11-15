@@ -30,15 +30,11 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-			puts "*****************"
-			puts @user
-			puts "*****************"
-      account = UserMailer.account_activation(@user)
-			puts account
-			puts "*****************"
-			account.deliver_now
-      flash[:info] = 'Please check your email to activate your account.'
-      # TODO: uncomment this line below when we want to enable email activation
+			# TODO: uncomment these lines below when we want to enable email activation
+			
+      # account = UserMailer.account_activation(@user)
+			# account.deliver_now
+      # flash[:info] = 'Please check your email to activate your account.'
       # redirect_to root_url
 
       # TODO: delete these four line below when we want to enable email activation
