@@ -4,14 +4,14 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-		@restaurants = Restaurant.all
-		# need to apply sorting here
+		# have the restaurants ordered by descending rating by default
+		@restaurants = Restaurant.all.order(rating: :desc)
   end
 
 	def search
 		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
 										.and(Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%"))
-										.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%"))
+										.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%")).order(rating: :desc)
 		# having the ability to sort after the search took place
 		render :index
   end
