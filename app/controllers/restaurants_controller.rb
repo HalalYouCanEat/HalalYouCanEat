@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
 	def search
 		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
 										.and(Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%"))
+										.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%"))
 		# having the ability to sort after the search took place
 		render :index
   end
