@@ -36,14 +36,15 @@
 }
 
 .search-bar-section{
-	margin-top: 20px;
+	// margin-top: 20px;
 	width: 25%;
 	float: left;
 	height: 75%;
+	margin-right: 20px;
 
 	// justify-content: center;
 	// background-color: gray;
-	// border: 1px solid black;
+	border: 1px solid black;
 }
 
 .search-button{
@@ -58,4 +59,8 @@
 	padding-left: 10px;
 	border: 1px solid black;
 	// display: flex;
+}
+
+.flexing{
+	display: flex;
 }

@@ -8,9 +8,10 @@
 	<% restaurants = @restaurants %>
 <% end %>
 <div class="container">
-	<div class="row">
+	<div class="row flexing">
 		<% if !on_home_page %>
 			<div class="col-3 search-bar-section">
+				<h4 class="text-center" >Filters</h4>
 				<%= render "restaurants/filter_form" %>
 			</div>
 		<% end %>
