@@ -89,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.datetime "activated_at"
   end
 
-  add_foreign_key "restaurants", "halal_items", column: "halal_items_id"
-  add_foreign_key "restaurants", "reviews", column: "reviews_id"
-  add_foreign_key "reviews", "users", column: "users_id"
+  add_foreign_key "restaurants", "halal_items", column: "halal_items_id", on_delete: :cascade
+  add_foreign_key "restaurants", "reviews", column: "reviews_id", on_delete: :cascade
+  add_foreign_key "reviews", "users", column: "users_id", on_delete: :cascade
 end
