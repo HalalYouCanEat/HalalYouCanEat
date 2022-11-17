@@ -54,8 +54,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
     t.float "longitude"
     t.string "url"
     t.string "rating"
+    t.bigint "reviews_id"
+    t.bigint "halal_items_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["halal_items_id"], name: "index_restaurants_on_halal_items_id"
+    t.index ["reviews_id"], name: "index_restaurants_on_reviews_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -65,8 +69,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
     t.date "date_of_review"
     t.string "content"
     t.integer "rating"
+    t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "restaurant_id", "created_at"], name: "index_reviews_on_user_id_and_restaurant_id_and_created_at"
+    t.index ["users_id"], name: "index_reviews_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,4 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
     t.datetime "reset_sent_at"
   end
 
+  add_foreign_key "restaurants", "halal_items", column: "halal_items_id"
+  add_foreign_key "restaurants", "reviews", column: "reviews_id"
+  add_foreign_key "reviews", "users", column: "users_id"
 end
