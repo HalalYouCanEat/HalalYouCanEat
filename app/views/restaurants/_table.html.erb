@@ -3,7 +3,7 @@
 	<tr>
 		<th>
 			<%# shouldn't be able to sort if in the home page list view %>
-			<% if !on_home_page %>
+			<% if params[:action] == "index" || params[:action] == "search" %>
 				<%= link_to "Name", restaurants_path(:sort => "name") %>
 			<% else %>
 				Name
@@ -17,7 +17,7 @@
 		</th>
 		<th>
 			<%# same as above %>
-			<% if !on_home_page %>
+			<% if params[:action] == "index" || params[:action] == "search" %>
 				<%= link_to "Rating", restaurants_path(:sort => "rating") %>
 			<% else %>
 				Rating
@@ -28,10 +28,10 @@
 	<tbody class="text-gray-700">
 	<% restaurants.each do |restaurant| %>
 		<tr>
-			<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-			<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-			<td class="text-left py-3 px-6"><%= restaurant.address %></td>
-			<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+			<td class="text-left py-3 px-6"><%= link_to restaurant["name"], restaurants_path + "/#{restaurant["id"]}"%></td>
+			<td class="text-left py-3 px-6"><%= restaurant["cuisine"] %></td>
+			<td class="text-left py-3 px-6"><%= restaurant["address"] %></td>
+			<td class="text-left py-3 px-6"><%= restaurant["rating"] %></td>
 		</tr>
 	<% end %>
 	</tbody>
