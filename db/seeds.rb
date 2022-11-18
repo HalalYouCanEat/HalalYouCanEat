@@ -175,8 +175,8 @@ Restaurant.create!(id: 54, name: 'Sheikh Shack', cuisine: 'American', state: 'Ne
 # loop through all restaurants and add latitude and longitude
 Restaurant.all.each do |restaurant|
   # get the address of the restaurant
-  address = restaurant.address
-  next unless restaurant&.latitude.nil? || restaurant&.longitude.nil?
+  # address = restaurant.address
+  # next unless restaurant&.latitude.nil? || restaurant&.longitude.nil?
 
  # get the latitude and longitude of the restaurant
  # coordinates = Geocoder.coordinates(address)
@@ -192,9 +192,9 @@ Restaurant.all.each do |restaurant|
 	if (restaurant&.latitude.nil? || restaurant&.longitude.nil?) then
 		# get the latitude and longitude of the restaurant
 		coordinates = Geocoder.coordinates(address)
+		# update the restaurant with the latitude and longitude
+		restaurant.update(latitude: coordinates[0], longitude: coordinates[1])
   end
-  # update the restaurant with the latitude and longitude
-  restaurant.update(latitude: coordinates[0], longitude: coordinates[1])
 end
 
 p "Created #{Restaurant.count} restaurants"
@@ -211,12 +211,12 @@ end
 User.create!(id: 101, name: 'Test User', email: 'testing@gmail.com', password: 'password', admin: true)
 p "Created #{User.count} users"
 
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.reviews.create!(content: content) }
-  HalalItem.create!(id: index + 1, name: Faker::Food.dish, restaurant_id: Restaurant.all.sample(1)[0].id,
-                    description: Faker::Food.description, verification: Faker::Food.ingredient, vegan: Faker::Boolean.boolean, gluten_free: Faker::Boolean.boolean, vegetarian: Faker::Boolean.boolean)
-  Review.create!(id: index + 1, restaurant_id: Restaurant.all.sample(1)[0].id,
-                 halal_item_id: HalalItem.all.sample(1)[0].id, user_id: User.all.sample(1)[0].id, date_of_review: Faker::Date.between(from: '2014-09-23', to: '2021-09-25'), content: Faker::Restaurant.review, rating: Faker::Number.between(from: 1, to: 5))
-end
+# users = User.order(:created_at).take(6)
+# 50.times do |index|
+#   content = Faker::Lorem.sentence(word_count: 5)
+#   users.each { |user| user.reviews.create!(content: content) }
+#   HalalItem.create!(id: index + 1, name: Faker::Food.dish, restaurant_id: Restaurant.all.sample(1)[0].id,
+#                     description: Faker::Food.description, verification: Faker::Food.ingredient, vegan: Faker::Boolean.boolean, gluten_free: Faker::Boolean.boolean, vegetarian: Faker::Boolean.boolean)
+#   Review.create!(id: index + 1, restaurant_id: Restaurant.all.sample(1)[0].id,
+#                  halal_item_id: HalalItem.all.sample(1)[0].id, user_id: User.all.sample(1)[0].id, date_of_review: Faker::Date.between(from: '2014-09-23', to: '2021-09-25'), content: Faker::Restaurant.review, rating: Faker::Number.between(from: 1, to: 5))
+# end
