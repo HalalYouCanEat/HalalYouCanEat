@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "restaurant_id", "created_at"], name: "index_reviews_on_user_id_and_restaurant_id_and_created_at"
     t.index ["users_id"], name: "index_reviews_on_users_id"
   end
 
@@ -89,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.datetime "activated_at"
   end
 
-  add_foreign_key "restaurants", "halal_items", column: "halal_items_id", on_delete: :cascade
-  add_foreign_key "restaurants", "reviews", column: "reviews_id", on_delete: :cascade
-  add_foreign_key "reviews", "users", column: "users_id", on_delete: :cascade
+  add_foreign_key "restaurants", "halal_items", column: "halal_items_id"
+  add_foreign_key "restaurants", "reviews", column: "reviews_id"
+  add_foreign_key "reviews", "users", column: "users_id"
 end

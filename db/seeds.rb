@@ -178,21 +178,21 @@ Restaurant.all.each do |restaurant|
   address = restaurant.address
   next unless restaurant&.latitude.nil? || restaurant&.longitude.nil?
 
-  # get the latitude and longitude of the restaurant
-  # coordinates = Geocoder.coordinates(address)
+ # get the latitude and longitude of the restaurant
+ # coordinates = Geocoder.coordinates(address)
 	# get the address of the restaurant
 	address = restaurant.address
 	addy = address.split(",")
-	if(addy.length() == 3) then 
+	if (addy.length() == 3) then
 		restaurant.update(city: addy[1])
 	end
-	if(addy.length() == 4) then 
+	if (addy.length() == 4) then
 		restaurant.update(city: addy[2])
 	end
-	if(restaurant&.latitude.nil? || restaurant&.longitude.nil?) then
+	if (restaurant&.latitude.nil? || restaurant&.longitude.nil?) then
 		# get the latitude and longitude of the restaurant
 		coordinates = Geocoder.coordinates(address)
-
+  end
   # update the restaurant with the latitude and longitude
   restaurant.update(latitude: coordinates[0], longitude: coordinates[1])
 end
