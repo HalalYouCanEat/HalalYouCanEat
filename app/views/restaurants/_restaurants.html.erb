@@ -46,10 +46,10 @@
 			<tbody class="text-gray-700">
 			<% restaurants.each do |restaurant| %>
 				<tr>
-					<td class="text-left py-3 px-6"><%= link_to restaurant.name, restaurants_path + "/#{restaurant.id}"%></td>
-					<td class="text-left py-3 px-6"><%= restaurant.cuisine %></td>
-					<td class="text-left py-3 px-6"><%= restaurant.address %></td>
-					<td class="text-left py-3 px-6"><%= restaurant.rating %></td>
+					<td class="text-left py-3 px-6"><%= link_to restaurant["name"], restaurants_path + "/#{restaurant["id"]}"%></td>
+					<td class="text-left py-3 px-6"><%= restaurant["cuisine"] %></td>
+					<td class="text-left py-3 px-6"><%= restaurant["address"] %></td>
+					<td class="text-left py-3 px-6"><%= restaurant["rating"] %></td>
 				</tr>
 			<% end %>
 			</tbody>

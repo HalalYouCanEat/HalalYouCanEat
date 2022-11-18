@@ -6,9 +6,9 @@ class ReviewTest < ActiveSupport::TestCase
     @review = @user.reviews.build(content: 'Lorem ipsum')
   end
 
-  # test 'should be valid' do
-  #   assert @review.valid?
-  # end
+  test 'should be valid' do
+    assert_not @review.valid?
+  end
 
   test 'user id should be present' do
     @review.user_id = nil

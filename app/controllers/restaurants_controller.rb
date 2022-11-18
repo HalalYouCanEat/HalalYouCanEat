@@ -1,10 +1,12 @@
 class RestaurantsController < ApplicationController
+  require 'net/http'
   include Filterable
   before_action :set_restaurant, only: %i[ show edit update destroy ]
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    try_out = Net::HTTP.get_response('halal-you-can-eat.herokuapp.com','/api/v1/restaurants')
+    @restaurants = JSON.parse(try_out.body)  
   end
 
   # def search; end
