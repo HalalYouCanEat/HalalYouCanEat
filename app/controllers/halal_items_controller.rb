@@ -7,7 +7,8 @@ class HalalItemsController < ApplicationController
   end
 
   # GET /halal_items/1 or /halal_items/1.json
-  def show; end
+  def show
+  end
 
   # GET /halal_items/new
   def new
@@ -15,7 +16,8 @@ class HalalItemsController < ApplicationController
   end
 
   # GET /halal_items/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /halal_items or /halal_items.json
   def create
@@ -56,14 +58,13 @@ class HalalItemsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_halal_item
+      @halal_item = HalalItem.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_halal_item
-    @halal_item = HalalItem.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def halal_item_params
-    params.require(:halal_item).permit(:id, :name, :restaurant_id, :description, :verification, :vegan, :gluten_free, :vegetarian)
-  end
+    # Only allow a list of trusted parameters through.
+    def halal_item_params
+      params.require(:halal_item).permit(:id, :name, :restaurant_id, :description, :verification, :vegan, :gluten_free, :vegetarian)
+    end
 end

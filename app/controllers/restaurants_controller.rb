@@ -7,27 +7,21 @@ class RestaurantsController < ApplicationController
   def index
     try_out = Net::HTTP.get_response('halal-you-can-eat.herokuapp.com','/api/v1/restaurants')
     @restaurants = JSON.parse(try_out.body)  
+		# have the restaurants ordered by descending rating by default
+		# @restaurants = Restaurant.all.order(rating: :desc)
   end
-
-  # def search; end
-  
-  # def do_search
-  #   @restaurants = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
-  #   render :index
-	# 	@restaurants = Restaurant.all
-	# 	# need to apply sorting here
-  # end
 
 	def search
 		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
 										.and(Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%"))
+										.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%")).order(rating: :desc)
 		# having the ability to sort after the search took place
 		render :index
   end
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
-    @restaurant = Restaurant.find(params[:id])
+		@restaurant = Restaurant.find(params[:id])
   end
 
   # GET /restaurants/new
@@ -36,7 +30,8 @@ class RestaurantsController < ApplicationController
   end
 
   # GET /restaurants/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /restaurants or /restaurants.json
   def create
@@ -44,7 +39,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully created." }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,7 +52,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully updated.' }
+        format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated." }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,31 +66,26 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  def list
-    # filtering by name and ordering it by param column and direction (not used at the moment)
-    restaurants = filter!(Restaurant)
-    render :_restaurant, locals: { restaurants: restaurants }
-  end
-  
+	def list
+		# filtering by name and ordering it by param column and direction (not used at the moment)
+		restaurants = filter!(Restaurant)
+		render :_restaurant, locals: { restaurants: restaurants }
+	end
+	
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:id])
+    end
 
-  # Only allow a list of trusted parameters through.
-  def restaurant_params
-    params.require(:restaurant).permit(:id, :location_id, :name)
-  end
-
-  # Not used at the moment
-  # def filter_params
-  #   params.permit(:name, :column, :direction)
-  # end
+    # Only allow a list of trusted parameters through.
+    def restaurant_params
+      params.require(:restaurant).permit(:id, :location_id, :name)
+    end
 end

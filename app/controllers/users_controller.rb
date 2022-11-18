@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   before_action :logged_in_user, only: %i[index edit update destroy]
   before_action :correct_user,   only: %i[edit update]
+
+  # before_action :set_user, only: %i[ show edit update destroy ]
+  # before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  # before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   # GET /users or /users.json
@@ -30,15 +34,14 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
+      @user.send_activation_email
       flash[:info] = 'Please check your email to activate your account.'
-      # TODO: uncomment this line below when we want to enable email activation
-      # redirect_to root_url
 
-      # TODO: delete these four line below when we want to enable email activation
+      # TODO: delete these three line below when we want to enable email activation
       @user.activate
       log_in @user
       flash[:success] = 'Welcome to the HalalYouCanEat App!'
+
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity

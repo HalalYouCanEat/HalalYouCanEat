@@ -7,7 +7,8 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1 or /locations/1.json
-  def show; end
+  def show
+  end
 
   # GET /locations/new
   def new
@@ -15,7 +16,8 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /locations or /locations.json
   def create
@@ -56,14 +58,13 @@ class LocationsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_location
+      @location = Location.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_location
-    @location = Location.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def location_params
-    params.require(:location).permit(:id, :state, :zipcode, :address, :latitude, :longitude)
-  end
+    # Only allow a list of trusted parameters through.
+    def location_params
+      params.require(:location).permit(:id, :state, :zipcode, :address, :latitude, :longitude)
+    end
 end

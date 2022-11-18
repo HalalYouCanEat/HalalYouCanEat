@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
     t.string "state"
     t.integer "zipcode"
     t.string "address"
+    t.string "city"
     t.float "latitude"
     t.float "longitude"
     t.string "url"
@@ -72,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "restaurant_id", "created_at"], name: "index_reviews_on_user_id_and_restaurant_id_and_created_at"
+    # t.index ["user_id", "restaurant_id", "created_at"], name: "index_reviews_on_user_id_and_restaurant_id_and_created_at"
     t.index ["users_id"], name: "index_reviews_on_users_id"
   end
 
@@ -87,11 +88,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_182718) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
   end
-
-  add_foreign_key "restaurants", "halal_items", column: "halal_items_id"
-  add_foreign_key "restaurants", "reviews", column: "reviews_id"
-  add_foreign_key "reviews", "users", column: "users_id"
+  # add_foreign_key "restaurants", "halal_items", column: "halal_items_id"
+  # add_foreign_key "restaurants", "reviews", column: "reviews_id"
+  # add_foreign_key "reviews", "users", column: "users_id"
+  add_foreign_key "restaurants", "halal_items", column: "halal_items_id", on_delete: :cascade
+  add_foreign_key "restaurants", "reviews", column: "reviews_id", on_delete: :cascade
+  add_foreign_key "reviews", "users", column: "users_id", on_delete: :cascade
 end
