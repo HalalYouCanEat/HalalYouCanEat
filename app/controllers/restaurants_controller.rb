@@ -10,9 +10,15 @@ class RestaurantsController < ApplicationController
 
 	def search
 		@restaurants = Restaurant.where("name LIKE ?", "%#{params[:name]}%")
-										.and(Restaurant.where("cuisine LIKE ?", "%#{params[:cuisine]}%"))
-										.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%")).order(rating: :desc)
-		# having the ability to sort after the search took place
+		# only filter by cuisine if cuisine is present
+		if params[:cuisine].present?
+			@restaurants = @restaurants.and(Restaurant.where("cuisine IN (?)", params[:cuisine]))
+		end
+		if params[:city].present?
+			@restaurants = @restaurants.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%"))
+		end
+		
+		
 		render :index
   end
 
