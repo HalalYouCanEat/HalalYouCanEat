@@ -17,6 +17,7 @@ class RestaurantsController < ApplicationController
 		if params[:city].present?
 			@restaurants = @restaurants.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%"))
 		end
+		@restaurants = @restaurants.order(rating: :desc)
 		
 		
 		render :index
