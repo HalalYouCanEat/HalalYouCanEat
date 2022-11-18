@@ -1,4 +1,5 @@
 class Api::V1::RestaurantsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     restaurant = Restaurant.all
     render json: restaurant, status:200

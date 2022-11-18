@@ -21,6 +21,7 @@ gem 'sprockets-rails', '3.4.2'
 gem 'stimulus-rails',  '1.0.4'
 gem 'turbo-rails',     '1.1.1'
 gem 'will_paginate', '3.3.1'
+gem 'net-http'
 
 # gem "bootstrap-will_paginate", "1.0.0"
 

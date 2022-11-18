@@ -11,5 +11,6 @@ class CreateReviews < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :reviews, [:user_id, :restaurant_id, :created_at]
   end
 end
