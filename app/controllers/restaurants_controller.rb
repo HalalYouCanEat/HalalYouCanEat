@@ -6,9 +6,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants or /restaurants.json
   def index
     try_out = Net::HTTP.get_response('halal-you-can-eat.herokuapp.com','/api/v1/restaurants')
-    @restaurants = JSON.parse(try_out.body)  
-		# have the restaurants ordered by descending rating by default
-		# @restaurants = Restaurant.all.order(rating: :desc)
+		# sorts the restaurants by rating in descending order
+    @restaurants = JSON.parse(try_out.body).sort_by{ |obj| obj["rating"] }.reverse
   end
 
 	def search
@@ -21,7 +20,6 @@ class RestaurantsController < ApplicationController
 			@restaurants = @restaurants.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%"))
 		end
 		@restaurants = @restaurants.order(rating: :desc)
-		
 		
 		render :index
   end
