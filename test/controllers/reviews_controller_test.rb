@@ -38,11 +38,12 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to review_url(@review)
   end
 
-  test "should destroy review" do
-    assert_difference("Review.count", -1) do
-      delete review_url(@review)
-    end
+	# REMOVED FOR NOW
+  # test "should destroy review" do
+  #   assert_difference("Review.count", -1) do
+  #     delete review_url(@review)
+  #   end
 
-    assert_redirected_to reviews_url
-  end
+  #   assert_redirected_to reviews_url
+  # end
 end
