@@ -34,8 +34,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      @user.send_activation_email
-      flash[:info] = 'Please check your email to activate your account.'
+      # @user.send_activation_email
+      # flash[:info] = 'Please check your email to activate your account.'
 
       # TODO: delete these three line below when we want to enable email activation
       @user.activate
