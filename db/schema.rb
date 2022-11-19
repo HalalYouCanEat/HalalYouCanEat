@@ -36,15 +36,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "menus", force: :cascade do |t|
-    t.bigint "restaurant_id", null: false
-    t.string "name"
-    t.string "categories"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "name"
     t.string "title"
@@ -82,7 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "restaurant_id", "created_at"], name: "index_reviews_on_user_id_and_restaurant_id_and_created_at"
     t.index ["users_id"], name: "index_reviews_on_users_id"
   end
 
@@ -102,5 +92,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
   add_foreign_key "restaurants", "halal_items", column: "halal_items_id", on_delete: :cascade
   add_foreign_key "restaurants", "reviews", column: "reviews_id", on_delete: :cascade
   add_foreign_key "reviews", "users", column: "users_id", on_delete: :cascade
-  add_foreign_key "menus", "restaurants"
 end
