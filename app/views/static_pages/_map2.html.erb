@@ -1,0 +1,98 @@
+<%# <div id='map'></div> %>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJpdHp6ZHV2ZXJnbGFzIiwiYSI6ImNsYXBwN3lkbzFiMm4zc3FyaGsyeXRzcGwifQ.no-S8yQIqDz9UC1l-yiEbw';
+	const map = new mapboxgl.Map({
+		container: 'map',
+		// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+		style: 'mapbox://styles/mapbox/streets-v12',
+		center: [-74.0310179, 40.6242122],
+		zoom: 10
+	});
+	
+	map.on('load', () => {
+	map.addSource('places', {
+	// This GeoJSON contains features that include an "icon"
+	// property. The value of the "icon" property corresponds
+	// to an image in the Mapbox Streets style's sprite.
+		'type': 'geojson',
+		'data': {
+		'type': 'FeatureCollection',
+		'features': []
+		}
+	});
+		// access the features in the source to add markers
+		markers = map.getSource('places')._data.features;
+		let marker = null;
+		<% Restaurant.all.each do |restaurant| %>
+		marker = new mapboxgl.Marker()
+			.setLngLat([<%= restaurant.longitude %>, <%= restaurant.latitude %>])
+			.setPopup(new mapboxgl.Popup().setHTML('<div>'+
+					'<h4>'+ '<%= restaurant.name %>' +'</h4>'+
+					'<div>'+
+					'<p>Click<a href="/restaurants/'+ <%= restaurant.id %> +'"> here </a>to view the restaurant!</p>'+
+					'</div>'+
+					'</div>')) // add popup
+			.addTo(map);
+		<% end %>
+	map.addLayer({
+		'id': 'places',
+		'type': 'symbol',
+		'source': 'places',
+		'layout': {
+			'icon-image': '{icon}-15',
+			'icon-allow-overlap': true
+		}
+	});
+	
+	console.log(map.getSource('places')._data.features);
+	// When a click event occurs on a feature in the places layer, open a popup at the
+	// location of the feature, with description HTML from its properties.
+	map.on('click', 'places', (e) => {
+	// Copy coordinates array.
+	const coordinates = e.features[0].geometry.coordinates.slice();
+	const description = e.features[0].properties.description;
+	
+	// Ensure that if the map is zoomed out such that multiple
+	// copies of the feature are visible, the popup appears
+	// over the copy being pointed to.
+	while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+		coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+	}
+	
+	new mapboxgl.Popup()
+		.setLngLat(coordinates)
+		.setHTML(description)
+		.addTo(map);
+	});
+	
+	// Change the cursor to a pointer when the mouse is over the places layer.
+	map.on('mouseenter', 'places', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	});
+	
+	// Change it back to a pointer when it leaves.
+	map.on('mouseleave', 'places', () => {
+			map.getCanvas().style.cursor = '';
+		});
+	});
+</script>
+
+<p>
+	<div id="map-overlay"></div>
+	<%# create a div that will allow you to click refresh when map disappears%>
+	<div id="refresh">
+		<p>Sorry about that. Click below to refresh the map!</p>
+		<a onclick="reload()" class="hover"><%= button_to "Refresh", class: "btn btn-primary"%></a>
+	</div>
+
+</p>
+
+<script>
+	function reload(){
+		const reloadUsingLocationHash = () => {
+			window.location.hash = "/";
+		}
+		window.onload = reloadUsingLocationHash();
+	}
+	
+</script>
