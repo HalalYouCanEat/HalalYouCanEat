@@ -16,8 +16,9 @@ class RestaurantsController < ApplicationController
 		if params[:cuisine].present?
 			@restaurants = @restaurants.and(Restaurant.where("cuisine IN (?)", params[:cuisine]))
 		end
+    #only filter by city if city is present
 		if params[:city].present?
-			@restaurants = @restaurants.and(Restaurant.where("city LIKE ?", "%#{params[:city]}%"))
+			@restaurants = @restaurants.and(Restaurant.where("city IN (?)", params[:city]))
 		end
 		@restaurants = @restaurants.order(rating: :desc)
 		

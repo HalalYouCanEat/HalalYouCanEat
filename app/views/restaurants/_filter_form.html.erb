@@ -15,8 +15,17 @@
 				</div>
 			<% end %>
 		</div>
+		
 		<div class="search-bar mb-5">
-			<%= select_tag :city, options_for_select(city_collector), prompt: 'Select City' %>
+			<%# <%= select_tag :city, options_for_select(city_collector), prompt: 'Select City' %> 
+			<h4>Cities</h4>
+			<% city_collector.each do |city| %>
+				<% city = city[0] %>
+				<div class="flex-container checkbox">
+					<%= check_box_tag "city[]", city %>
+					<%= label_tag city %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div class="search-button">

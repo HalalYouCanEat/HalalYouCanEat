@@ -22,7 +22,7 @@ module RestaurantsHelper
   end
 
   def city_collector
-		Restaurant.all.pluck(:city).uniq.drop(1).map { |city| [city, city] }
+		Restaurant.all.pluck(:city).uniq.map { |city| [city, city] }
   end
 
   def on_home_page
