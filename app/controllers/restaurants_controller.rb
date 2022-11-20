@@ -20,7 +20,7 @@ class RestaurantsController < ApplicationController
 		if params[:city].present?
 			@restaurants = @restaurants.and(Restaurant.where("city IN (?)", params[:city]))
 		end
-		@restaurants = @restaurants.order(rating: :desc)
+		@restaurants = @restaurants.order(:city, rating: :desc)
 		
 		render :index
   end
