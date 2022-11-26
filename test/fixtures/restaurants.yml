@@ -2,8 +2,12 @@
 
 one:
   id: 1
-  name: Blackbeard's Bar & Grill & Other Delicacies & Delights & Fishing Equipment
-
-two:
-  id: 2
-  name: MyString
+  name: Blackbeards Bar and Grill and Other Delicacies and Delights and Fishing Equipment
+  # cuisine: Palestinian
+  # ^ this raises an error with the filter
+  state: NY
+  zipcode: 11209
+  address: 123 7th Ave
+  city: Brooklyn
+  url: www.example.com
+  rating: 5

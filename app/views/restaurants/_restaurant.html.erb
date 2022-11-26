@@ -2,9 +2,9 @@
 	<div class="restaurant-info">
 		<h2> This is <%= @restaurant&.name %>!</h2>
 
-		<h4> We are located at <%= @restaurant&.address %> </h4>
+		<h4> We are located at <%= @restaurant&.address %>. </h4>
 
-		<h4> Our cuisine is <%= @restaurant&.cuisine %> </h4>
+		<h4> Our cuisine is <%= @restaurant&.cuisine %>. </h4>
 
 		<h4> Our rating is <%= @restaurant&.rating %> </h4>
 
@@ -17,9 +17,8 @@
 		<div class="review-display">
 			<% if @restaurant.reviews.length > 0 %>
 				<h3> Reviews: </h3>
-				<% @restaurant.reviews.each do |review| %>
-					<%= render review %>
-				<% end %>
+					<%= render @reviews %>
+					<%= will_paginate @reviews %>
 			<% else %>
 				<h3> No reviews yet! </h3>
 			<% end %>

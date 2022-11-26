@@ -26,4 +26,19 @@ most_recent:
   content: "I should be most recent"
   rating: 5
   created_at: <%= Time.zone.now %>
+  
+    <% 30.times do |n| %>
+    <% i = 5+n %>
+  <% c = Faker::Lorem.sentence(word_count: 5) %>
+review_<%= n %>:
+  id: <%= i %>
+  content: <%= c %>
+  created_at: <%= 42.days.ago %>
+  user_id: 1
+  restaurant_id: 1
+  rating: 3
+  halal_item_id: 1
+    <% end %>
+
+
 
