@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_halal_items_on_restaurant_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
     t.bigint "user_id"
     t.bigint "restaurant_id"
     t.bigint "halal_item_id"
+    t.index ["restaurant_id", "created_at"], name: "index_reviews_on_restaurant_id_and_created_at"
   end
 
   create_table "users", force: :cascade do |t|
