@@ -20,26 +20,11 @@ class RestaurantsController < ApplicationController
 		if params[:city].present?
 			@restaurants = @restaurants.and(Restaurant.where("city IN (?)", params[:city]))
 		end
+		# have the restaurants ordered by descending rating by default
 		@restaurants = @restaurants.order(:city, rating: :desc)
 		
 		render :index
-    @restaurants = JSON.parse(try_out.body)  
-    # have the restaurants ordered by descending rating by default
-    # @restaurants = Restaurant.all.order(rating: :desc)
   end
-
-  # def search
-  #   @restaurants = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
-  #   # only filter by cuisine if cuisine is present
-  #   if params[:cuisine].present?
-  #     @restaurants = @restaurants.and(Restaurant.where('cuisine IN (?)', params[:cuisine]))
-  #   end
-  #   if params[:city].present?
-  #     @restaurants = @restaurants.and(Restaurant.where('city LIKE ?', "%#{params[:city]}%"))
-  #   end
-  #   @restaurants = @restaurants.order(rating: :desc)
-  #   render :index
-  # end
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
