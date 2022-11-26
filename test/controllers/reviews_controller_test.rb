@@ -21,8 +21,9 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Review.count') do
       post reviews_url, params: { review: { content: @review.content, date_of_review: @review.date_of_review, halal_item_id: @review.halal_item_id, id: 4, rating: @review.rating, restaurant_id: @review.restaurant_id, user_id: @review.user_id } }
     end
-
-    assert_redirected_to review_url(Review.first)
+		# when a review is created, it should stay on the restaurant page, causing the original test to fail
+    # assert_redirected_to review_url(Review.first)
+		assert_redirected_to restaurant_url(Restaurant.first)
   end
 
   test 'should show review' do

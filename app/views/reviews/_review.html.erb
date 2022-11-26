@@ -8,6 +8,18 @@
   </p>
 
   <p>
+	<%# if it's on the user profile, add the restaurant name (for clarity purposes) %>
+	<% if params["controller"] == "users" %>
+		<strong>Restaurant Name:</strong>
+		<% if review.restaurant_id != nil %>
+			<% r = Restaurant.find(review.restaurant_id) %>
+			<%= r.name %>
+		<% end %>
+	<% end %>
+  </p>
+
+
+  <p>
     <strong>Rating:</strong>
     <%= review.rating %>
   </p>

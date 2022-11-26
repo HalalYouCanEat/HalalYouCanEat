@@ -1,5 +1,5 @@
 <%= form_with(url: reviews_path, scope: :review) do |form| %>
-	<%= form.hidden_field :restaurant_id, value: @restaurant.id %>
+	<%= form.hidden_field :restaurant_id, value: @restaurant&.id %>
   <% if review != nil && review.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>

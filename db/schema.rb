@@ -66,7 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    # t.index ["users_id"], name: "index_reviews_on_users_id"
     t.bigint "user_id"
     t.bigint "restaurant_id"
     t.bigint "halal_item_id"
@@ -76,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "reset_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -86,9 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
     t.datetime "activated_at"
   end
 
-  # add_foreign_key "restaurants", "halal_items", column: "halal_items_id", on_delete: :cascade
-  # add_foreign_key "restaurants", "reviews", column: "reviews_id", on_delete: :cascade
-  # add_foreign_key "reviews", "users", column: "users_id", on_delete: :cascade
   add_foreign_key "halal_items", "restaurants", on_delete: :cascade
   add_foreign_key "reviews", "halal_items", on_delete: :nullify
   add_foreign_key "reviews", "restaurants", on_delete: :cascade
