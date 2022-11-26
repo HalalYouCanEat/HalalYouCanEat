@@ -13,9 +13,13 @@ class ReviewTest < ActiveSupport::TestCase
   test 'user id should be present' do
     @review.user_id = nil
     assert_not @review.valid?
+    @review.user_id = '   '
+    assert_not @review.valid?
   end
 
   test 'content should be present' do
+    @review.content = nil
+    assert_not @review.valid?
     @review.content = '   '
     assert_not @review.valid?
   end
