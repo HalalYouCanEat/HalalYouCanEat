@@ -180,20 +180,20 @@ Restaurant.all.each do |restaurant|
 
  # get the latitude and longitude of the restaurant
  # coordinates = Geocoder.coordinates(address)
-	# get the address of the restaurant
-	address = restaurant.address
-	addy = address.split(",")
-	if (addy.length() == 3) then
-		restaurant.update(city: addy[1])
-	end
-	if (addy.length() == 4) then
-		restaurant.update(city: addy[2])
-	end
-	if (restaurant&.latitude.nil? || restaurant&.longitude.nil?) then
-		# get the latitude and longitude of the restaurant
-		coordinates = Geocoder.coordinates(address)
-		# update the restaurant with the latitude and longitude
-		restaurant.update(latitude: coordinates[0], longitude: coordinates[1])
+  # get the address of the restaurant
+  address = restaurant.address
+  addy = address.split(",")
+  if (addy.length() == 3) then
+    restaurant.update(city: addy[1])
+  end
+  if (addy.length() == 4) then
+    restaurant.update(city: addy[2])
+  end
+  if (restaurant&.latitude.nil? || restaurant&.longitude.nil?) then
+    # get the latitude and longitude of the restaurant
+    coordinates = Geocoder.coordinates(address)
+    # update the restaurant with the latitude and longitude
+    restaurant.update(latitude: coordinates[0], longitude: coordinates[1])
   end
 end
 
@@ -220,3 +220,10 @@ p "Created #{User.count} users"
 #   Review.create!(id: index + 1, restaurant_id: Restaurant.all.sample(1)[0].id,
 #                  halal_item_id: HalalItem.all.sample(1)[0].id, user_id: User.all.sample(1)[0].id, date_of_review: Faker::Date.between(from: '2014-09-23', to: '2021-09-25'), content: Faker::Restaurant.review, rating: Faker::Number.between(from: 1, to: 5))
 # end
+
+# Generate microposts for a subset of users.
+users = User.order(:created_at).take(60)
+restaurants = Restaurant.order(:created_at).take(6)
+users.each { |user|
+  content = Faker::Lorem.sentence(word_count: 5)
+  restaurants.each { |restaurant| restaurant.reviews.create!(content: content, user_id: user.id) }}

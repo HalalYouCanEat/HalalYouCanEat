@@ -2,15 +2,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :restaurants, only: [:index, :show, :create]
-      
     end
   end
   resources :restaurants do
-		collection do
+    collection do
       get 'list'
-			get 'search'
+      get 'search'
     end
-	end
+  end
   resources :halal_items
   resources :locations
   resources :reviews
@@ -18,12 +17,12 @@ Rails.application.routes.draw do
   resources :posts
   # TODO (↓ uncomment upon implementing chapter 11 ↓)
   resources :account_activations, only: [:edit]
-	root "static_pages#home"
-  get  "/about/app",    to: "about#about_app"
-  get  "/about/devs",   to: "about#about_devs"
-  get  "/about/halal",  to: "about#about_halal"
-  get  "/about/assets",  to: "about#about_assets"
-	get '/signup', to: 'users#new'
+  root 'static_pages#home'
+  get  '/about/app',    to: 'about#about_app'
+  get  '/about/devs',   to: 'about#about_devs'
+  get  '/about/halal',  to: 'about#about_halal'
+  get  '/about/assets',  to: 'about#about_assets'
+  get '/signup', to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

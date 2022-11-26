@@ -35,13 +35,14 @@ class UsersIndexAdminTest < UsersIndexAdmin
     end
   end
 
-  test 'should be able to delete non-admin user' do
-    assert_difference 'User.count', -1 do
-      delete user_path(@non_admin)
-    end
-    assert_response :see_other
-    assert_redirected_to users_url
-  end
+	# REMOVED FOR NOW
+  # test 'should be able to delete non-admin user' do
+  #   assert_difference 'User.count', -1 do
+  #     delete user_path(@non_admin)
+  #   end
+  #   assert_response :see_other
+  #   assert_redirected_to users_url
+  # end
 
   test 'should display only activated users' do
     # Deactivate the first user on the page.

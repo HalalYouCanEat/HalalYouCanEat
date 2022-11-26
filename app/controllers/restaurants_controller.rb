@@ -20,6 +20,7 @@ class RestaurantsController < ApplicationController
 		if params[:city].present?
 			@restaurants = @restaurants.and(Restaurant.where("city IN (?)", params[:city]))
 		end
+		# have the restaurants ordered by descending rating by default
 		@restaurants = @restaurants.order(:city, rating: :desc)
 		
 		render :index
@@ -27,7 +28,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
-		@restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
+    @reviews = @restaurant.reviews.paginate(page: params[:page])
   end
 
   # GET /restaurants/new
@@ -36,8 +38,7 @@ class RestaurantsController < ApplicationController
   end
 
   # GET /restaurants/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /restaurants or /restaurants.json
   def create
@@ -45,7 +46,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully created." }
+        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,7 +59,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated." }
+        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully updated.' }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,26 +73,26 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
+      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-	def list
-		# filtering by name and ordering it by param column and direction (not used at the moment)
-		restaurants = filter!(Restaurant)
-		render :_restaurant, locals: { restaurants: restaurants }
-	end
-	
+  def list
+    # filtering by name and ordering it by param column and direction (not used at the moment)
+    restaurants = filter!(Restaurant)
+    render :_restaurant, locals: { restaurants: restaurants }
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def restaurant_params
-      params.require(:restaurant).permit(:id, :location_id, :name)
-    end
+  def restaurant_params
+    params.require(:restaurant).permit(:id, :location_id, :name)
+  end
 end
