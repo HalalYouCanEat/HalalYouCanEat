@@ -38,5 +38,8 @@ class HopefullyFixForeignKeys < ActiveRecord::Migration[7.0]
     # Adding the foreign key so that the variable reviews.halal_item_id points to halal_items.id
     # Upon deleting a halal_item, it should set all reviews.halal_item_id associated with that halal_item to null
     add_foreign_key :reviews, :halal_items, column: :halal_item_id, primary_key: :id, on_delete: :nullify
+
+    # Re-adding this indexing back in...
+    add_index :reviews, [:user_id, :restaurant_id, :created_at]
   end
 end
