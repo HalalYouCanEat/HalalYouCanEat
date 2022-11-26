@@ -3,8 +3,7 @@
 one:
   id: 1
   name: Blackbeards Bar and Grill and Other Delicacies and Delights and Fishing Equipment
-  # cuisine: Palestinian
-  # ^ this raises an error with the filter
+  cuisine: Palestinian
   state: NY
   zipcode: 11209
   address: 123 7th Ave

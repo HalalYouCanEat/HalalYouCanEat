@@ -20,11 +20,11 @@ class ReviewsController < ApplicationController
 
   # POST /reviews or /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.build(review_params) if logged_in?
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to review_url(@review), notice: 'Review was successfully created.' }
+        format.html { redirect_to restaurant_url(Restaurant.find(@review.restaurant_id)), notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,6 +67,24 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:id, :restaurant_id, :halal_item_id, :user_id, :date_of_review, :content, :rating)
   end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    return if logged_in?
+
+    store_location
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url, status: :see_other
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url, status: :see_other) unless current_user?(@user)
+  end
+
+  # Confirms an admin user.
+  def admin_user
+    redirect_to(root_url, status: :see_other) unless current_user.admin?
+  end
 end
-
-
