@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       t.string :name
       t.string :email
+			t.string :reset_digest # heroku was complaining, so i had to add this
       t.timestamps
     end
   end
