@@ -5,6 +5,7 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: 'Example User', email: 'user@example.com',
                      password: 'foobar', password_confirmation: 'foobar')
+    @restaurant = restaurants(:one)
   end
 
   test 'should be valid' do
@@ -75,5 +76,13 @@ class UserTest < ActiveSupport::TestCase
 
   test 'authenticated? should return false for a user with nil digest' do
     assert_not @user.authenticated?(:remember, '')
+  end
+
+  test 'associated reviews should be destroyed' do
+    @user.save
+    @user.reviews.create!(content: 'Lorem ipsum', restaurant_id: @restaurant.id)
+    assert_difference 'Review.count', -1 do
+      @user.destroy
+    end
   end
 end

@@ -2,9 +2,9 @@
 	<div class="restaurant-info">
 		<h2> This is <%= @restaurant&.name %>!</h2>
 
-		<h4> We are located at <%= @restaurant&.address %> </h4>
+		<h4> We are located at <%= @restaurant&.address %>. </h4>
 
-		<h4> Our cuisine is <%= @restaurant&.cuisine %> </h4>
+		<h4> Our cuisine is <%= @restaurant&.cuisine %>. </h4>
 
 		<h4> Our rating is <%= @restaurant&.rating %> </h4>
 
@@ -13,24 +13,26 @@
 		<% end %>
 	</div>
 
-	<div class="review-section">
-		<div class="review-display">
-			<% if @restaurant.reviews.length > 0 %>
-				<h3> Reviews: </h3>
-				<% @restaurant.reviews.each do |review| %>
-					<%= render review %>
-				<% end %>
-			<% else %>
-				<h3> No reviews yet! </h3>
-			<% end %>
-		</div>
+	<div class="review-form">
 		<%# add a review to this restaurant %>
-		 <% if false %> <%# change to if logged_in? to enable adding reviews %>
+		<% if logged_in? %> <%# change to if logged_in? to enable adding reviews %>
 			<div class="review-form">
 				<h3> Add a review: </h3>
 				<%= render 'reviews/form', review: @review %>
 			</div>
 		<% end %>
+	</div>
+
+	<div class="review-section">
+		<div class="review-display">
+			<% if @restaurant.reviews.length > 0 %>
+				<h3> Reviews: </h3>
+					<%= render @reviews %>
+					<%= will_paginate @reviews %>
+			<% else %>
+				<h3> No reviews yet! </h3>
+			<% end %>
+		</div>
 	</div>
 </div>
 

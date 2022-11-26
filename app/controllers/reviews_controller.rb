@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
   before_action :set_review, only: %i[ show edit update destroy ]
 
   # GET /reviews or /reviews.json
@@ -7,8 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1 or /reviews/1.json
-  def show
-  end
+  def show; end
 
   # GET /reviews/new
   def new
@@ -16,16 +16,15 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /reviews or /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.build(review_params) if logged_in?
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
+        format.html { redirect_to restaurant_url(Restaurant.find(@review.restaurant_id)), notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +37,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to review_url(@review), notice: "Review was successfully updated." }
+        format.html { redirect_to review_url(@review), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +51,40 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:id, :restaurant_id, :halal_item_id, :user_id, :date_of_review, :content, :rating)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(:id, :restaurant_id, :halal_item_id, :user_id, :date_of_review, :content, :rating)
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    return if logged_in?
+
+    store_location
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url, status: :see_other
+  end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url, status: :see_other) unless current_user?(@user)
+  end
+
+  # Confirms an admin user.
+  def admin_user
+    redirect_to(root_url, status: :see_other) unless current_user.admin?
+  end
 end

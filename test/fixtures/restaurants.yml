@@ -2,12 +2,11 @@
 
 one:
   id: 1
-  name: Blackbeard's Bar & Grill & Other Delicacies & Delights & Fishing Equipment
-  reviews_id: 1
-  halal_items_id: 1
-
-two:
-  id: 2
-  name: MyString
-  reviews_id: 2
-  halal_items_id: 1
+  name: Blackbeards Bar and Grill and Other Delicacies and Delights and Fishing Equipment
+  cuisine: Palestinian
+  state: NY
+  zipcode: 11209
+  address: 123 7th Ave
+  city: Brooklyn
+  url: www.example.com
+  rating: 5
