@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "halal_items", force: :cascade do |t|
     t.string "name"
-    t.integer "restaurant_id"
     t.string "description"
     t.string "verification"
     t.boolean "vegan"
@@ -24,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.boolean "vegetarian"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -55,26 +55,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.float "longitude"
     t.string "url"
     t.string "rating"
-    t.bigint "reviews_id"
-    t.bigint "halal_items_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["halal_items_id"], name: "index_restaurants_on_halal_items_id"
-    t.index ["reviews_id"], name: "index_restaurants_on_reviews_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "restaurant_id"
-    t.integer "halal_item_id"
-    t.integer "user_id"
     t.date "date_of_review"
     t.string "content"
     t.integer "rating"
-    t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "restaurant_id", "created_at"], name: "index_reviews_on_user_id_and_restaurant_id_and_created_at"
-    t.index ["users_id"], name: "index_reviews_on_users_id"
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
+    t.bigint "halal_item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,7 +83,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_184011) do
     t.datetime "activated_at"
   end
 
-  add_foreign_key "restaurants", "halal_items", column: "halal_items_id"
-  add_foreign_key "restaurants", "reviews", column: "reviews_id"
-  add_foreign_key "reviews", "users", column: "users_id"
+  add_foreign_key "halal_items", "restaurants", on_delete: :cascade
+  add_foreign_key "reviews", "halal_items", on_delete: :nullify
+  add_foreign_key "reviews", "restaurants", on_delete: :cascade
+  add_foreign_key "reviews", "users", on_delete: :cascade
 end

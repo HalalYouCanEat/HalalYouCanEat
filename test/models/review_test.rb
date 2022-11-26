@@ -25,7 +25,7 @@ class ReviewTest < ActiveSupport::TestCase
   end
 
   test 'content should be at most 140 characters' do
-    @review.content = 'a' * 141
+    @review.content = 'a' * 1001
     assert_not @review.valid?
   end
 end
