@@ -44,7 +44,5 @@ class HopefullyFixForeignKeys < ActiveRecord::Migration[7.0]
 
     # Adding indexing on restaurant_id in the HalalItems table
     add_index :halal_items, :restaurant_id
-
-
   end
 end

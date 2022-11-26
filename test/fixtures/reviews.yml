@@ -4,16 +4,26 @@ one:
   id: 1
   restaurant_id: 1
   halal_item_id: 1
-  users_id: 1
-  date_of_review: 2022-09-23
-  content: MyString
+  user_id: 1
+  content: "MyString1"
   rating: 1
+  created_at: <%= 10.minutes.ago %>
 
 two:
   id: 2
   restaurant_id: 1
   halal_item_id: 1
-  users_id: 2
-  date_of_review: 2022-09-23
-  content: MyString
+  user_id: 2
+  content: "MyString2"
   rating: 1
+  created_at: <%= 1.hour.ago %>
+
+most_recent:
+  id: 3
+  restaurant_id: 1
+  halal_item_id: 1
+  user_id: 2
+  content: "I should be most recent"
+  rating: 5
+  created_at: <%= Time.zone.now %>
+
