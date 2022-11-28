@@ -1,0 +1,13 @@
+<div id="<%= dom_id favorite %>" class="favorite">
+  <p>
+    <strong>Restaurant Name:</strong>
+	<% fav = Restaurant.find(favorite.restaurant_id)%>
+	<%= link_to fav.name, restaurant_path(fav) %>
+  </p>
+  <p>
+	<strong>Date of favorite:</strong>
+	<%= favorite.created_at %>
+	</p>
+	<%= link_to "Remove from favorites", favorites_update_path(restaurant: fav), id: 'favorite_link', remote: true %>
+
+</div>

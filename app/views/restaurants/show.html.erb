@@ -9,7 +9,7 @@
   
   <p>
   <%# save this restaurant to your favorites %>
-  <%# link_to "Add to favorites", favorites_restaurants_path(restaurant_id: @restaurant.id) %>
+  <%= link_to favorite_text, favorites_update_path(restaurant: @restaurant), id: 'favorite_link' %>
   <%= link_to "Back to restaurants", restaurants_path %> | 
   <%= link_to "Back to home page", root_url %>
   </p>

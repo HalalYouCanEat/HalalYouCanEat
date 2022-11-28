@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
-		before_action :set_search
-		def set_search
-			@q = Restaurant.ransack(params[:q])
-		end
+
+	def favorite_text
+		return @favorite_exists ? "Remove from favorites" : "Add to favorites"
+	end
+
+	helper_method :favorite_text
 end

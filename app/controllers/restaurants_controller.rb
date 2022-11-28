@@ -30,6 +30,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews.paginate(page: params[:page])
+    @favorite_exists = Favorite.where(restaurant: @restaurant, user: current_user) == [] ? false : true
   end
 
   # GET /restaurants/new

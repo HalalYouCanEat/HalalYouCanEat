@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_212924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "halal_items", force: :cascade do |t|
     t.string "name"
@@ -75,7 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "reset_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -86,6 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_153555) do
     t.datetime "activated_at"
   end
 
+  add_foreign_key "favorites", "restaurants"
+  add_foreign_key "favorites", "users"
   add_foreign_key "halal_items", "restaurants", on_delete: :cascade
   add_foreign_key "reviews", "halal_items", on_delete: :nullify
   add_foreign_key "reviews", "restaurants", on_delete: :cascade

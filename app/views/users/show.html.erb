@@ -2,6 +2,7 @@
 	<p style="color: green"><%= notice %></p>
 	<%= render @user %>
 
+
 	<div>
 	<%= link_to "Edit this user", edit_user_path(@user) %> |
 	<%= link_to "Back to users", users_path %>
@@ -27,6 +28,18 @@
         <%= render @reviews %>
       </ol>
       <%= will_paginate @reviews %>
+    <% end %>
+  </div>
+
+  <div class="col-md-8">  
+    <% if @user.favorites.any? %>
+      <h3>Favorites (<%= @user.favorites.count %>)</h3>
+      <ol class="favorites">
+        <% @user.favorites.each do |favorite| %>
+		    <%= render favorite %>
+		  <% end %>
+      </ol>
+      
     <% end %>
   </div>
 </div>
