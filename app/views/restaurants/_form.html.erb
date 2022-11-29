@@ -12,11 +12,6 @@
   <% end %>
 
   <div>
-    <%= form.label :id, style: "display: block" %>
-    <%= form.number_field :id %>
-  </div>
-
-  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
@@ -24,6 +19,21 @@
   <div>
 	<%= form.label :address, style: "display: block" %>
 	<%= form.text_field :address %>
+  </div>
+
+  <div>
+	<%= form.label :rating, style: "display: block" %>
+	<%= form.number_field :rating %>
+  </div>
+
+  <div>
+	<%= form.label "Restaurant Website", style: "display: block" %>
+	<%= form.text_field :url %>
+  </div>
+
+  <div>
+	<%= form.label :cuisine, style: "display: block" %>
+	<%= form.text_field :cuisine %>
   </div>
 
   <div>

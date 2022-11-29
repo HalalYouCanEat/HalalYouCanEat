@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h2 class="text-center">Restaurants</h2>
+<h2 class="text-center header-space">Restaurants</h2>
 <%# setting restaurants properly depending on filtering %>
 <% if @restaurants == nil %>
 	<% restaurants = Restaurant.all %>
@@ -13,7 +13,7 @@
 		<div class="row">
 			<%# shouldn't show this text if it's in the main view of restaurant %>
 			<p class="text-center"> To search and sort restaurants by name or rating, <%= link_to "click here", restaurants_path %> </p>	
-			<div class="gray-background">
+			<div class="table-background">
 				<%= render "restaurants/table", restaurants: restaurants %>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 				<h4 class="text-center" >Filters</h4>
 				<%= render "restaurants/filter_form" %>
 			</div>
-			<div class="col-9 gray-background">
+			<div class="col-9 table-background">
 				<%= render "restaurants/table", restaurants: restaurants %>
 			</div>
 		</div>

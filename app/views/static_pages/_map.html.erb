@@ -21,6 +21,31 @@
 			let results;
 			// loops through all the restaurants and adds a marker for each one
 			<% Restaurant.all.each do |restaurant| %>
+				<% address = restaurant.address %>
+				<% addy = address.split(",") %>
+				// gets the city of the restaurant
+				<% if (addy.length() == 3) then %>
+					<% restaurant.update(city: addy[1]) %> 
+				<% end %>
+				<% if (addy.length() == 4) then %>
+					<% restaurant.update(city: addy[2]) %>
+				<% end %>
+				<% state_and_zip = addy[addy.length() - 1].split(" ") %>
+				// gets the state and zipcode of the restaurant
+				<% if (state_and_zip.length() == 2) then %>
+					<% if state_and_zip[0] == "NY" %>
+						<% restaurant.update(state: "New York") %>
+					<% else %>
+						<% restaurant.update(state: state_and_zip[0]) %>
+					<% end %>
+					<% restaurant.update(zipcode: state_and_zip[1].to_i) %>
+				<% end %>
+				<% if (restaurant&.latitude.nil? || restaurant&.longitude.nil?) then %>
+					// get the latitude and longitude of the restaurant
+					<% coordinates = Geocoder.coordinates(address) %>
+					// update the restaurant with the latitude and longitude
+					<% restaurant.update(latitude: coordinates[0], longitude: coordinates[1]) %>
+				<% end %>
 				marker = new google.maps.Marker({
 					position: { lat: <%= restaurant.latitude %>, lng: <%= restaurant.longitude %> },
 					title: "<%= restaurant.name %>",

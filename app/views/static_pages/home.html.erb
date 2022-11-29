@@ -3,9 +3,15 @@
 	<h4>Find the best Halal food near you</h4>
 	<%# list and map of halal food icons %>
 	<div class="map-section">
-		<div class="icon-section">
-			<a onclick="showDiv('#list')" class="hover"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
-			<a onclick="showDiv('#map')" class="hover"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
+		<div class="all-icons">
+			<div class="icon-section">
+				<a onclick="showDiv('#list')" class="hover"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
+				<a onclick="showDiv('#map')" class="hover"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
+				<% if logged_in? %>
+					<%= link_to image_tag("plus-symbol.svg", :alt => "Plus", :size => "50x50", :id => "plus_icon"), new_restaurant_path %>
+				<% end %>
+			</div>
+			
 		</div>
 		<div id = "map" class="visible">
 			<%# loads the map and displays it %>
