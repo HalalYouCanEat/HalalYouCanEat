@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get  '/about/halal',  to: 'about#about_halal'
   get  '/about/assets',  to: 'about#about_assets'
   get '/signup', to: 'users#new'
+	get '/unapproved', to: 'restaurants#unapproved_restaurants'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

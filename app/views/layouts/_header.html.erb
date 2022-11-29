@@ -35,6 +35,9 @@
 				<li><%# link_to "View My Reviews", "#" %></li>
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+			  <% if current_user.admin? %>
+			  	<li><%= link_to "View Unapproved Restaurants", unapproved_path %></li>
+		      <% end %>
               <li class="divider"></li>
               <li>
                 <%= link_to "Log out", logout_path,

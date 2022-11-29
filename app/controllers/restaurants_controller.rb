@@ -47,7 +47,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully sent for approval.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -71,10 +71,13 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1 or /restaurants/1.json
   def destroy
+		puts "************"
+		puts @restaurant.name
+		puts "************"
     @restaurant.destroy
 
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to unapproved_path, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,6 +87,10 @@ class RestaurantsController < ApplicationController
     restaurants = filter!(Restaurant)
     render :_restaurant, locals: { restaurants: restaurants }
   end
+
+	def unapproved_restaurants
+		@restaurants = Restaurant.where(approved: false)
+	end
   
 
   private
@@ -94,6 +101,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def restaurant_params
-    params.require(:restaurant).permit(:id, :location_id, :name, :address, :rating, :url, :cuisine)
+    params.require(:restaurant).permit(:id, :location_id, :name, :address, :rating, :url, :cuisine, :approved)
   end
 end

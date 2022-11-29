@@ -23,7 +23,7 @@
 
   <div>
 	<%= form.label :rating, style: "display: block" %>
-	<%= form.number_field :rating %>
+	<%= form.number_field :rating, step: :any %>
   </div>
 
   <div>
@@ -35,6 +35,14 @@
 	<%= form.label :cuisine, style: "display: block" %>
 	<%= form.text_field :cuisine %>
   </div>
+
+  <div>
+	<% if current_user&.admin? %>
+		<%= form.label :approved, style: "display: block" %>
+		<%= form.check_box :approved %>
+	<% end %>
+  </div>
+
 
   <div>
     <%= form.submit %>

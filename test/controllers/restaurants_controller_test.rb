@@ -43,6 +43,6 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_url(@restaurant)
     end
 
-    assert_redirected_to restaurants_url
+    assert_redirected_to unapproved_path
   end
 end
