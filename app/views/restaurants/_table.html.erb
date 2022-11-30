@@ -27,7 +27,7 @@
 	</thead>
 	<tbody class="text-gray-700">
 	<% restaurants.each do |restaurant| %>
-		<% if restaurant["approved"] == true %>
+		<% if restaurant["approved"] != false %>
 			<tr>
 				<td class="text-left py-3 px-6"><%= link_to restaurant["name"], restaurants_path + "/#{restaurant["id"]}"%></td>
 				<td class="text-left py-3 px-6"><%= restaurant["cuisine"] %></td>

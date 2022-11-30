@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_212924) do
     t.float "longitude"
     t.string "url"
     t.string "rating"
-    t.boolean "approved", default: false
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

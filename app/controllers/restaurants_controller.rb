@@ -71,9 +71,6 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1 or /restaurants/1.json
   def destroy
-		puts "************"
-		puts @restaurant.name
-		puts "************"
     @restaurant.destroy
 
     respond_to do |format|

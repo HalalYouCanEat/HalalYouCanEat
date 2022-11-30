@@ -202,7 +202,7 @@ p "Created #{Restaurant.count} restaurants"
 end
 
 # Main user for testing
-User.create!(id: 101, name: 'Test User', email: 'testing@gmail.com', password: 'password', admin: true)
+User.create!(id: 101, name: 'Test User', email: 'testing@gmail.com', password: 'password', admin: true, activated: true, activated_at: Time.zone.now)
 p "Created #{User.count} users"
 
 # users = User.order(:created_at).take(6)
