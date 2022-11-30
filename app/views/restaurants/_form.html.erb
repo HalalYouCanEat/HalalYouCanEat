@@ -36,13 +36,12 @@
 	<%= form.text_field :cuisine %>
   </div>
 
-  <div>
+  <div> 
 	<% if current_user&.admin? %>
 		<%= form.label :approved, style: "display: block" %>
 		<%= form.check_box :approved %>
 	<% end %>
   </div>
-
 
   <div>
     <%= form.submit %>
