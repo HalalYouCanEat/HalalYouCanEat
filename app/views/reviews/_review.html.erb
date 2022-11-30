@@ -34,6 +34,12 @@
     <%= review.created_at %>
   </p>
 
+  <% if current_user&.admin? %>
+	<p>
+	  <%= button_to 'Delete', review_path(review), :method => "delete"  %>
+	</p>
+  <% end %>
+
 </div>
 
 
