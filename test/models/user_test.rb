@@ -3,41 +3,41 @@ require_relative '../test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(name: 'Example User', email: 'user@example.com',
-                     password: 'foobar', password_confirmation: 'foobar')
+    @admin = User.new(name: 'Example User', email: 'user@example.com',
+                      password: 'foobar', password_confirmation: 'foobar')
     @restaurant = restaurants(:one)
   end
 
   test 'should be valid' do
-    assert @user.valid?
+    assert @admin.valid?
   end
 
   test 'name should be present' do
-    @user.name = '     '
-    assert_not @user.valid?
+    @admin.name = '     '
+    assert_not @admin.valid?
   end
 
   test 'email should be present' do
-    @user.email = '     '
-    assert_not @user.valid?
+    @admin.email = '     '
+    assert_not @admin.valid?
   end
 
   test 'name should not be too long' do
-    @user.name = 'a' * 51
-    assert_not @user.valid?
+    @admin.name = 'a' * 51
+    assert_not @admin.valid?
   end
 
   test 'email should not be too long' do
-    @user.email = "#{'a' * 244}@example.com"
-    assert_not @user.valid?
+    @admin.email = "#{'a' * 244}@example.com"
+    assert_not @admin.valid?
   end
 
   test 'email validation should accept valid addresses' do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
-      @user.email = valid_address
-      assert @user.valid?, "#{valid_address.inspect} should be valid"
+      @admin.email = valid_address
+      assert @admin.valid?, "#{valid_address.inspect} should be valid"
     end
   end
 
@@ -45,44 +45,44 @@ class UserTest < ActiveSupport::TestCase
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
-      @user.email = invalid_address
-      assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
+      @admin.email = invalid_address
+      assert_not @admin.valid?, "#{invalid_address.inspect} should be invalid"
     end
   end
 
   test 'email addresses should be unique' do
-    duplicate_user = @user.dup
-    duplicate_user.email = @user.email.upcase
-    @user.save
+    duplicate_user = @admin.dup
+    duplicate_user.email = @admin.email.upcase
+    @admin.save
     assert_not duplicate_user.valid?
   end
 
   test 'email addresses should be saved as lowercase' do
     mixed_case_email = 'Foo@ExAMPle.CoM'
-    @user.email = mixed_case_email
-    @user.save
-    assert_equal mixed_case_email.downcase, @user.reload.email
+    @admin.email = mixed_case_email
+    @admin.save
+    assert_equal mixed_case_email.downcase, @admin.reload.email
   end
 
   test 'password should be present (nonblank)' do
-    @user.password = ' ' * 6
-    assert_not @user.valid?
+    @admin.password = ' ' * 6
+    assert_not @admin.valid?
   end
 
   test 'password should have a minimum length' do
-    @user.password = 'a' * 5
-    assert_not @user.valid?
+    @admin.password = 'a' * 5
+    assert_not @admin.valid?
   end
 
   test 'authenticated? should return false for a user with nil digest' do
-    assert_not @user.authenticated?(:remember, '')
+    assert_not @admin.authenticated?(:remember, '')
   end
 
   test 'associated reviews should be destroyed' do
-    @user.save
-    @user.reviews.create!(content: 'Lorem ipsum', restaurant_id: @restaurant.id)
+    @admin.save
+    @admin.reviews.create!(content: 'Lorem ipsum', restaurant_id: @restaurant.id)
     assert_difference 'Review.count', -1 do
-      @user.destroy
+      @admin.destroy
     end
   end
 end

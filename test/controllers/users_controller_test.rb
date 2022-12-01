@@ -13,7 +13,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create user' do
     assert_difference('User.count') do
-      post users_url, params: { user: { id: 2000,  name: '@user.name', email: 'abc@example.com', password: '1234567890'} }
+      post users_url, params: { user: { id: 2000, name: '@user.name', email: 'abc@example.com', password: '1234567890'} }
     end
   end
 
@@ -51,7 +51,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     patch user_path(@other_user), params: {
       user: { password: 'password',
               password_confirmation: 'password',
-              admin: true } }
+              user: true } }
     assert_not @other_user.reload.admin?
   end
 

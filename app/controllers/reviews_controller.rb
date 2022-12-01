@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :admin_or_current_user, only: [:destroy]
 
   # GET /reviews or /reviews.json
   def index
@@ -84,7 +85,9 @@ class ReviewsController < ApplicationController
   end
 
   # Confirms an admin user.
-  def admin_user
-    redirect_to(root_url, status: :see_other) unless current_user.admin?
+  def admin_or_current_user
+    unless current_user.admin? or @review.user_id == current_user.id
+      redirect_to(root_url, status: :see_other)
+    end
   end
 end
