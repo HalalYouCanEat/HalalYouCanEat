@@ -33,6 +33,10 @@
     <strong>Date of review:</strong>
     <%= review.created_at %>
   </p>
+	<%# add a delete button if the user is the one who wrote the review %>
+	<% if review.user_id == current_user&.id or current_user&.admin?%>
+		<%= button_to "Delete", review, :method => "delete" %>
+	<% end %>
 
 </div>
 

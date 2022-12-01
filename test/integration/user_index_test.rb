@@ -35,14 +35,19 @@ class UsersIndexAdminTest < UsersIndexAdmin
     end
   end
 
-	# REMOVED FOR NOW
-  # test 'should be able to delete non-admin user' do
-  #   assert_difference 'User.count', -1 do
-  #     delete user_path(@non_admin)
-  #   end
-  #   assert_response :see_other
-  #   assert_redirected_to users_url
-  # end
+  test 'should be able to delete non-admin user' do
+    assert_difference 'User.count', -1 do
+      delete user_path(@non_admin)
+    end
+    assert_response :see_other
+    assert_redirected_to users_url
+  end
+
+	test 'admins can delete reviews' do
+		log_in_as(@admin)
+		get restaurant_path(restaurants(:one))
+		assert_select "button", text: 'Delete', count: 30
+	end
 
   test 'should display only activated users' do
     # Deactivate the first user on the page.
@@ -63,4 +68,11 @@ class UsersNonAdminIndexTest < UsersIndex
     get users_path
     assert_select 'a', text: 'delete', count: 0
   end
+
+	test 'non-admins cannot delete reviews' do
+		log_in_as(@non_admin)
+		get restaurant_path(restaurants(:one))
+		assert_select "button", text: 'Delete', count: 2
+	end
+
 end
