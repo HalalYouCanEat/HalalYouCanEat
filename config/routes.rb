@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :restaurants, only: [:index, :show, :create]
+      resources :restaurants, only: %i[index show create]
     end
   end
   resources :restaurants do
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :halal_items
   resources :locations
-  resources :reviews
+  resources :reviews, only: %i[create destroy index show edit update]
   resources :users
   resources :posts
   # TODO (↓ uncomment upon implementing chapter 11 ↓)

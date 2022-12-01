@@ -11,11 +11,6 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get new' do
-    get new_review_url
-    assert_response :success
-  end
-
   test 'should create review' do
     log_in_as(@user)
     assert_difference('Review.count') do
@@ -33,7 +28,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     log_in_as(@user)
-    get edit_review_url(@review)
+    get edit_review_path(@review)
     assert_response :success
   end
 

@@ -18,7 +18,7 @@
 		<% if logged_in? %> <%# change to if logged_in? to enable adding reviews %>
 			<div class="review-form">
 				<h3> Add a review: </h3>
-				<%= render 'reviews/form', review: @review %>
+				<%= render 'reviews/form', review: @review, restaurant_id: @restaurant.id %>
 			</div>
 		<% end %>
 	</div>
