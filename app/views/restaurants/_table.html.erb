@@ -2,12 +2,7 @@
 	<thead class="bg-gray-800 text-white">
 	<tr>
 		<th>
-			<%# shouldn't be able to sort if in the home page list view %>
-			<% if params[:action] == "index" || params[:action] == "search" %>
-				<%= link_to "Name", restaurants_path(:sort => "name") %>
-			<% else %>
-				Name
-			<% end %>
+			Name
 		</th>
 		<th>
 			Cuisine
@@ -16,13 +11,13 @@
 			Address
 		</th>
 		<th>
-			<%# same as above %>
-			<% if params[:action] == "index" || params[:action] == "search" %>
-				<%= link_to "Rating", restaurants_path(:sort => "rating") %>
-			<% else %>
-				Rating
-			<% end %>
+			Rating
 		</th>
+		<% if current_user&.admin? %>
+			<th colspan="2">
+				Commands
+			</th>
+		<% end %>
 	</tr>
 	</thead>
 	<tbody class="text-gray-700">
@@ -33,6 +28,14 @@
 				<td class="text-left py-3 px-6"><%= restaurant["cuisine"] %></td>
 				<td class="text-left py-3 px-6"><%= restaurant["address"] %></td>
 				<td class="text-left py-3 px-6"><%= restaurant["rating"] %></td>
+				<% if current_user&.admin? %>
+					<td class="text-left py-3 px-6">
+						<%= link_to "Edit", edit_restaurant_path(restaurant["id"]) %>
+					</td>
+					<td class="text-left py-3 px-6">
+						<%= button_to "Delete", restaurant_path(restaurant["id"]), :method => "delete" %>
+					</td>
+				<% end %>
 			</tr>
 		<% end %>
 	<% end %>

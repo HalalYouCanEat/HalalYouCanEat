@@ -45,4 +45,16 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to unapproved_path
   end
+
+	test "should have approved checkbox for admins" do
+		log_in_as(users(:one))
+		get new_restaurant_url
+		assert_select "input#restaurant_approved"
+	end
+
+	test "should not have approved checkbox for non-admins" do
+		log_in_as(users(:two))
+		get new_restaurant_url
+		assert_select "input#restaurant_approved", false
+	end
 end
