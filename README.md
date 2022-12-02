@@ -47,9 +47,20 @@ We have functionality for the map and list views to find restaurants and view in
         <tr>
             <th>Attribute</th>
             <th>Data Type</th>
+            <th>Foreign Key</th>
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>integer</td>
+            <td>restaurants(id)</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>integer</td>
+            <td>users(id)</td>
+        </tr>
         <tr>
             <td>restaurant_id</td>
             <td>biginteger</td>
@@ -95,6 +106,14 @@ We have functionality for the map and list views to find restaurants and view in
             <td>string</td>
         </tr>
         <tr>
+            <td>email</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>reset_digest</td>
+            <td>string</td>
+        </tr>
+        <tr>
             <td>created_at</td>
             <td>datetime</td>
         </tr>
@@ -113,6 +132,18 @@ We have functionality for the map and list views to find restaurants and view in
         <tr>
             <td>admin</td>
             <td>boolean</td>
+        </tr>
+        <tr>
+            <td>activation_digest</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>activated</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>activated_at</td>
+            <td>datetime</td>
         </tr>
     </tbody>
 </table>
@@ -182,6 +213,52 @@ We have functionality for the map and list views to find restaurants and view in
     </tbody>
 </table>
 
+###location
+
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>state</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>zipcode</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>address</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>latitude</td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td>longitude</td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
+
+
 ### halal_items
 
 <table>
@@ -195,7 +272,7 @@ We have functionality for the map and list views to find restaurants and view in
     <tbody>
         <tr>
             <td>restaurant_id</td>
-            <td>integer</td>
+            <td>biginteger</td>
             <td>restaurants(id)</td>
         </tr>
         <tr>
@@ -221,6 +298,42 @@ We have functionality for the map and list views to find restaurants and view in
         <tr>
             <td>vegetarian</td>
             <td>boolean</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+    </tbody>
+</table>
+
+### posts
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>content</td>
+            <td>string</td>
         </tr>
         <tr>
             <td>created_at</td>
