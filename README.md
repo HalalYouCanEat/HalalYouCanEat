@@ -176,8 +176,8 @@ We have functionality for the map and list views to find restaurants and view in
             <td>datetime</td>
         </tr>
         <tr>
-            <td>name</td>
-            <td>string</td>
+            <td>apporved</td>
+            <td>boolean</td>
         </tr>
     </tbody>
 </table>
