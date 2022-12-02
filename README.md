@@ -73,8 +73,7 @@ We have functionality for the map and list views to find restaurants and view in
         <tr>
             <td>index_user_id</td>
             <td>index</td>
-        </tr>
-        
+        </tr>  
     </tbody>
 </table>
 
