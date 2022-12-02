@@ -41,6 +41,43 @@ We have functionality for the map and list views to find restaurants and view in
 
 ## Schema Explanation
 
+### favorites
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>biginteger</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>biginteger</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>index_restaurant_id</td>
+            <td>index</td>
+        </tr>
+        <tr>
+            <td>index_user_id</td>
+            <td>index</td>
+        </tr>
+        
+    </tbody>
+</table>
+
 ### users
 <table>
     <thead>
