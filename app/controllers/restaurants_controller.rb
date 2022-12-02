@@ -8,6 +8,12 @@ class RestaurantsController < ApplicationController
     try_out = Net::HTTP.get_response('halal-you-can-eat.herokuapp.com','/api/v1/restaurants')
 		# sorts the restaurants by rating in descending order
     @restaurants = JSON.parse(try_out.body).sort_by{ |obj| obj["rating"] }.reverse
+		# loop through @restaurants to get the name, if name can't be found in Restaurant.find(), create it within local database
+		@restaurants.each do |restaurant|
+			if !Restaurant.find_by(id: restaurant["id"])
+				Restaurant.create(id: restaurant["id"], name: restaurant["name"], address: restaurant["address"], rating: restaurant["rating"], url: restaurant["url"], cuisine: restaurant["cuisine"], approved: restaurant["approved"], city: restaurant["city"], state: restaurant["state"], zipcode: restaurant["zipcode"], latitude: restaurant["latitude"], longitude: restaurant["longitude"])
+			end
+		end
   end
 
 	def search

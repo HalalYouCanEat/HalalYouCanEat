@@ -13,6 +13,7 @@ gem 'geocoder'
 gem 'importmap-rails', '1.1.0'
 gem 'jbuilder',        '2.11.5'
 gem 'jquery-rails'
+gem 'net-http'
 gem 'pg'
 gem 'puma',            '5.6.4'
 gem 'rails',           '7.0.4'
@@ -23,7 +24,7 @@ gem 'sprockets-rails', '3.4.2'
 gem 'stimulus-rails',  '1.0.4'
 gem 'turbo-rails',     '1.1.1'
 gem 'will_paginate', '3.3.1'
-gem 'net-http'
+
 
 # gem "bootstrap-will_paginate", "1.0.0"
 
@@ -31,7 +32,7 @@ gem 'net-http'
 
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[ mri mingw x64_mingw ]
-  gem 'rubocop'
+#   gem 'rubocop'
 end
 
 group :development do
