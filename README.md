@@ -38,6 +38,8 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 
 As of now, we have functionality for the map and list views to find restaurants and view information about the restaurant. You can also search for a restaurant and sort the table based on name and rating. The main features to see are the map and list view for the restaurants at the moment. A small issue at the moment with the sorting and searching is that you can search and then sort your results, but you can't sort and then search. Will be fixed in the future.
 
+
+
 ## Schema Explanation
 
 ### users
