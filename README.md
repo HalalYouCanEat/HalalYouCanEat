@@ -35,8 +35,9 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 <b>Zuhaeer Islam</b>: Would like to get experience in front and back-end (full-stack). Has an internship experience but with front-end a little bit, but still have a lot to learn for both.
 
 ## Functionality Summary
+We have functionality for the map and list views to find restaurants and view information about the restaurant such as rating, location, reviews, etc. User can also search for a restaurant and filter based on desired cuisine and city. Some key features of our app are the map, the list view of the restaurants, the ability to add a restaurant to favorites, and the ability to suggest a new restaurant not already listed in our database. 
 
-As of now, we have functionality for the map and list views to find restaurants and view information about the restaurant. You can also search for a restaurant and sort the table based on name and rating. The main features to see are the map and list view for the restaurants at the moment. A small issue at the moment with the sorting and searching is that you can search and then sort your results, but you can't sort and then search. Will be fixed in the future.
+
 
 ## Schema Explanation
 
