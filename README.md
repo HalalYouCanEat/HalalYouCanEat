@@ -175,6 +175,10 @@ We have functionality for the map and list views to find restaurants and view in
             <td>updated_at</td>
             <td>datetime</td>
         </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+        </tr>
     </tbody>
 </table>
 
