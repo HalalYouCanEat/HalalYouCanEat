@@ -423,17 +423,20 @@ We have functionality for the map and list views to find restaurants and view in
 
 ## Views
 
-We plan to have an about section, which has already been partially implemented, which will included pages about the app, about the devs, about halal, and about what assets we used.
+Most of the our views are enumerated and shown in our figma: https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=0%3A1
 
-Most of the other views (some are implemented and some are not) are enumerated and shown in our figma: https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=0%3A1
+We have a home page which displays an active map pin pointing all of the restaurants present in our database.
 
-Some of the views that we plan on implementing but haven't visualized yet are these:
+We also have the following "About" pages:
+1. "About the App" - Provides an overview of what the purpose of this app is.
+2. "About the Devs" - Provides an introduction to the developers of this app.
+3. "About Halal" - Provides a brief overview of what halal means.
 
-1. View to see reviews that the user has left
-2. View to see saved restaurants that the user has saved
-3. Improved view to show more restaurant details (halal items, reviews left for restaurant, etc.)
+We have a list view of all the restaurants present in our database, along with a filter siderbar that allows users to filter based on desired cuisine(s) and city/cities. 
 
+For each restaurant, we have a page that provides detailed information about the restaurant such as location, cuisine, rating, reviews, etc.
 
+We also have the user profile view where user can view their favorited restaurants, and navigate to different parts of the app.
 
 ## Gem Dependencies
 
