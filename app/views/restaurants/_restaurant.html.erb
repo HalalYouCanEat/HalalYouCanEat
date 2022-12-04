@@ -6,7 +6,17 @@
 
 		<h4> Our cuisine is <%= @restaurant&.cuisine %>. </h4>
 
-		<h4> Our rating is <%= @restaurant&.rating %> </h4>
+		<h4> Our rating is 
+			<% stars(@restaurant&.rating.to_f).each do |star| %>
+  				<i class="star-icons">
+					<% if star == "star_fill" %>
+						<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
+					<% else %>
+						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "20x20") %>
+					<% end %>
+				</i>
+			<% end %>
+		</h4>
 
 		<% if @restaurant&.url != nil %>
 			<h4> Our website is <%= link_to @restaurant&.url, @restaurant&.url, target: :_blank %> </h4>
