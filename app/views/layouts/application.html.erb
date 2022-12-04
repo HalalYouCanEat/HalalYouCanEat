@@ -7,8 +7,7 @@
   <%= render 'layouts/head_default' %>
   <%= render 'layouts/shim' %>
   <%= javascript_importmap_tags %>
-
-   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2I7co9Yxh28lJ0WZtqkmeMhUXti77hA&libraries=places', async: true, defer: false %>
+   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE-MAPS-API-KEY']}&libraries=places", async: true, defer: false %>
    <%# import bootstrap scripts below %>
    <!-- CSS only -->
 	<%# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">  %>
