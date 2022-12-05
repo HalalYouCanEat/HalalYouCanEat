@@ -1,22 +1,42 @@
 <div class="container">
 	<div class="restaurant-info">
-		<h2> This is <%= @restaurant&.name %>!</h2>
+	
+		<h2> <%= @restaurant&.name %></h2>
 
-		<h4> We are located at <%= @restaurant&.address %>. </h4>
-
-		<h4> Our cuisine is <%= @restaurant&.cuisine %>. </h4>
-
-		<h4> Our rating is 
+		<h4> Google Rating:
 			<% stars(@restaurant&.rating.to_f).each do |star| %>
   				<i class="star-icons">
 					<% if star == "star_fill" %>
 						<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
 					<% else %>
-						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "20x20") %>
+						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
 					<% end %>
 				</i>
 			<% end %>
+			( <%= @restaurant&.rating %> / 5 )
 		</h4>
+
+		<h4>
+			HYCE Rating:
+			<% stars(collect_restaurant_ratings).each do |star| %>
+  				<i class="star-icons">
+					<% if star == "star_fill" %>
+						<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
+					<% else %>
+						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
+					<% end %>
+				</i>
+			<% end %>
+			( <%= collect_restaurant_ratings%> / 5 )
+		</h4>
+
+		<h4> Located at <%= @restaurant&.address %>. </h4>
+
+		<h4> <%= @restaurant&.cuisine %> </h4>
+
+		<div>
+			<%# image_tag("https://picsum.photos/id/#{@restaurant&.id}/400/600", :alt => "restaurant_image") %>
+		</div>
 
 		<% if @restaurant&.url != nil %>
 			<h4> Our website is <%= link_to @restaurant&.url, @restaurant&.url, target: :_blank %> </h4>

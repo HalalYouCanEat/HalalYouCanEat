@@ -6,7 +6,9 @@ module ReviewsHelper
   HALF_STAR_ICON = 'star_lefthalf_fill'.freeze
 
   def full_and_half_star_count(rating)
-    (rating * 2).round.divmod(2)
+		if !rating.nil?
+   		(rating * 2).round.divmod(2)
+		end
   end
 
   def stars(rating, max_stars: 5)

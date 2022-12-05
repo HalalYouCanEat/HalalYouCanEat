@@ -11,4 +11,10 @@ module RestaurantsHelper
   def on_home_page
     params[:action] != 'index' && params[:action] != 'search'
   end
+
+	def collect_restaurant_ratings
+		r = @restaurant.reviews.pluck(:rating)
+		r.empty? ? 0 : (r.sum.to_f / r.size.to_f).truncate(2
+		)
+	end
 end

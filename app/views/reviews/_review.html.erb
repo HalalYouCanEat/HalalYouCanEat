@@ -1,9 +1,10 @@
 <div id="<%= dom_id review %>" class="reviews">
+
   <p>
-    <strong>User:</strong>
+    <%# <strong>User:</strong> %>
 	<% if review.user_id != nil %>
 		<% u = User.find(review.user_id) %>
-		<%= u.name %>
+		<strong><%= u.name %></strong>
 	<% end %>
   </p>
 
@@ -20,27 +21,26 @@
 
 
   <p>
-    <strong>Rating:</strong>
+    <%# <strong>Rating:</strong> %>
 	<% stars(review.rating).each do |star| %>
   		<i class="star-icons">
 			<% if star == "star_fill" %>
 				<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
 			<% else %>
-				<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "20x20") %>
+				<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
 			<% end %>
 		</i>
 	<% end %>
-    <%# review.rating %>
   </p>
 
   <p>
-    <strong>Content:</strong>
+    <%# <strong>Content:</strong> %>
     <%= review.content %>
   </p>
 
   <p>
-    <strong>Date of review:</strong>
-    <%= review.created_at %>
+    <strong>Created at:</strong> <%= review.created_at %>
+    
   </p>
 	<%# add a delete button if the user is the one who wrote the review %>
 	<% if review.user_id == current_user&.id or current_user&.admin?%>

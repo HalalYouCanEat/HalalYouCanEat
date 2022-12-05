@@ -10,32 +10,6 @@
       </ul>
     </div>
   <% end %>
-	<%# in hiding for now %>
-	<% if false %>
-		<div>
-			<%# should be autofilled with proper id, or done in the background %>
-			<%= form.label :id, style: "display: block" %>
-			<%= form.number_field :id %>
-		</div>
-
-		<div>
-			<%# should be autofilled with the proper restaurant id %>
-			<%= form.label :restaurant_id, style: "display: block" %>
-			<%= form.number_field :restaurant_id %>
-		</div>
-
-		<div>
-			<%# shouldn't need to be here %>
-			<%= form.label :halal_item_id, style: "display: block" %>
-			<%= form.number_field :halal_item_id %>
-		</div>
-
-		<div>
-			<%# should just be the users name, something like current_user.name or using the id to get the name %>
-			<%= form.label :user_id, style: "display: block" %>
-			<%= form.number_field :user_id %>
-		</div>
-	<% end %>
 
   <div>
     <%= form.label :content, style: "display: block" %>
@@ -48,6 +22,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Post Review" %>
   </div>
 <% end %>
