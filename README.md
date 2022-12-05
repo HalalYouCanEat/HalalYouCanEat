@@ -22,6 +22,10 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=12%3A16
 
+## Link to Final Report
+
+https://docs.google.com/document/d/1S3EgcsWD-t1z635gnxvso1VF-Q4k1uZD6RPdbsQs_hw/edit?usp=sharing
+
 ## Meet Team #1
 
 <b>Anjola Uprety</b>: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
@@ -213,51 +217,6 @@ We have functionality for the map and list views to find restaurants and view in
     </tbody>
 </table>
 
-###location
-
-<table>
-    <thead>
-        <tr>
-            <th>Attribute</th>
-            <th>Data Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>id</td>
-            <td>integer</td>
-        </tr>
-        <tr>
-            <td>state</td>
-            <td>string</td>
-        </tr>
-        <tr>
-            <td>zipcode</td>
-            <td>integer</td>
-        </tr>
-        <tr>
-            <td>address</td>
-            <td>string</td>
-        </tr>
-        <tr>
-            <td>latitude</td>
-            <td>float</td>
-        </tr>
-        <tr>
-            <td>longitude</td>
-            <td>float</td>
-        </tr>
-        <tr>
-            <td>created_at</td>
-            <td>datetime</td>
-        </tr>
-        <tr>
-            <td>updated_at</td>
-            <td>datetime</td>
-        </tr>
-    </tbody>
-</table>
-
 
 ### halal_items
 
@@ -310,41 +269,6 @@ We have functionality for the map and list views to find restaurants and view in
     </tbody>
 </table>
 
-### posts
-<table>
-    <thead>
-        <tr>
-            <th>Attribute</th>
-            <th>Data Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>id</td>
-            <td>integer</td>
-        </tr>
-        <tr>
-            <td>name</td>
-            <td>string</td>
-        </tr>
-        <tr>
-            <td>title</td>
-            <td>string</td>
-        </tr>
-        <tr>
-            <td>content</td>
-            <td>string</td>
-        </tr>
-        <tr>
-            <td>created_at</td>
-            <td>datetime</td>
-        </tr>
-        <tr>
-            <td>updated_at</td>
-            <td>datetime</td>
-        </tr>
-    </tbody>
-</table>
 
 ### reviews
 
