@@ -25,7 +25,8 @@ class Api::V1::RestaurantsController < ApplicationController
       latitude: rest_params[:latitude],
       longitude: rest_params[:longitude],
       url: rest_params[:url],
-      rating: rest_params[:rating]
+      rating: rest_params[:rating],
+			approved: rest_params[:approved]
     )
     if restaurant.save
       render json: restaurant, status: 200
@@ -49,7 +50,7 @@ class Api::V1::RestaurantsController < ApplicationController
 
   private
   def rest_params
-    params.require(:restaurant).permit([:id, :name, :cuisine, :state, :zipcode, :address, :latitude, :longitude, :url, :rating
+    params.require(:restaurant).permit([:id, :name, :cuisine, :state, :zipcode, :address, :latitude, :longitude, :url, :rating, :approved
     ])
   end
 end
