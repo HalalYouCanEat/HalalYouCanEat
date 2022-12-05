@@ -24,7 +24,15 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 
 ## Link to Final Report
 
-https://docs.google.com/document/d/1S3EgcsWD-t1z635gnxvso1VF-Q4k1uZD6RPdbsQs_hw/edit?usp=sharing
+[Final Report](/project_deliverables/final_report.md)
+
+## Link to Presenation
+
+[Presentation](/project_deliverables/halal_you_can_eat_presentation.pdf)
+
+## Link to Brandeis Project Description File
+
+[Brandeis Project Description](/project_deliverables/halalyoucaneat_bpd_file.md)
 
 ## Meet Team #1
 
@@ -330,20 +338,20 @@ We have functionality for the map and list views to find restaurants and view in
 
 ### Filter/Search URLs
 
-/restaurants?cuisine=Italian (not implemented yet)<br>
+/restaurants/search?name=&cuisine%5B%5D=Afghan&commit=Filter (searches for restaurants that has Afghan cuisine)<br>
+/restaurants/search?name=&city%5B%5D=+Brooklyn&commit=Filter (searches for restaurants that are in Brooklyn)<br>
+/restaurants/search?name=Ayat&commit=Filter (searches for restaurants that contains "Ayat" in it)<br>
 
-/restaurants?q%5Bs%5D=name+asc (sorts the restaurant list by name in ascending order)<br>
-/restaurants?q%5Bs%5D=name+desc (sorts the restaurant list by name in descending order)<br>
-/restaurants?q%5Bs%5D=rating+asc (sorts the restaurant list by rating in ascending order)<br>
-/restaurants?q%5Bs%5D=rating+desc (sorts the restaurant list by rating in descending order)<br>
-
-/restaurants?q%5Bname_cont%5D=Ayat&commit=Search (searches for a restaurant name that contains "Ayat" in it)
+The user has the ability to choose between different types of filters (cuisines, cities, etc.)
 
 
 ### Viewing Restaurants
 
 /restaurant/1 (view one restaurant)<br>
-/restaurants (view all restaurants in table view)
+/restaurants (view all restaurants in table view)<br>
+
+### User URLs
+/users/1 (user profile)<br>
 
 ## Views
 
@@ -360,7 +368,7 @@ We have a list view of all the restaurants present in our database, along with a
 
 For each restaurant, we have a page that provides detailed information about the restaurant such as location, cuisine, rating, reviews, etc.
 
-We also have the user profile view where user can view their favorited restaurants, and navigate to different parts of the app.
+We also have the user profile view where user can view their favorited restaurants, reviews, and navigate to different parts of the app.
 
 ## Gem Dependencies
 
@@ -385,7 +393,8 @@ We also have the user profile view where user can view their favorited restauran
 
 ## API Dependencies
 
-Google Maps Javascript API
+Google Maps Javascript API<br>
+Restaurant API (from heroku link)
 
 ## Testing
 The command `rails test` will run the tests for our app.
