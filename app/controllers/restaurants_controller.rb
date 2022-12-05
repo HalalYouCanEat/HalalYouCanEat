@@ -92,7 +92,7 @@ class RestaurantsController < ApplicationController
   end
 
 	def unapproved_restaurants
-		@restaurants = Restaurant.where(approved: false)
+		@restaurants = Restaurant.where(approved: false).or(Restaurant.where(approved: nil))
 	end
   
 

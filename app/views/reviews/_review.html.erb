@@ -1,51 +1,47 @@
-<div id="<%= dom_id review %>" class="reviews">
-
-  <p>
-    <%# <strong>User:</strong> %>
-	<% if review.user_id != nil %>
-		<% u = User.find(review.user_id) %>
-		<strong><%= u.name %></strong>
-	<% end %>
-  </p>
-
-  <p>
-	<%# if it's on the user profile, add the restaurant name (for clarity purposes) %>
-	<% if params["controller"] == "users" %>
-		<strong>Restaurant Name:</strong>
-		<% if review.restaurant_id != nil %>
-			<% r = Restaurant.find(review.restaurant_id) %>
-			<%= r.name %>
-		<% end %>
-	<% end %>
-  </p>
-
-
-  <p>
-    <%# <strong>Rating:</strong> %>
-	<% stars(review.rating).each do |star| %>
-  		<i class="star-icons">
-			<% if star == "star_fill" %>
-				<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
-			<% else %>
-				<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
+<div id="<%= dom_id review %>" class="reviews flex-container">
+	<div class="review-info">
+		<p>
+			<% if review.user_id != nil %>
+				<% u = User.find(review.user_id) %>
+				<strong><%= u.name %></strong>
 			<% end %>
-		</i>
-	<% end %>
-  </p>
+		</p>
+		<p>
+			<%# if it's on the user profile, add the restaurant name (for clarity purposes) %>
+			<% if params["controller"] == "users" %>
+				<strong>Restaurant Name:</strong>
+				<% if review.restaurant_id != nil %>
+					<% r = Restaurant.find(review.restaurant_id) %>
+					<%= r.name %>
+				<% end %>
+			<% end %>
+		</p>
+		<p>
+			<% stars(review.rating).each do |star| %>
+				<i class="star-icons">
+					<% if star == "star_fill" %>
+						<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
+					<% else %>
+						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
+					<% end %>
+				</i>
+			<% end %>
+		</p>
 
-  <p>
-    <%# <strong>Content:</strong> %>
-    <%= review.content %>
-  </p>
+		<p>
+			<%= review.content %>
+		</p>
+		<p>
+			<strong>Created at:</strong> <%= review.created_at %>
+		</p>
+	</div>
 
-  <p>
-    <strong>Created at:</strong> <%= review.created_at %>
-    
-  </p>
-	<%# add a delete button if the user is the one who wrote the review %>
-	<% if review.user_id == current_user&.id or current_user&.admin?%>
-		<%= button_to "Delete", review, :method => "delete" %>
-	<% end %>
+	<div class="review-delete">
+		<%# add a delete button if the user is the one who wrote the review %>
+		<% if review.user_id == current_user&.id or current_user&.admin?%>
+			<%= button_to image_tag("delete-button.svg", :alt => "delete button", :size => "16x16"), review, :method => "delete", class: "review-delete-button" %>
+		<% end %>
+	</div>
 
 </div>
 

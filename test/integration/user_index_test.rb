@@ -46,7 +46,7 @@ class UsersIndexAdminTest < UsersIndexAdmin
 	test 'admins can delete reviews' do
 		log_in_as(@admin)
 		get restaurant_path(restaurants(:one))
-		assert_select "button", text: 'Delete', count: 30
+		assert_select "button", count: 31
 	end
 
   test 'should display only activated users' do
@@ -72,7 +72,7 @@ class UsersNonAdminIndexTest < UsersIndex
 	test 'non-admins cannot delete reviews' do
 		log_in_as(@non_admin)
 		get restaurant_path(restaurants(:one))
-		assert_select "button", text: 'Delete', count: 2
+		assert_select "button", count: 3
 	end
 
 end
