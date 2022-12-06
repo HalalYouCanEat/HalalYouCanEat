@@ -45,7 +45,7 @@ One of the hardest challenges of creating this application was getting Google Ma
 
 ### Future Improvements
 
-Everytime we return to the home page, we have issues with reloading the map and we hope to fix it in the future. In addition, we want to create categories for cuisines. We are still working on figuring out the account activation as it is currently not working for Brandeis email. In future we want to transfer this application to a mobile app which includes adding more javascript and fixing major css and html. We also want to add an additional point accumulator feature.
+Everytime we return to the home page, we have issues with reloading the map and we hope to fix it in the future. In addition, we want to create categories for cuisines. We are still working on figuring out the account activation as it is currently not working for Brandeis email. In future we want to transfer this application to a mobile app which includes adding more javascript and fixing major css and html. We also want to add an additional point accumulator feature. The idea behind this feature is that users would be able to accumulate points on how often they interact with the app such as adding restaurants to favorites, leaving reviews or making a suggestion. The users would then be able to redeem points by getting discounts at restaurants. 
 <hr>
 
 ### Team Members
