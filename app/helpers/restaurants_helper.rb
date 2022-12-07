@@ -1,21 +1,4 @@
-# frozen_string_literal: true
-
 module RestaurantsHelper
-  def build_order_link(column:, label:)
-    if column == session.dig('restaurant_filters', 'column')
-      link_to(label, list_restaurants_path(column:, direction: next_direction))
-    else
-      link_to(label, list_restaurants_path(column:, direction: 'asc'))
-    end
-  end
-
-  def next_direction
-    session['restaurant_filters']['direction'] == 'asc' ? 'desc' : 'asc'
-  end
-
-  def sort_indicator
-    tag.span(class: "sort sort-#{session['restaurant_filters']['direction']}")
-  end
 
   def cuisine_collector
     Restaurant.all.pluck(:cuisine).uniq.sort.map { |cuisine| [cuisine, cuisine] }
@@ -28,4 +11,10 @@ module RestaurantsHelper
   def on_home_page
     params[:action] != 'index' && params[:action] != 'search'
   end
+
+	def collect_restaurant_ratings
+		r = @restaurant.reviews.pluck(:rating)
+		r.empty? ? 0 : (r.sum.to_f / r.size.to_f).truncate(2
+		)
+	end
 end

@@ -1,25 +1,45 @@
-<div class="container">
+<div class="restaurant-container">
 	<div class="restaurant-info">
-		<h2> This is <%= @restaurant&.name %>!</h2>
+	
+		<h2> <%= @restaurant&.name %></h2>
 
-		<h4> We are located at <%= @restaurant&.address %>. </h4>
+		<h4> Google Rating:
+			<% stars(@restaurant&.rating.to_f).each do |star| %>
+  				<i class="star-icons">
+					<% if star == "star_fill" %>
+						<span class="fa fa-star checked"></span>
+					<% else %>
+						<span class="fa fa-star"></span>
+					<% end %>
+				</i>
+			<% end %>
+			( <%= @restaurant&.rating %> / 5 )
+		</h4>
 
-		<h4> Our cuisine is <%= @restaurant&.cuisine %>. </h4>
+		<h4>
+			HYCE Rating:
+			<% stars(collect_restaurant_ratings).each do |star| %>
+  				<i class="star-icons">
+					<% if star == "star_fill" %>
+						<span class="fa fa-star checked"></span>
+					<% else %>
+						<span class="fa fa-star"></span>
+					<% end %>
+				</i>
+			<% end %>
+			( <%= collect_restaurant_ratings%> / 5 )
+		</h4>
 
-		<h4> Our rating is <%= @restaurant&.rating %> </h4>
+		<h4> Located at <%= @restaurant&.address %>. </h4>
+
+		<h4> <%= @restaurant&.cuisine %> </h4>
+
+		<div>
+			<%# image_tag("https://picsum.photos/id/#{@restaurant&.id}/400/600", :alt => "restaurant_image") %>
+		</div>
 
 		<% if @restaurant&.url != nil %>
 			<h4> Our website is <%= link_to @restaurant&.url, @restaurant&.url, target: :_blank %> </h4>
-		<% end %>
-	</div>
-
-	<div class="review-form">
-		<%# add a review to this restaurant %>
-		<% if logged_in? and @restaurant&.approved %> <%# change to if logged_in? to enable adding reviews %>
-			<div class="review-form">
-				<h3> Add a review: </h3>
-				<%= render 'reviews/form', review: @review %>
-			</div>
 		<% end %>
 	</div>
 
@@ -33,6 +53,16 @@
 				<h3> No reviews yet! </h3>
 			<% end %>
 		</div>
+	</div>
+
+	<div class="review-form">
+		<%# add a review to this restaurant %>
+		<% if logged_in? and @restaurant&.approved %> <%# change to if logged_in? to enable adding reviews %>
+			<div class="review-form">
+				<h3 id="review-start" > Write a review! </h3>
+				<%= render 'reviews/form', review: @review %>
+			</div>
+		<% end %>
 	</div>
 </div>
 

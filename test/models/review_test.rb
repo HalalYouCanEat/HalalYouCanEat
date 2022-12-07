@@ -2,9 +2,9 @@ require_relative '../test_helper'
 
 class ReviewTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one)
+    @admin = users(:one)
     @restaurant = restaurants(:one)
-    @review = @restaurant.reviews.build(content: 'Lorem ipsum', user_id: @user.id)
+    @review = @restaurant.reviews.build(content: 'Lorem ipsum', user_id: @admin.id)
   end
 
   test 'should be valid' do

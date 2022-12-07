@@ -49,8 +49,6 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 ## Functionality Summary
 We have functionality for the map and list views to find restaurants and view information about the restaurant such as rating, location, reviews, etc. User can also search for a restaurant and filter based on desired cuisine and city. Some key features of our app are the map, the list view of the restaurants, the ability to add a restaurant to favorites, and the ability to suggest a new restaurant not already listed in our database. 
 
-
-
 ## Schema Explanation
 
 ### favorites
@@ -377,6 +375,7 @@ We also have the user profile view where user can view their favorited restauran
 * bootstrap-sass
 * bootstrap-will_paginate
 * faker
+* figaro
 * geocoder (added as an interesting gem)
 * importmap-rails
 * jbuilder

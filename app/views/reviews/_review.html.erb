@@ -1,42 +1,47 @@
-<div id="<%= dom_id review %>" class="reviews">
-  <p>
-    <strong>User:</strong>
-	<% if review.user_id != nil %>
-		<% u = User.find(review.user_id) %>
-		<%= u.name %>
-	<% end %>
-  </p>
+<div id="<%= dom_id review %>" class="reviews flex-container">
+	<div class="review-info">
+		<p>
+			<% if review.user_id != nil %>
+				<% u = User.find(review.user_id) %>
+				<strong><%= u.name %></strong>
+			<% end %>
+		</p>
+		<p>
+			<%# if it's on the user profile, add the restaurant name (for clarity purposes) %>
+			<% if params["controller"] == "users" %>
+				<strong>Restaurant Name:</strong>
+				<% if review.restaurant_id != nil %>
+					<% r = Restaurant.find(review.restaurant_id) %>
+					<%= r.name %>
+				<% end %>
+			<% end %>
+		</p>
+		<p>
+			<% stars(review.rating).each do |star| %>
+				<i class="star-icons">
+					<% if star == "star_fill" %>
+						<span class="fa fa-star checked"></span>
+					<% else %>
+						<span class="fa fa-star"></span>
+					<% end %>
+				</i>
+			<% end %>
+		</p>
 
-  <p>
-	<%# if it's on the user profile, add the restaurant name (for clarity purposes) %>
-	<% if params["controller"] == "users" %>
-		<strong>Restaurant Name:</strong>
-		<% if review.restaurant_id != nil %>
-			<% r = Restaurant.find(review.restaurant_id) %>
-			<%= r.name %>
+		<p>
+			<%= review.content %>
+		</p>
+		<p>
+			<strong>Created at:</strong> <%= review.created_at %>
+		</p>
+	</div>
+
+	<div class="review-delete">
+		<%# add a delete button if the user is the one who wrote the review %>
+		<% if review.user_id == current_user&.id or current_user&.admin?%>
+			<%= button_to image_tag("delete-button.svg", :alt => "delete button", :size => "16x16"), review, :method => "delete", class: "review-delete-button" %>
 		<% end %>
-	<% end %>
-  </p>
-
-
-  <p>
-    <strong>Rating:</strong>
-    <%= review.rating %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= review.content %>
-  </p>
-
-  <p>
-    <strong>Date of review:</strong>
-    <%= review.created_at %>
-  </p>
-	<%# add a delete button if the user is the one who wrote the review %>
-	<% if review.user_id == current_user&.id or current_user&.admin?%>
-		<%= button_to "Delete", review, :method => "delete" %>
-	<% end %>
+	</div>
 
 </div>
 
