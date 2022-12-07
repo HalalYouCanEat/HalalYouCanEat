@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'favorites/update'
+  # API resources
   namespace :api do
     namespace :v1 do
-      resources :restaurants, only: [:index, :show, :create]
+      resources :restaurants, only: %i[index show create]
     end
   end
   resources :restaurants do
@@ -11,26 +11,27 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  # Resources in use
+  resources :users
+  resources :account_activations, only: [:edit]
+  resources :password_resets, only: %i[new create edit update]
+  resources :reviews, only: %i[create destroy index show edit update]
+
+  # Resource graveyard
   resources :halal_items
   resources :locations
-  resources :reviews
-  resources :users
   resources :posts
-  # TODO (↓ uncomment upon implementing chapter 11 ↓)
-  resources :account_activations, only: [:edit]
+
   root 'static_pages#home'
-  get  '/about/app',    to: 'about#about_app'
-  get  '/about/devs',   to: 'about#about_devs'
-  get  '/about/halal',  to: 'about#about_halal'
-  get  '/about/assets',  to: 'about#about_assets'
+  get  '/about/app', to: 'about#about_app'
+  get  '/about/devs', to: 'about#about_devs'
+  get  '/about/halal', to: 'about#about_halal'
+  get  '/about/assets', to: 'about#about_assets'
   get '/signup', to: 'users#new'
-	get '/unapproved', to: 'restaurants#unapproved_restaurants'
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/unapproved', to: 'restaurants#unapproved_restaurants'
+  get    '/login', to: 'sessions#new'
+  post   '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get 'favorites/update'
 end

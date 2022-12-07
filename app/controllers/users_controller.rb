@@ -32,16 +32,10 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
-      # @user.send_activation_email
-      # flash[:info] = 'Please check your email to activate your account.'
-
-      # TODO: delete these three line below when we want to enable email activation
-      @user.activate
-      log_in @user
-      flash[:success] = 'Welcome to the HalalYouCanEat App!'
-
+      @user.send_activation_email
+      flash[:info] = 'Please check your email to activate your account.'
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity

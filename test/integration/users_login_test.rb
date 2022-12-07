@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class UsersLogin < ActionDispatch::IntegrationTest
 
   def setup
-    @user = users(:one)
+    @admin = users(:one)
   end
 end
 
@@ -15,7 +15,7 @@ class InvalidPasswordTest < UsersLogin
   end
 
   test 'login with valid email/invalid password' do
-    post login_path, params: { session: { email: @user.email,
+    post login_path, params: { session: { email: @admin.email,
                                           password: 'invalid' } }
     assert_not is_logged_in?
     assert_template 'sessions/new'
@@ -29,7 +29,7 @@ class ValidLogin < UsersLogin
 
   def setup
     super
-    post login_path, params: { session: { email: @user.email,
+    post login_path, params: { session: { email: @admin.email,
                                           password: 'password' } }
   end
 end
@@ -38,7 +38,7 @@ class ValidLoginTest < ValidLogin
 
   test 'valid login' do
     assert is_logged_in?
-    assert_redirected_to @user
+    assert_redirected_to @admin
   end
 
   test 'redirect after login' do
@@ -46,7 +46,7 @@ class ValidLoginTest < ValidLogin
     assert_template 'users/show'
     assert_select 'a[href=?]', login_path, count: 1
     assert_select 'a[href=?]', logout_path
-    assert_select 'a[href=?]', user_path(@user)
+    assert_select 'a[href=?]', user_path(@admin)
   end
 end
 
@@ -70,7 +70,7 @@ class LogoutTest < Logout
     follow_redirect!
     assert_select 'a[href=?]', login_path
     assert_select 'a[href=?]', logout_path,      count: 0
-    assert_select 'a[href=?]', user_path(@user), count: 0
+    assert_select 'a[href=?]', user_path(@admin), count: 0
   end
 
   test 'should still work after logout in second window' do
@@ -82,15 +82,15 @@ end
 class RememberingTest < UsersLogin
 
   test 'login with remembering' do
-    log_in_as(@user, remember_me: '1')
+    log_in_as(@admin, remember_me: '1')
     assert_not cookies[:remember_token].blank?
   end
 
   test 'login without remembering' do
     # Log in to set the cookie.
-    log_in_as(@user, remember_me: '1')
+    log_in_as(@admin, remember_me: '1')
     # Log in again and verify that the cookie is deleted.
-    log_in_as(@user, remember_me: '0')
+    log_in_as(@admin, remember_me: '0')
     assert cookies[:remember_token].blank?
   end
 end

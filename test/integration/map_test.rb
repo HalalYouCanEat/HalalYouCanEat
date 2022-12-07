@@ -3,11 +3,11 @@ require_relative "../test_helper"
 class MapTest < ActionDispatch::IntegrationTest
 
 	def setup
-		@user = users(:one)
+		@admin = users(:one)
 	end
 
 	test "map display" do
-		log_in_as(@user)
+		log_in_as(@admin)
 		get root_url
 		assert_template 'static_pages/_map'
 		assert_select 'div#map'
