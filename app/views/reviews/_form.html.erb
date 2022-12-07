@@ -1,29 +1,43 @@
 <%= form_with(url: reviews_path, scope: :review) do |form| %>
 	<%= form.hidden_field :restaurant_id, value: @restaurant&.id %>
-  <% if review != nil && review.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-      <ul>
-        <% review.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<% if review != nil && review.errors.any? %>
+		<div style="color: red">
+		<h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+		<ul>
+			<% review.errors.each do |error| %>
+			<li><%= error.full_message %></li>
+			<% end %>
+		</ul>
+		</div>
+	<% end %>
+
+	<div class="stars">
+		
+		<%= form.radio_button :rating, value = "5" %>
+		<%= form.label :rating, "&nbsp;".html_safe, style: "display: block", :value => '5' %>
+		
+		<%= form.radio_button :rating, value="4" %>
+		<%= form.label :rating, "&nbsp;".html_safe, style: "display: block", :value => '4' %>
+		
+		<%= form.radio_button :rating, value="3" %>
+		<%= form.label :rating, "&nbsp;".html_safe, style: "display: block", :value => '3' %>
+		
+		<%= form.radio_button :rating, value="2" %>
+		<%= form.label :rating, "&nbsp;".html_safe, style: "display: block", :value => '2' %>
+		
+		<%= form.radio_button :rating, value="1" %>
+		<%= form.label :rating, "&nbsp;".html_safe, style: "display: block", :value => '1' %>
+
+		<span class="rating-text"></span>
+		
+	</div>
 
 	<div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating, class: "review-rating" %>
-  </div>
+		<%# form.label :content, class: "content-label" %>
+		<%= form.text_area :content, class: "review-content", placeholder: "Explain your rating here..."  %>
+	</div>
 
-  <div>
-    <%= form.label :content, style: "display: block"%>
-    <%= form.text_area :content, class: "review-content"  %>
-  </div>
-
-  
-
-  <div>
-    <%= form.submit "Post Review", class: "submit-review-button" %>
-  </div>
+	<div>
+		<%= form.submit "Post Review", class: "submit-review-button" %>
+	</div>
 <% end %>

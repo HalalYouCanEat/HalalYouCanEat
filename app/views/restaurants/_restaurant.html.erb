@@ -59,7 +59,7 @@
 		<%# add a review to this restaurant %>
 		<% if logged_in? and @restaurant&.approved %> <%# change to if logged_in? to enable adding reviews %>
 			<div class="review-form">
-				<h3> Write a review! </h3>
+				<h3 id="review-start" > Write a review! </h3>
 				<%= render 'reviews/form', review: @review %>
 			</div>
 		<% end %>
