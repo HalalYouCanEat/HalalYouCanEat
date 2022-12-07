@@ -7,9 +7,11 @@
 			<div class="icon-section">
 				<a onclick="showDiv('#list')" class="hover"><%= image_tag("list_icon.png", :alt => "List", :size => "50x50", :id => "list_icon") %></a>
 				<a onclick="showDiv('#map')" class="hover"><%= image_tag("map_icon.png", :alt => "Map", :size => "50x50", :id => "map_icon") %></a>
+				
 				<% if logged_in? %>
 					<%= link_to image_tag("plus-symbol.svg", :alt => "Plus", :size => "50x50", :id => "plus_icon"), new_restaurant_path %>
 				<% end %>
+				<%= link_to image_tag("search-symbol.svg", :alt => "Plus", :size => "50x50", :id => "search_icon"), search_restaurants_path %>
 			</div>
 			
 		</div>
