@@ -288,6 +288,7 @@ Some of the views that we plan on implementing but haven't visualized yet are th
 * bootstrap-sass
 * bootstrap-will_paginate
 * faker
+* figaro
 * geocoder (added as an interesting gem)
 * importmap-rails
 * jbuilder
