@@ -7,9 +7,9 @@
 			<% stars(@restaurant&.rating.to_f).each do |star| %>
   				<i class="star-icons">
 					<% if star == "star_fill" %>
-						<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
+						<span class="fa fa-star checked"></span>
 					<% else %>
-						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
+						<span class="fa fa-star"></span>
 					<% end %>
 				</i>
 			<% end %>
@@ -21,9 +21,9 @@
 			<% stars(collect_restaurant_ratings).each do |star| %>
   				<i class="star-icons">
 					<% if star == "star_fill" %>
-						<%= image_tag("star-filled.svg", :alt => "star_filled", :size => "20x20") %>
+						<span class="fa fa-star checked"></span>
 					<% else %>
-						<%= image_tag("star-empty.svg", :alt => "star_empty", :size => "24x24") %>
+						<span class="fa fa-star"></span>
 					<% end %>
 				</i>
 			<% end %>

@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
-  </div>
-
-  <div>
+	<div>
     <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
+    <%= form.number_field :rating, class: "review-rating" %>
   </div>
 
   <div>
-    <%= form.submit "Post Review" %>
+    <%= form.label :content, style: "display: block"%>
+    <%= form.text_area :content, class: "review-content"  %>
+  </div>
+
+  
+
+  <div>
+    <%= form.submit "Post Review", class: "submit-review-button" %>
   </div>
 <% end %>

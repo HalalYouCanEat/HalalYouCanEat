@@ -420,9 +420,22 @@ span.image {
 	width: 100%;
 }
 
+.review-content{
+	width: 100%;
+	height: 200px;
+}
+
+.review-rating{
+	width: 30%;
+}
+
 .flex-container {
 	display: flex;
 }
+
+.checked {
+	color: yellow;
+  }
 
 .checkbox{
 	margin-right: -100px;
