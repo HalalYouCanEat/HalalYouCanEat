@@ -80,7 +80,7 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     respond_to do |format|
-      format.html { redirect_to unapproved_path, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_back fallback_location: root_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -52,7 +52,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Review.count', -1) do
       delete review_url(@review)
     end
-    assert_redirected_to reviews_url
+    assert_redirected_to root_url
   end
 
   test 'should allow destroy if review.user_id = user.id' do
@@ -60,7 +60,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Review.count', -1) do
       delete review_url(@review)
     end
-    assert_redirected_to reviews_url
+    assert_redirected_to root_url
   end
 
   test 'should redirect destroy when not logged in' do

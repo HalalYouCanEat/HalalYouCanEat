@@ -41,6 +41,14 @@ Rails.application.configure do
   #
   # config.action_mailer.perform_caching = false
 
+	config.action_mailer.delivery_method = :sendmail
+	config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+	config.action_mailer.perform_deliveries = true
+	config.action_mailer.raise_delivery_errors = true
+	config.action_mailer.default_url_options = { from: ENV['EMAIL-USERNAME']}
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
@@ -52,7 +60,7 @@ Rails.application.configure do
     password: ENV['EMAIL-PASSWORD']
   }
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
   # Use this if developing on localhost.
   # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 

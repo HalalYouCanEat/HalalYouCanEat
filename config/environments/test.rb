@@ -8,6 +8,14 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+	# if the environment is testing, stop the email from being sent out
+	if Rails.env.test?
+		config.action_mailer.delivery_method = :test
+		config.action_mailer.perform_deliveries = false
+	end
+	
+	
+
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
 
@@ -43,6 +51,7 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+	config.action_mailer.perform_deliveries = false
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

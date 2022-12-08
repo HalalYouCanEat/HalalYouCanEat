@@ -73,6 +73,8 @@ Rails.application.configure do
     user_name: ENV['EMAIL-USERNAME'],
     password: ENV['EMAIL-PASSWORD']
   }
+  config.action_mailer.default_url_options = { host: 'halal-you-can-eat.herokuapp.com' }
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

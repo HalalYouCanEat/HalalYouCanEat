@@ -22,6 +22,19 @@ https://trello.com/b/ivSyFqHj/halal-you-can-eat
 
 https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=12%3A16
 
+## Link to Final Report
+
+[Final Report](/project_deliverables/final_report.md)
+
+## Link to Presenation
+
+[Presentation](/project_deliverables/halalyoucaneat_presentation.pdf)
+
+## Link to Brandeis Project Description Files
+
+[Brandeis Project Description](/project_deliverables/halalyoucaneat_bpd_file.md)<br>
+[256x256 Image](/project_deliverables/halalyoucaneat.png)
+
 ## Meet Team #1
 
 <b>Anjola Uprety</b>: Would like to participate in full-stack if possible. Willing to contribute more toward front-end.
@@ -39,6 +52,53 @@ We have functionality for the map and list views to find restaurants and view in
 
 ## Schema Explanation
 
+### favorites
+<table>
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Data Type</th>
+            <th>Foreign Key</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>restaurant_id</td>
+            <td>integer</td>
+            <td>restaurants(id)</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>integer</td>
+            <td>users(id)</td>
+        </tr>
+        <tr>
+            <td>restaurant_id</td>
+            <td>biginteger</td>
+        </tr>
+        <tr>
+            <td>user_id</td>
+            <td>biginteger</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>datetime</td>
+        </tr>
+        <tr>
+            <td>index_restaurant_id</td>
+            <td>index</td>
+        </tr>
+        <tr>
+            <td>index_user_id</td>
+            <td>index</td>
+        </tr>  
+    </tbody>
+</table>
+
 ### users
 <table>
     <thead>
@@ -54,6 +114,14 @@ We have functionality for the map and list views to find restaurants and view in
         </tr>
         <tr>
             <td>name</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>reset_digest</td>
             <td>string</td>
         </tr>
         <tr>
@@ -75,6 +143,18 @@ We have functionality for the map and list views to find restaurants and view in
         <tr>
             <td>admin</td>
             <td>boolean</td>
+        </tr>
+        <tr>
+            <td>activation_digest</td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td>activated</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>activated_at</td>
+            <td>datetime</td>
         </tr>
     </tbody>
 </table>
@@ -137,8 +217,13 @@ We have functionality for the map and list views to find restaurants and view in
             <td>updated_at</td>
             <td>datetime</td>
         </tr>
+        <tr>
+            <td>apporved</td>
+            <td>boolean</td>
+        </tr>
     </tbody>
 </table>
+
 
 ### halal_items
 
@@ -153,7 +238,7 @@ We have functionality for the map and list views to find restaurants and view in
     <tbody>
         <tr>
             <td>restaurant_id</td>
-            <td>integer</td>
+            <td>biginteger</td>
             <td>restaurants(id)</td>
         </tr>
         <tr>
@@ -190,6 +275,7 @@ We have functionality for the map and list views to find restaurants and view in
         </tr>
     </tbody>
 </table>
+
 
 ### reviews
 
@@ -251,34 +337,37 @@ We have functionality for the map and list views to find restaurants and view in
 
 ### Filter/Search URLs
 
-/restaurants?cuisine=Italian (not implemented yet)<br>
+/restaurants/search?name=&cuisine%5B%5D=Afghan&commit=Filter (searches for restaurants that has Afghan cuisine)<br>
+/restaurants/search?name=&city%5B%5D=+Brooklyn&commit=Filter (searches for restaurants that are in Brooklyn)<br>
+/restaurants/search?name=Ayat&commit=Filter (searches for restaurants that contains "Ayat" in it)<br>
 
-/restaurants?q%5Bs%5D=name+asc (sorts the restaurant list by name in ascending order)<br>
-/restaurants?q%5Bs%5D=name+desc (sorts the restaurant list by name in descending order)<br>
-/restaurants?q%5Bs%5D=rating+asc (sorts the restaurant list by rating in ascending order)<br>
-/restaurants?q%5Bs%5D=rating+desc (sorts the restaurant list by rating in descending order)<br>
-
-/restaurants?q%5Bname_cont%5D=Ayat&commit=Search (searches for a restaurant name that contains "Ayat" in it)
+The user has the ability to choose between different types of filters (cuisines, cities, etc.)
 
 
 ### Viewing Restaurants
 
 /restaurant/1 (view one restaurant)<br>
-/restaurants (view all restaurants in table view)
+/restaurants (view all restaurants in table view)<br>
+
+### User URLs
+/users/1 (user profile)<br>
 
 ## Views
 
-We plan to have an about section, which has already been partially implemented, which will included pages about the app, about the devs, about halal, and about what assets we used.
+Most of the our views are enumerated and shown in our figma: https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=0%3A1
 
-Most of the other views (some are implemented and some are not) are enumerated and shown in our figma: https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?node-id=0%3A1
+We have a home page which displays an active map pin pointing all of the restaurants present in our database.
 
-Some of the views that we plan on implementing but haven't visualized yet are these:
+We also have the following "About" pages:
+1. "About the App" - Provides an overview of what the purpose of this app is.
+2. "About the Devs" - Provides an introduction to the developers of this app.
+3. "About Halal" - Provides a brief overview of what halal means.
 
-1. View to see reviews that the user has left
-2. View to see saved restaurants that the user has saved
-3. Improved view to show more restaurant details (halal items, reviews left for restaurant, etc.)
+We have a list view of all the restaurants present in our database, along with a filter siderbar that allows users to filter based on desired cuisine(s) and city/cities. 
 
+For each restaurant, we have a page that provides detailed information about the restaurant such as location, cuisine, rating, reviews, etc.
 
+We also have the user profile view where user can view their favorited restaurants, reviews, and navigate to different parts of the app.
 
 ## Gem Dependencies
 
@@ -304,7 +393,8 @@ Some of the views that we plan on implementing but haven't visualized yet are th
 
 ## API Dependencies
 
-Google Maps Javascript API
+Google Maps Javascript API<br>
+Restaurant API (from heroku link)
 
 ## Testing
 The command `rails test` will run the tests for our app.
