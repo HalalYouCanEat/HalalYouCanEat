@@ -30,9 +30,10 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 
 [Presentation](/project_deliverables/halalyoucaneat_presentation.pdf)
 
-## Link to Brandeis Project Description File
+## Link to Brandeis Project Description Files
 
-[Brandeis Project Description](/project_deliverables/halalyoucaneat_bpd_file.md)
+[Brandeis Project Description](/project_deliverables/halalyoucaneat_bpd_file.md)<br>
+[256x256 Image](/project_deliverables/halalyoucaneat.png)
 
 ## Meet Team #1
 
