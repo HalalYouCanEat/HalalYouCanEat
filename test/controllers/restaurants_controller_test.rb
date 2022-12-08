@@ -43,7 +43,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_url(@restaurant)
     end
 
-    assert_redirected_to unapproved_path
+    assert_redirected_to root_url
   end
 
 	test "should have approved checkbox for admins" do
