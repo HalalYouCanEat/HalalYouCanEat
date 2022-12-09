@@ -35,7 +35,7 @@
 			<strong>Created at:</strong> <%= review.created_at %>
 		</p>
 	</div>
-
+	<br><br>
 	<div class="review-delete">
 		<%# add a delete button if the user is the one who wrote the review %>
 		<% if review.user_id == current_user&.id or current_user&.admin?%>

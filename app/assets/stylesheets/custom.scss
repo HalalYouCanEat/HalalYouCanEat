@@ -6,11 +6,11 @@
  *                                       Palette color codes                                        *
  *                      http://paletton.com/#uid=c0A3p2+0b0ksdqmjatDnmrRugmWz4k5                    *
  ****************************************************************************************************/
-$color-primary-0: #D27819;	/* Main Primary color */
-$color-primary-1: #ECA75F;
-$color-primary-2: #DE8F3C;
-$color-primary-3: #B7630A;
-$color-primary-4: #A05200;
+$color-primary-0: #1a1103;	/* Main Primary color */
+$color-primary-1: #1f1f1e;
+$color-primary-2: #030200;
+$color-primary-3: #050300;
+$color-primary-4: #030200;
 
 $color-secondary-1-0: #12944E;	/* Main Secondary color (1) */
 $color-secondary-1-1: #43A771;
@@ -36,7 +36,7 @@ $color-complement-4: #034C64;
   src: url("Tangerine_Regular.ttf") format('truetype');
 }
 
-$gray-medium-light: #eaeaea;
+$gray-medium-light: #fffdfd;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
