@@ -23,4 +23,13 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match user.reset_token,        mail.body.encoded
     assert_match CGI.escape(user.email),  mail.body.encoded
   end
+
+	test 'admin_approval' do
+		user = users(:one)
+		mail = UserMailer.admin_approval(user)
+		assert_same user.admin?, true
+		assert_equal 'New Restaurant Sent For Approval: Halal You Can Eat', mail.subject
+		assert_match user.name,               mail.body.encoded
+		assert_equal [user.email],            mail.to
+	end
 end
