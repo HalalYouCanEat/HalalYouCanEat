@@ -19,4 +19,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: 'Password reset: Halal You Can Eat'
   end
+
+	def admin_approval(user)
+    @user = user
+    mail to: user.email, subject: 'New Restaurant Sent For Approval: Halal You Can Eat'
+  end
 end

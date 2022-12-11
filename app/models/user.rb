@@ -81,6 +81,11 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+	# Sends admin email for approval.
+  def send_admin_approval_email
+    UserMailer.admin_approval(self).deliver_now
+  end
+
   private
 
   # Converts email to all lowercase.
