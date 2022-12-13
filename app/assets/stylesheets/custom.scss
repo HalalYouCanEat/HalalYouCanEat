@@ -550,7 +550,6 @@ span.image {
 
 .restaurant-info{
 	width: 100%; 
-	// border: 1px solid black; 
 	text-align: center;
 }
 
@@ -558,4 +557,36 @@ span.image {
 	display: flex; 
 	justify-content: center; 
 	align-items: center;
+}
+.restaurant-text-field{
+	width: 100%;
+  	display: inline-block;
+  	border: none;
+  	box-sizing: border-box;
+  	background-color: transparent;
+  	border-bottom: 2px solid black;
+}
+
+.restaurant-submit-button{
+  width: 100%;
+  background-color: $color-secondary-1-0;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.restaurant-submit-button:hover {
+  background-color: $color-secondary-1-1;
+}
+
+.approved-checkbox{
+	width: 20px;
+  	height: 20px;
 }
