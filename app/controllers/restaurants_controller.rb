@@ -52,17 +52,22 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
+			
       if @restaurant.save
-				# send email to all admins
-				User.where(admin: true).each do |admin|
-					UserMailer.with(user: admin).admin_approval(admin).deliver_now
+				if @restaurant.approved == false || @restaurant.approved == nil then
+					User.where(admin: true).each do |admin|
+						UserMailer.with(user: admin).admin_approval(admin).deliver_now
+					end
+					format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully sent for approval.' }
+					format.json { render :show, status: :created, location: @restaurant }
+				else
+					format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully created.' }
+					format.json { render :show, status: :created, location: @restaurant }
 				end
-        format.html { redirect_to restaurant_url(@restaurant), notice: 'Restaurant was successfully sent for approval.' }
-        format.json { render :show, status: :created, location: @restaurant }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+			else
+				format.html { render :new, status: :unprocessable_entity }
+				format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+			end
     end
   end
 
