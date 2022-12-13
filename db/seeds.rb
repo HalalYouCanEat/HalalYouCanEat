@@ -203,6 +203,7 @@ end
 
 # Main user for testing
 User.create!(id: 101, name: 'Test User', email: 'testing@gmail.com', password: 'password', admin: true, activated: true, activated_at: Time.zone.now)
+User.create!(id: 102, name: 'Fritz Duverglas', email: 'fduverglas@brandeis.edu', password: 'password', admin: true, activated: true, activated_at: Time.zone.now)
 p "Created #{User.count} users"
 
 # users = User.order(:created_at).take(6)
