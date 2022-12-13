@@ -8,7 +8,13 @@
   <p>
   <%# save this restaurant to your favorites %>
   <% if logged_in? and @restaurant&.approved %>
- 	 <%= link_to favorite_text, favorites_update_path(restaurant: @restaurant), id: 'favorite_link' %> |
+	<% if favorited?(@restaurant) %>
+	  <%= link_to '<span class="fa fa-solid fa-bookmark" aria-hidden="true" style="color: black;"></span>'.html_safe, favorites_update_path(restaurant: @restaurant), id: 'favorite_link' %>
+	  
+	<% else %>
+	  <%= link_to '<span class="fa fa-regular fa-bookmark" aria-hidden="true" style="color: white;"></span>'.html_safe, favorites_update_path(restaurant: @restaurant), id: 'favorite_link' %>
+	<% end %>
+ 	 
   <% end %>
   <%= link_to "Back to restaurants", restaurants_path %> | 
   <%= link_to "Back to home page", root_url %>

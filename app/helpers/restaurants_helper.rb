@@ -17,4 +17,13 @@ module RestaurantsHelper
 		r.empty? ? 0 : (r.sum.to_f / r.size.to_f).truncate(2
 		)
 	end
+
+	# check if a restaurant has been favorited by user
+	def favorited?(restaurant)
+		r = current_user.favorites.where(restaurant_id: restaurant.id)
+		puts "*************"
+		puts r.any?
+		puts "*************"
+		r.any?
+	end
 end
