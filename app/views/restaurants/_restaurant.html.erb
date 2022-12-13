@@ -1,37 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-body {font-family: "Times New Roman", Georgia, Serif;}
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display";
-  letter-spacing: 5px;
-}
-</style>
 </head>
 
 <div class="restaurant-container">
 	<div class="restaurant-info">
-
-		<!-- Header -->
-		<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
-  			<%# <img class="w3-image" src="/w3images/hamburger.jpg" alt="Hamburger Catering" width="1600" height="800"> %>
-  			<div class="w3-display-bottomleft w3-padding-large w3-opacity">
-    			<h1 class="w3-xxlarge"><%= @restaurant&.name %></h1>
-  			</div>
-		</header>	
-
-		<!-- Page content -->
-		<div class="w3-content" style="max-width:1100px">
-
-  			<!-- About Section -->
-  			<div class="w3-col m6 w3-padding-large">
-			  <h2 class="w3-center">About <%= @restaurant&.name %></h2><br>
-			  <h4> Google Rating:
+		<div>
+			<div class="restaurant-header">
+				<h2 style="margin-right: 20px;"><%= @restaurant&.name %></h2>
+				<% if logged_in? and @restaurant&.approved %>
+					<% if favorited?(@restaurant) %>
+					<%= link_to '<i class="fa fa-solid fa-bookmark fa-3x" aria-hidden="true" style="color: black;"></i>'.html_safe, favorites_update_path(restaurant: @restaurant), id: 'favorite_link' %>
+					
+					<% else %>
+					<%= link_to '<i class="fa fa-regular fa-bookmark fa-3x" aria-hidden="true" style="color: white;"></i>'.html_safe, favorites_update_path(restaurant: @restaurant), id: 'favorite_link' %>
+					<% end %>
+				<% end %>
+			</div>
+			<h4> Google Rating:
 				<% stars(@restaurant&.rating.to_f).each do |star| %>
 					<i class="star-icons">
 						<% if star == "star_fill" %>
@@ -42,8 +30,8 @@ h1, h2, h3, h4, h5, h6 {
 					</i>
 				<% end %>
 				( <%= @restaurant&.rating %> / 5 )
-				</h4>
-			  <h4>
+			</h4>
+			<h4>
 				HYCE Rating:
 				<% stars(collect_restaurant_ratings).each do |star| %>
 					<i class="star-icons">
@@ -55,47 +43,42 @@ h1, h2, h3, h4, h5, h6 {
 					</i>
 				<% end %>
 				( <%= collect_restaurant_ratings%> / 5 )
-			  </h4>
+			</h4>
 
-			  <h4> Located at: <%= @restaurant&.address %>. </h4>
+			<h4> Located at: <%= @restaurant&.address %>. </h4>
 
-			  <h4> Cusine Type: <%= @restaurant&.cuisine %> </h4>
+			<h4> Cuisine Type: <%= @restaurant&.cuisine %> </h4>
 
-			  <% if @restaurant&.url != nil %>
-				<h4> Our website is <%= link_to @restaurant&.url, @restaurant&.url, target: :_blank %> </h4>
-			  <% end %>
+			<% if @restaurant&.url != nil %>
+			<h4> Website: <%= link_to @restaurant&.url, @restaurant&.url, target: :_blank %> </h4>
+			<% end %>
+		</div>
+		<hr>
+		<div>
+			<div class="review-display">
+				<% if @restaurant.reviews.length > 0 %>
+					<h3> Reviews: </h3>
+						<%= render @reviews %>
+						<%= will_paginate @reviews %>
+				<% else %>
+					<h3> No reviews yet! </h3>
+				<% end %>
 			</div>
 		</div>
 
-		<div>
-			<%# image_tag("https://picsum.photos/id/#{@restaurant&.id}/400/600", :alt => "restaurant_image") %>
-		</div>	
-	</div>
-
-	<hr>
-
-	<!-- Menu Section -->
-	<div class="w3-row w3-padding-64" id="menu">
-		<div class="w3-col l6 w3-padding-large">
-			<% if @restaurant.reviews.length > 0 %>
-				<h3> Reviews: </h3>
-					<%= render @reviews %>
-					<%= will_paginate @reviews %>
-			<% else %>
-				<h3> No reviews yet! </h3>
+		<div class="review-form">
+			<% if logged_in? and @restaurant&.approved %>
+				<div class="review-form">
+					<h3 id="review-start"> Write a review! </h3>
+					<%= render 'reviews/form', review: @review %>
+				</div>
 			<% end %>
 		</div>
 	</div>
 
-	<div class="review-form">
-		<%# add a review to this restaurant %>
-		<% if logged_in? and @restaurant&.approved %> <%# change to if logged_in? to enable adding reviews %>
-			<div class="review-form">
-				<h3 id="review-start" > Write a review! </h3>
-				<%= render 'reviews/form', review: @review %>
-			</div>
-		<% end %>
-	</div>
+	<hr>
+
+	
 </div>
 
 

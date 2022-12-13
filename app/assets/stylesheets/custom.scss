@@ -542,3 +542,20 @@ span.image {
   background-size: cover;
   text-align: center;
 }
+
+.review-display{
+	width: 75%;
+	margin: 0 auto;
+}
+
+.restaurant-info{
+	width: 100%; 
+	// border: 1px solid black; 
+	text-align: center;
+}
+
+.restaurant-header{
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+}
