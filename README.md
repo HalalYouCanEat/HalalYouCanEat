@@ -24,7 +24,7 @@ https://www.figma.com/file/1PQprB5wV0z4tIlz2E8XJO/Halal-You-Can-Eat-Wireframe?no
 
 ## Link to Final Report
 
-[Final Report](/project_deliverables/final_report.md)
+[Final Report](/project_deliverables/halalyoucaneat_finalreport.pdf)
 
 ## Link to Presenation
 
