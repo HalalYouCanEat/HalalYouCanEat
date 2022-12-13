@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_193839) do
     t.string "url"
     t.string "rating"
     t.boolean "approved"
+    t.float "distance_from_user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

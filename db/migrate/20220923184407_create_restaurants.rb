@@ -13,6 +13,7 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
 			t.string :url
 			t.string :rating
 			t.boolean :approved
+			t.float :distance_from_user
 			t.references :reviews, null: true, foreign_key: true # changed null from false to true
 			t.references :halal_items, null: true, foreign_key: true # changed null from false to true
 
