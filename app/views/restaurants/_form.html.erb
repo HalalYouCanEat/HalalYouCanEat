@@ -12,34 +12,34 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, class: "restaurant-text-field" %>
+    <%= form.label :name, style: "display: block; color: white;" %>
+    <%= form.text_field :name, class: "restaurant-text-field", style: "color: white;" %>
   </div>
 
   <div>
-	<%= form.label :address, style: "display: block" %>
-	<%= form.text_field :address, class: "restaurant-text-field"  %>
+	<%= form.label :address, style: "display: block; color: white;" %>
+	<%= form.text_field :address, class: "restaurant-text-field", style: "color: white;"  %>
   </div>
 
   <div>
-	<%= form.label :rating, style: "display: block" %>
-	<%= form.number_field :rating, step: :any, class: "restaurant-text-field"  %>
+	<%= form.label :rating, style: "display: block; color: white;" %>
+	<%= form.number_field :rating, step: :any, class: "restaurant-text-field", style: "color: white;"  %>
   </div>
 
   <div>
-	<%= form.label "Restaurant Website", style: "display: block" %>
-	<%= form.text_field :url, class: "restaurant-text-field"  %>
+	<%= form.label "Restaurant Website", style: "display: block; color: white;" %>
+	<%= form.text_field :url, class: "restaurant-text-field", style: "color: white;" %>
   </div>
 
   <div>
-	<%= form.label :cuisine, style: "display: block" %>
-	<%= form.text_field :cuisine, class: "restaurant-text-field"  %>
+	<%= form.label :cuisine, style: "display: block; color: white;" %>
+	<%= form.text_field :cuisine, class: "restaurant-text-field", style: "color: white;"  %>
   </div>
 
   
 	<% if current_user&.admin? %>
 		<div class="approved-section"> 
-			<%= form.label :approved, style: "display: block" %>
+			<%= form.label :approved, style: "display: block; color: white;" %>
 			<%= form.check_box :approved, class: "approved-checkbox" %>
 		</div>
 	<% end %>
