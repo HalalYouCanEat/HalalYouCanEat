@@ -73,6 +73,10 @@
 					<%= render 'reviews/form', review: @review %>
 				</div>
 			<% end %>
+			<% if !logged_in? and @restaurant&.approved %>
+				<h4 style="padding-top = 50px;"> Want to review this restaurant and favorite it? <%= link_to "Sign up now!", signup_path%> </h4>
+				<h4> Already have an account? <%= link_to "Sign in", login_path%> </h4>
+			<% end %>
 		</div>
 	</div>
 
