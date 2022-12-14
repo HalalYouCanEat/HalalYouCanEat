@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h2 class="text-center header-space">Restaurants</h2>
+<% if on_home_page %>
+	<h2 class="text-center header-space" style="color: #4B6F44;">Restaurants</h2>
+<% else %>
+	<h2 class="text-center header-space" style="color: #7CB9E8;">Restaurants</h2>
+<% end %>
 <%# setting restaurants properly depending on filtering %>
 <% if @restaurants == nil %>
 	<% restaurants = Restaurant.all %>
@@ -21,11 +25,11 @@
 	<% else %>
 		<div class="row flex-container">
 			<div class="col-3 search-bar-section">
-				<h4 class="text-center" >Filters</h4>
+				<h4 class="text-center" style="color: #7CB9E8;" >Filters</h4>
 				<%= render "restaurants/filter_form" %>
 			</div>
 			<div class="col-9 table-background">
-				<%= render "restaurants/table", restaurants: restaurants %>
+				<%= render "restaurants/restaurantview", restaurants: restaurants %>
 			</div>
 		</div>
 	<% end %>

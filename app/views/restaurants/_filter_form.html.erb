@@ -1,11 +1,10 @@
 <%= form_tag search_restaurants_path, method: :get do %>
-	<div class="text-center">
-		<div class="search-bar mb-3">
-			<%= text_field_tag :name, nil, placeholder: 'Name of Restaurant' %>
+	<div class="text-center filter-form">
+		<div>
+			<%= text_field_tag :name, nil, placeholder: 'Name of Restaurant', class: "filter-search-bar" %>
 		</div>
-		<div class="search-bar mb-5">
+		<div class="checkbox-container">
 			<h4>Cuisines</h4>
-			<%# checkboxes for each cuisine %>
 			<% cuisine_collector.each do |cuisine| %>
 				<%# collects the first element in cuisine %>
 				<% cuisine = cuisine[0] %>
@@ -16,14 +15,14 @@
 			<% end %>
 		</div>
 		
-		<div class="search-bar mb-5">
-			<%# <%= select_tag :city, options_for_select(city_collector), prompt: 'Select City' %> 
+		<div class="checkbox-container">
 			<h4>Cities</h4>
 			<% city_collector.each do |city| %>
 				<% city = city[0] %>
 				<div class="flex-container checkbox">
 					<%= check_box_tag "city[]", city %>
 					<%= label_tag city %>
+					
 				</div>
 			<% end %>
 		</div>

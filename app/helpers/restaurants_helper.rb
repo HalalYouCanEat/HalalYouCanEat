@@ -21,9 +21,6 @@ module RestaurantsHelper
 	# check if a restaurant has been favorited by user
 	def favorited?(restaurant)
 		r = current_user.favorites.where(restaurant_id: restaurant.id)
-		puts "*************"
-		puts r.any?
-		puts "*************"
 		r.any?
 	end
 end

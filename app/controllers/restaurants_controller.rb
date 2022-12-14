@@ -14,6 +14,8 @@ class RestaurantsController < ApplicationController
 				Restaurant.create(id: restaurant["id"], name: restaurant["name"], address: restaurant["address"], rating: restaurant["rating"], url: restaurant["url"], cuisine: restaurant["cuisine"], approved: restaurant["approved"], city: restaurant["city"], state: restaurant["state"], zipcode: restaurant["zipcode"], latitude: restaurant["latitude"], longitude: restaurant["longitude"])
 			end
 		end
+		# add pagination to json format
+		@restaurants = Restaurant.paginate(page: params[:page], per_page: 10)
   end
 
 	def search
@@ -27,7 +29,7 @@ class RestaurantsController < ApplicationController
 			@restaurants = @restaurants.and(Restaurant.where("city IN (?)", params[:city]))
 		end
 		# have the restaurants ordered by descending rating by default
-		@restaurants = @restaurants.order(:city, rating: :desc)
+		@restaurants = @restaurants.order(:city, rating: :desc).paginate(page: params[:page], per_page: 10)
 		
 		render :index
   end

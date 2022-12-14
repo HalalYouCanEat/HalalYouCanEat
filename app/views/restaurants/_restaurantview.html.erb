@@ -1,3 +1,46 @@
 <% restaurants.each do |restaurant| %>
     <% if restaurant["approved"] != false %>
+		<div class="restaurant-card">
+			<div class="admin-controls">
+				<% if current_user&.admin?%>
+					<%= link_to image_tag("pen-to-square-solid.svg", :alt => "edit button", :size => "20x20"), edit_restaurant_path(restaurant["id"]), class: "restaurant-edit-button" %>
+					<%= button_to image_tag("delete-button.svg", :alt => "delete button", :size => "16x16"), restaurant, :method => "delete", class: "restaurant-delete-button" %>
+				<% end %>
+			</div>
+			<div class="restaurant-card-header flex-container" style="justify-content: center; align-items: center;">
+				<h3><%= restaurant["name"] %></h3>
+			</div>
+			<div class="restaurant-card-body">
+				<p>
+					<p><%= restaurant["address"] %></p>
+				</p>
+			</div>
+			<div class="restaurant-card-footer">
+				<div style="float: left;">
+					<p>Cuisine: <%= restaurant["cuisine"] %></p>
+					<p>
+					<% stars(restaurant["rating"].to_f).each do |star| %>
+						<i class="star-icons">
+							<% if star == "star_fill" %>
+								<span class="fa fa-star checked"></span>
+							<% else %>
+								<span class="fa fa-star"></span>
+							<% end %>
+						</i>
+					<% end %>
+					( <%= restaurant["rating"] %> / 5 )
+					</p>
+					
+				</div>
+				<%= link_to "View", restaurant_path(restaurant["id"]), class: "restaurant-view-button" %>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+
+<% if restaurants.respond_to?(:total_pages) %>
+	<div class="pagination-bar" >
+		<%= will_paginate restaurants %>
+	</div>
+<% end %>
     
